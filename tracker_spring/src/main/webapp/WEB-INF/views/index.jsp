@@ -40,15 +40,14 @@
                 </div>				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#header">Intro</a></li>
+                        <li><a href="#header">Intro</a></li>
                         <li><a href="#mypage">My Page</a></li>
                         <li><a href="#managemember">회원관리</a></li>
                         <li><a href="#manageequipment">장비관리</a></li>
                         <li><a href="#company">Company</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#gpstracker">GPS Tracker</a></li> 
-                        <li><a href="#community">Community</a></li> 
-                        <li><a href="#faq">FAQ</a></li>                        
+                        <li><a href="#support">Support</a></li>                                                
                     </ul>
                 </div>
             </div><!--/.container-->
@@ -70,10 +69,10 @@
 						<img src="/tracker/resources/img/7.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">								
-								<h2><span>Clean & Fully Modern Design</span></h2>
+								<h2><span>최고의 서비스</span></h2>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">								
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+								<p>우주 끝까지 추적 해 드립니다.</p>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">								
 								<form class="form-inline">
@@ -92,10 +91,10 @@
 						<img src="/tracker/resources/img/6.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.0s">								
-								<h2>Fully Responsive</h2>
+								<h2>최고의 전자발찌</h2>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.3s">								
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+								<p>고X욱씨가 사용하고 있는 제품</p>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="1.6s">								
 								<form class="form-inline">
@@ -113,10 +112,10 @@
 						<img src="/tracker/resources/img/1.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">								
-								<h2>Modern Design</h2>
+								<h2>최고의 내구성</h2>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">								
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+								<p>티타늄 합금으로 제조하여 부서지지 않습니다</p>
 							</div>
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">								
 								<form class="form-inline">
@@ -183,42 +182,6 @@
 					<h3>Company</h3>
 					<p>우리회사 좋은회사!!!</p>
 				</div>
-				<!-- <div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-laptop"></i>						
-							<h2>Fully Responsive</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-heart-o"></i>
-							<h2>Retina Ready</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-cloud"></i>
-							<h2>Easily Customize</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-camera"></i>
-							<h2>Quality Code</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>--> 
 			</div>			
 		</div>
 	</div><!-- /#company -->
@@ -232,245 +195,25 @@
 			<c:import url="./equipment/showequipmentlist.jsp" />			
 		</div>
 	</div><!--/#products-->
-	
-	<div class="gpstracker">
-		<div class="col-md-6 col-md-offset-3">
+		
+	<div id="gpstracker">
+		<div class="container">
 			<div class="text-center">
-				<div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.2s">
-					<h2>GPS Tracker</h2>
-				</div>
-				<div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.6s">
-					<p>In a elit in lorem congue varius Sed nec arcu<br>
-					ullamcorp-er tellus ut dignissim nisi risus non tortor.
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="sub-parallax">
-			<div class="text-center">
-				<div class="col-md-12">
-					<div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.9s">
-						<form class="form-inline">
-							<div class="form-group">
-								<button type="purchase" name="purchase" class="btn btn-primary btn-lg" required="required">Purchase</button>
-							</div>
-							<div class="form-group">
-								<button type="subscribe" name="subscribe" class="btn btn-primary btn-lg" required="required">Subscribe Now</button>
-							</div>
-						</form>
-					</div>
-				</div>
+				<h3>Gps Tracker</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br>
+				et dolore magna aliqua. Ut enim ad minim veniam</p>
 			</div>
 		</div>
 	</div><!--/#gpstracker-->
 	
-	<div id="community">
+	<div id="support">
 		<div class="container">
 			<div class="text-center">
-				<h3>Community</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br>
-				et dolore magna aliqua. Ut enim ad minim veniam</p>
-			</div>
-			
-			<div class="pricing-area text-center">
-                <div class="row">
-                    <div class="col-sm-4 plan price-one wow fadeInDown" data-wow-offset="0" data-wow-delay="0.2s">
-                        <ul>
-                            <li class="heading-one">
-                                <h2>Start Up</h2>
-                                <span>$6/Month</span>
-                            </li>
-                            <li>5 Gb Disk Space</li>
-                            <li>1GB Dadicated Ram</li>
-                            <li>10 Addon Domain</li>
-                            <li>10 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-4 plan price-two wow fadeInDown" data-wow-offset="0" data-wow-delay="0.6s">
-                        <ul>
-                            <li class="heading-two">
-                                <h2>Standard</h2>
-                                <span>$12/Month</span>
-                            </li>
-                            <li>10 Gb Disk Space</li>
-                            <li>2GB Dadicated Ram</li>
-                            <li>20 Addon Domain</li>
-                            <li>20 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-4 plan price-three wow fadeInDown" data-wow-offset="0" data-wow-delay="0.9s">
-                        <img src="/tracker/resources/img/ri.png">
-                        <ul>
-                            <li class="heading-three">
-                                <h2>Premium</h2>
-                                <span>$24/Month</span>
-                            </li>
-                            <li>50 Gb Disk Space</li>
-                            <li>8GB Dadicated Ram</li>
-                            <li>Unlimited Addon Domain</li>
-                            <li>Unlimited Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 plan price-four wow fadeInLeft">
-                        <ul>
-                            <li class="heading-four">
-                                <h2>Basic</h2>
-                                <span>$3/Month</span>
-                            </li>
-                            <li>5 Gb Disk Space</li>
-                            <li>1GB Dadicated Ram</li>
-                            <li>10 Addon Domain</li>
-                            <li>10 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 plan price-five wow fadeInLeft">
-                        <ul>
-                            <li class="heading-five">
-                                <h2>Standard</h2>
-                                <span>$6/Month</span>
-                            </li>
-                            <li>5 Gb Disk Space</li>
-                            <li>1GB Dadicated Ram</li>
-                            <li>10 Addon Domain</li>
-                            <li>10 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 plan price-six wow fadeInRight">
-                         <img src="/tracker/resources/img/rib.png">
-                        <ul>
-                            <li class="heading-six">
-                                <h2>Premium</h2>
-                                <span>$12/Month</span>
-                            </li>
-                            <li>5 Gb Disk Space</li>
-                            <li>1GB Dadicated Ram</li>
-                            <li>10 Addon Domain</li>
-                            <li>10 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-sm-6 col-md-3 plan price-seven wow fadeInRight">
-                        <ul>
-                            <li class="heading-seven">
-                                <h2>Developer</h2>
-                                <span>$19/Month</span>
-                            </li>
-                            <li>5 Gb Disk Space</li>
-                            <li>1GB Dadicated Ram</li>
-                            <li>10 Addon Domain</li>
-                            <li>10 Email Account</li>
-                            <li>24/7 Support</li>
-                            <li class="plan-action">
-                                <a href="" class="btn btn-primary">Sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div><!--/pricing-area-->			
-		</div>
-	</div><!--/#community-->
-	
-	<div id="faq">
-		<div class="container">
-			<div class="text-center">
-				<h3>FAQ</h3>
+				<h3>Support</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
 			</div>
-			<div class="row">
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/1.png" alt="">
-						<h2>John Doe</h2>
-						<h4>Founder & CEO</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>
-				<div class="col-md-4 wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>John Doe</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/3.png" alt="">
-						<h2>John Smith</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>	
-			</div>
 		</div>
-		<div class="team">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/team1.jpg" class="img-responsive" alt="">
-							<h2>John Doe</h2>
-							<h4>Founder & CEO</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/team2.jpg" class="img-responsive" alt="">
-							<h2>John Doe</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/team3.jpg" class="img-responsive" alt="">
-							<h2>John Smith</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/team4.jpg" class="img-responsive" alt="">
-							<h2>John Smith</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!--/#faq-->
+	</div><!--/#support-->
 	
 	<footer>
 		<!-- <div id="contact">
@@ -522,8 +265,9 @@
 					</div>	
 				</div>
 			</div>
-		</div>/#contact	 -->				
-		<div class="container">
+		</div>/#contact	 -->	
+					
+		<!-- <div class="container">
 			<div class="sub-footer">
 				<div class="text-center">
 					<div class="col-md-12">
@@ -553,13 +297,15 @@
 					</ul>						
 				</div>
 			</div>
-		</div>						
+		</div> -->				
+		
 		<div class="text-center">
 			<div class="copyright">
 				&copy; 2015 <a target="_blank" href="http://bootstraptaste.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>. All Rights Reserved.
 			</div>
 		</div>									
-	</footer>
+	</footer><!--/#footer-->
+	
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/tracker/resources/js/jquery-2.1.1.min.js"></script>		
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -570,11 +316,7 @@
 	<script type="text/javascript" src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script>
-	wow = new WOW(
-	 {
-	
-		}	) 
-		.init();
+		wow = new WOW({}).init();
 	</script>	
   </body>
 </html>

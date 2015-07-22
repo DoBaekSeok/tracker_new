@@ -15,7 +15,7 @@ body {
   font-family:'Roboto', Arial, sans-serif;
   color:#333;
   line-height:1.6em;
-  overflow-x:hidden;
+  overflow-x:hidden;  
 }
 
 h1,
@@ -97,6 +97,22 @@ hr {
 	color: #fff;
 	background-color: #0BA9F9;
 	border-color: #0BA9F9;
+}
+
+.text-center h2 {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.text-center h3 {
+	font-size:35px;
+	margin-top:50px;
+	margin-bottom:20px;
+	color:#111;
+}
+
+.text-center p {
+	margin-bottom:30px;
 }
 
 /*************************
@@ -259,13 +275,13 @@ hr {
 
 .carousel-caption  h2 span {
 	font-size:60px;
-	color: #fff;
+	color: #0BA9F9;
 }
 
 .carousel-caption  p {
   font-size:30px;
   margin-top:30px;
-  color:#fff;
+  color:#0BA9F9;
 }
 
 .carousel-inner .form-inline .form-group button[type="livedemo"]{
@@ -301,65 +317,43 @@ hr {
 }
 
 /*************************
-*******feature******
+**********mypage**********
 **************************/
-#feature {
+#mypage {
 	padding-top:90px;
 	background:#fff;
 	padding-bottom:50px;
 }
 
-.hi-icon-effect {
-	padding-bottom:30px;
-	padding-left:10px;
-	padding-right:10px;
-}
-
-.hi-icon-effect:hover {
-	border-radius:6px;
-	background:#f4f4f4;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
-}
-
-.hi-icon-effect i.fa:hover {
+/*************************
+*******managemember*******
+**************************/
+#managemember {
+	padding-top:90px;
 	background:#fff;
-	color: #0BA9F9;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
-}
-
-.text-center i {
-	font-size:30px;
-	margin-top:50px;
-	margin-bottom:30px;
-	color:#fff;
-	padding:50px;
-	background:#0BA9F9;
-	border-radius:50%;
-}
-.text-center h2 {
-	margin-top:20px;
-	margin-bottom:20px;
-}
-
-.text-center h3 {
-	font-size:35px;
-	margin-top:50px;
-	margin-bottom:20px;
-	color:#111;
-}
-
-.text-center p {
-	margin-bottom:30px;
+	padding-bottom:50px;
 }
 
 /*************************
-*******services******
+******manageequipment*****
+**************************/
+#manageequipment {
+	padding-top:90px;
+	background:#fff;
+	padding-bottom:50px;
+}
+
+/*************************
+********company***********
+**************************/
+#company {
+	padding-top:90px;
+	background:#fff;
+	padding-bottom:50px;
+}
+
+/*************************
+*******products******
 **************************/
 #products {
 	padding-top:70px;
@@ -377,13 +371,13 @@ hr {
 
 #products .text-center {
 	padding-top:20px;
-	/* margin-bottom:50px; */
+	margin-bottom:10px;
 	padding-bottom:20px;
 }
 
 figure.effect-chico img {
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+	transition: opacity 0.5s, transform 0.5s;
 	-webkit-transform: scale(0.9);
 	transform: scale(0.9);
 }
@@ -395,297 +389,21 @@ figure.effect-chico:hover img {
 }
 
 /*************************
-*******parallax******
+********gpstracker********
 **************************/
-
-.parallax-window {
-    min-height: 500px;
-    background: transparent;
-}
-
-.parallax-window .text-center h2 {		
-	font-size:60px;
-	margin-top:90px;
-	padding-top:5px;
-	padding-bottom:5px;
-	color:#fff;
-}
-
-.parallax-window .text-center p {	
-	color:#fff;
-	font-size:20px;	
-}
-
-.sub-parallax .form-inline .form-group button[type="purchase"] {
-	padding:20px 90px;
-	font-size:20px;
-	background:#fff;
-	color:#0BA9F9;
-	border-color: #0BA9F9;
-}
-
-.sub-parallax .form-inline .form-group button[type="purchase"]:hover {
-	background:#0BA9F9;
-	color:#fff;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
-}
-
-.sub-parallax .form-inline .form-group button[type="subscribe"] {
-	padding:20px 90px;
-	font-size:20px;	
-}
-
-.sub-parallax .form-inline .form-group button[type="subscribe"]:hover {
-	background:#fff;
-	color:#0BA9F9;
-	-webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
-}
-
-/*************************
-*******pricing******
-**************************/
-#pricing {
+#gpstracker {
 	padding-top:90px;
 	background:#fff;
-	padding-bottom:40px;
-}
-
-#pricing .text-center p {		
-	margin-bottom:50px;
-	padding-bottom:20px;
-}
-
-.pricing-area h2 {
-  font-weight: 300;
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size:25px;
-  color:#fff;
-}
-
-.pricing-area span {
-   font-weight: 700;
-   font-size: 18px;
-   color:#fff;
-}
-
-.plan {
-  position: relative;
-  margin-bottom: 70px;
-}
-
-.pricing-area ul {
-  background:#FAFAFA;
-  padding: 0;
-  margin: 0;
-}
-
-.pricing-area ul li {
-  list-style: none;
-  padding: 15px 0;
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.pricing-area ul li:nth-child(even){
-  background:#f5f5f5
-}
-
-.pricing-area .price-three img, 
-.pricing-area .price-six img {
-  position: absolute;
-  right: 15px;
-  top: 0;
-}
-
-.pricing-area .heading-one, 
-.pricing-area .heading-two, 
-.pricing-area .heading-three {
-  padding:17px 0;
-} 
-
-.pricing-area .heading-one, 
-.pricing-area .heading-two, 
-.pricing-area .heading-three, 
-.pricing-area .heading-four, 
-.pricing-area .heading-five, 
-.pricing-area .heading-six, 
-.pricing-area .heading-seven {
-  margin-left: -10px;
-  border-radius:8px;
-}
-
-.pricing-area .heading-one:hover, 
-.pricing-area .heading-two:hover, 
-.pricing-area .heading-three:hover, 
-.pricing-area .heading-four:hover, 
-.pricing-area .heading-five:hover, 
-.pricing-area .heading-six:hover, 
-.pricing-area .heading-seven:hover {
-	background-color:#111;
-	 -webkit-transition: color 300ms, background-color 300ms;
-  -moz-transition: color 300ms, background-color 300ms;
-  -o-transition:  color 300ms, background-color 300ms;
-  transition:  color 300ms, background-color 300ms;
-}
-
-.pricing-area .heading-one, 
-.pricing-area .price-one .plan-action .btn-primary {
-  background: #e24f43
-}
-
-.pricing-area .heading-two, 
-.pricing-area .price-two .plan-action .btn-primary {
-  background:#27AE60;
-}
-
-.pricing-area .heading-three,
-.pricing-area .price-three .plan-action .btn-primary {
-  background: #f39c12;
-}
-
-.pricing-area .heading-four, 
-.pricing-area .price-four .plan-action .btn-primary {
-  background: #0BA9F9;
-}
-
-.pricing-area .heading-five, 
-.pricing-area .price-five .plan-action .btn-primary {
-  background: #0BA9F9;
-}
-
-.pricing-area .heading-six, 
-.pricing-area .price-six .plan-action .btn-primary {
-  background: #e24f43;
-}
-
-.pricing-area .heading-seven, 
-.pricing-area .price-seven .plan-action .btn-primary {
-  background: #0BA9F9;
-}
-
-.pricing-area .bg{
- background: #fafafa 
-}
-
-.pricing-area .heading-one h3:before {
-  border-color: #bf4539 transparent transparent;
-}
-
-.pricing-area .heading-two h3:before {
-  border-color: #1f8c4d transparent transparent;
-}
-
-.pricing-area .heading-three h3:before {
-  border-color: #d4880f transparent transparent;
-}
-
-.pricing-area .heading-four h3:before {
-  border-color: #424242 transparent transparent;
-}
-
-.pricing-area .heading-five h3:before {
-  border-color: #424242 transparent transparent;
-}
-
-.pricing-area .heading-six h3:before {
-  border-color: #bf4539 transparent transparent;
-}
-
-.pricing-area .heading-seven h3:before {
-  border-color: #424242 transparent transparent;
-}
-
-.pricing-area h3:before {
-  border-color: #D4880F transparent transparent;
-  border-radius: 5px 0 0 0px;
-  border-style: solid;
-  border-width: 12px;
-  content: "";
-  height: 0;
-  left: 4px;
-  position: absolute;
-  top: 78px;
-  width: 0;
-  z-index: -999;
-}
-
-.small-pricing h3:after {
-  height:94px;
-}
-
-.small-pricing h3:before {
-  top: 74px;
-}
-
-.plan-action {
-  height: 40px;
-}
-
-.pricing-area .plan-action .btn-primary {
-  position: relative;
-  padding:5px 20px;
-  color: #fff;
-  margin-top: 5px;
-}
-
-.pricing-area .plan-action .btn-primary:hover {
-  border:none;
-}
-
-.pricing-area .price-two .plan-action .btn-primary:before, 
-.pricing-area .price-two .plan-action .btn-primary:after {
-  border-color: #1f8c4d transparent transparent;
-}
-
-.pricing-area .price-three .plan-action .btn-primary:before, 
-.pricing-area .price-three .plan-action .btn-primary:after {
-  border-color: #d4880f transparent transparent;
-}
-
-.pricing-area .price-four .plan-action .btn-primary:before, 
-.pricing-area .price-four .plan-action .btn-primary:after, 
-.pricing-area .price-five .plan-action .btn-primary:before, 
-.pricing-area .price-five .plan-action .btn-primary:after, 
-.pricing-area .price-seven .plan-action .btn-primary:before, 
-.pricing-area .price-seven .plan-action .btn-primary:after  {
-  border-color: #0BA9F9 transparent transparent;
-  right: -9px;
-}
-
-.pricing-area .price-six .plan-action .btn-primary:before, 
-.pricing-area .price-six .plan-action .btn-primary:after {
-  border-color: #bf4539 transparent transparent;
-  right: -9px;
+	padding-bottom:50px;
 }
 
 /*************************
-*******our team******
+**********support*********
 **************************/
-#our-team {
-	padding-top:70px;
-	padding-bottom:70px;
-	background:#f4f4f4;
-}
-
-#our-team h4 {
-	color:#0BA9F9;
-}
-
-#our-team .text-center {
-	padding-top:20px;
-	margin-bottom:30px;
-	padding-bottom:10px;
-}
-
-#our-team .team img {
-	border-radius:8px;
+#support {
+	padding-top:90px;
+	background:#fff;
+	padding-bottom:50px;
 }
 
 /*************************

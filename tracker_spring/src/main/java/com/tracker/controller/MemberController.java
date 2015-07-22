@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tracker.common.Util;
-import com.tracker.model.dao.MemberDao;
 import com.tracker.model.dto.Member;
+import com.tracker.repository.MemberRepository;
 
 @Controller
 @RequestMapping(value = "member")
 public class MemberController {
 	
-	private MemberDao memberDao;
+	private MemberRepository memberRepository;
 	@RequestMapping(value = "register.action", method = RequestMethod.GET)
 	public String registerForm() {
 		
@@ -27,7 +27,7 @@ public class MemberController {
 		String passwd = Util.getHashedString(member.getPasswd(), "SHA-1");
 		member.setPasswd(passwd);
 		
-		memberDao.insertMember(member);
+		memberRepository.insertMember(member);
 		
 		return "redirect:/home.action";
 	}

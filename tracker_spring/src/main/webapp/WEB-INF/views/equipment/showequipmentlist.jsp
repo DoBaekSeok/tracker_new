@@ -9,7 +9,7 @@
 		<c:when test="${ fn:length(equipments) ne 0 }">
 			<c:forEach var="equipment" items="${ equipments }">
 				<figure class="effect-chico">									
-					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+					<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 						<h2>${ equipment.modelName }</h2>						
 						<a href="/tracker/resources/img/equipment/tractive.png" class="flipLightBox">
 						<img src="/tracker/resources/img/equipment/tractive.png" class="img-responsive" alt="">

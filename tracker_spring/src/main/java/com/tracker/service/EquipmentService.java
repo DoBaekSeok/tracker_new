@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tracker.model.dto.Equipment;
-import com.tracker.repository.EquipmentRepository;
+import com.tracker.repository.OracleEquipmentRepository;
 
 //@Component
 @Service
 public class EquipmentService {
 	
 	@Autowired
-	private EquipmentRepository equipmentRepository;
+	private OracleEquipmentRepository equipmentRepository;
 	
 	public List<Equipment> processShowEquipments(){
 

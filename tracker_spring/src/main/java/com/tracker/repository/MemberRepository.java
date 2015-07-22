@@ -1,10 +1,10 @@
-package com.tracker.model.dao;
+package com.tracker.repository;
 
 import java.util.List;
 
 import com.tracker.model.dto.Member;
 
-public interface MemberDao {
+public interface MemberRepository {
 
 	void insertMember(Member member);
 	
