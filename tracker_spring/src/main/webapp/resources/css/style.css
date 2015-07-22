@@ -361,12 +361,12 @@ hr {
 /*************************
 *******services******
 **************************/
-#gallery {
+#products {
 	padding-top:70px;
 	padding-bottom:70px;
 	background:#f4f4f4;
 }
-#gallery img {
+#products img {
 	border-radius:8px;
 }
 
@@ -375,17 +375,17 @@ hr {
 	margin-bottom:30px;
 }
 
-#gallery .text-center {
+#products .text-center {
 	padding-top:20px;
-	margin-bottom:50px;
+	/* margin-bottom:50px; */
 	padding-bottom:20px;
 }
 
 figure.effect-chico img {
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(1.12);
-	transform: scale(1.12);
+	-webkit-transform: scale(0.9);
+	transform: scale(0.9);
 }
 
 figure.effect-chico:hover img {

@@ -8,30 +8,21 @@
 	<c:choose>
 		<c:when test="${ fn:length(equipments) ne 0 }">
 			<c:forEach var="equipment" items="${ equipments }">
-				 <div class="col-xs-6 col-sm-3 col-md-3">
-				 	<div class="team boxed-grey">
-		                <div class="inner">
-							<h5>${ equipment.equipName }</h5>
-		                    <p class="subtitle">${ equipment.modelName }</p>
-		                    <div class="avatar">
-		                    	<img src="/tracker/resources/img/equipment/tractive.png" alt="" class="img-responsive" />
-		                    </div>
-		                    <p class="subtitle">${ equipment.equipContent }</p>
-		                </div>
-		            </div>		
-		        </div>	
+				<figure class="effect-chico">									
+					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+						<h2>${ equipment.modelName }</h2>						
+						<a href="/tracker/resources/img/equipment/tractive.png" class="flipLightBox">
+						<img src="/tracker/resources/img/equipment/tractive.png" class="img-responsive" alt="">
+						</a>
+						<p>${ equipment.equipContent }</p>
+					</div>
+				</figure>				
 			</c:forEach>
 		</c:when>
 		<c:otherwise>		
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-		
-					<div class="section-heading">					
-						<p>등록된 제품이 없습니다.</p>
-					</div>
-			
-				</div>
-			</div>
+				<div class="text-center">
+					<h2>등록된 제품이 없습니다.</h2>					
+				</div>									
 		</c:otherwise>
 	</c:choose>
 	</div>

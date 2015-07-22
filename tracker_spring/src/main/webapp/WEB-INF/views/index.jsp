@@ -13,9 +13,9 @@
 
     <!-- Bootstrap -->
     <link href="/tracker/resources/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/tracker/resourcescss/font-awesome.min.css">
-	<link rel="stylesheet" href="/tracker/resourcescss/animate.css">
-	<link rel="stylesheet" href="/tracker/resourcescss/overwrite.css">
+	<link rel="stylesheet" href="/tracker/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/tracker/resources/css/animate.css">
+	<link rel="stylesheet" href="/tracker/resources/css/overwrite.css">
 	<link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
 	<link href="/tracker/resources/css/style.css" rel="stylesheet" />	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -218,8 +218,8 @@
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
 						</div>
 					</div>
-				</div> 
-			</div>-->
+				</div>--> 
+			</div>			
 		</div>
 	</div><!-- /#company -->
 	
@@ -228,71 +228,8 @@
 			<div class="text-center">
 				<h3>Products</h3>
 				<p>우리 제품 좋은 제품!!!</p>
-			</div>
-			<!-- <div class="row">
-				<figure class="effect-chico">						
-					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="/tracker/resources/img/work/1.jpg" class="flipLightBox">
-						<img src="/tracker/resources/img/work/1.jpg" class="img-responsive" alt="">
-						</a>						
-					</div>
-				</figure>
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="/tracker/resources/img/work/2.jpg" class="flipLightBox">
-						<img src="/tracker/resources/img/work/2.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>	
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="/tracker/resources/img/work/3.jpg" class="flipLightBox">
-						<img src="/tracker/resources/img/work/3.jpg" class="img-responsive" alt="">
-						</a>
-					</div>
-				</figure>
-				<figure class="effect-chico">
-					<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-						<a href="/tracker/resources/img/work/4.jpg" class="flipLightBox">
-						<img src="/tracker/resources/img/work/4.jpg" class="img-responsive" alt="">
-						</a>
-					</div>	
-				</figure>
-			</div>
-		</div>
-		<div class="gallery">
-			<div class="container">
-				<div class="row">
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="/tracker/resources/img/work/5.jpg" class="flipLightBox">
-							<img src="/tracker/resources/img/work/5.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>	
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="/tracker/resources/img/work/6.jpg" class="flipLightBox">
-							<img src="/tracker/resources/img/work/6.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>	
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="/tracker/resources/img/work/7.jpg" class="flipLightBox">
-							<img src="/tracker/resources/img/work/7.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>	
-					<figure class="effect-chico">
-						<div class="col-md-3 wow fadeInDown" data-wow-offset="0" data-wow-delay="0.3s">
-							<a href="/tracker/resources/img/work/8.jpg" class="flipLightBox">
-							<img src="/tracker/resources/img/work/8.jpg" class="img-responsive" alt="">
-							</a>
-						</div>
-					</figure>
-				</div>
-			</div> -->
+			</div>			
+			<c:import url="./equipment/showequipmentlist.jsp" />			
 		</div>
 	</div><!--/#products-->
 	
@@ -536,7 +473,7 @@
 	</div><!--/#faq-->
 	
 	<footer>
-		<div id="contact">
+		<!-- <div id="contact">
 			<div class="container">
 				<div class="text-center">
 					<h3>Contact Us</h3>
@@ -585,7 +522,7 @@
 					</div>	
 				</div>
 			</div>
-		</div><!--/#contact-->					
+		</div>/#contact	 -->				
 		<div class="container">
 			<div class="sub-footer">
 				<div class="text-center">
