@@ -174,7 +174,7 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- /#manageequipment -->
+	</div><!-- /#manageequipment --> 
 	
 	<div id="company">
 		<div class="container">
