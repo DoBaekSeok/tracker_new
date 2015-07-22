@@ -12,7 +12,7 @@
 	
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="com.tracker.model.dao" />
+	<context:component-scan base-package="com.tracker.repository" />
 			
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"

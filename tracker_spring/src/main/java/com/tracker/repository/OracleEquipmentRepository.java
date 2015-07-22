@@ -7,15 +7,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.tracker.model.dto.Equipment;
+import com.tracker.model.mapper.EquipmentMapper;
 
 @Repository
-public class OracleEquipmentRepository {
+public class OracleEquipmentRepository implements EquipmentRepository {
 
-	private EquipmentRepository equipmentRepository;
+	private EquipmentMapper equipmentMapper;
 	@Autowired
-	@Qualifier("equipmentRepository")
-	public void setEquipmentDao(EquipmentRepository equipmentRepository) {
-		this.equipmentRepository = equipmentRepository;
+	@Qualifier("equipmentMapper")
+	public void setEquipmentMapper(EquipmentMapper equipmentMapper) {
+		this.equipmentMapper = equipmentMapper;
 	}
 	
 	public void insertEquipment(){
@@ -23,11 +24,12 @@ public class OracleEquipmentRepository {
 		// 데이터베이스에 장비 데이터 저장
 		
 	}
-	
-	public List<Equipment> selectEquipment(){
+
+	@Override
+	public List<Equipment> getShowEquipmentList() {
 		
 		// 데이터베이스에서 장비 리스트 조회
-		List<Equipment> equipments = equipmentRepository.getShowEquipmentList();
+		List<Equipment> equipments = equipmentMapper.getShowEquipmentList();
 		
 		return equipments;
 		
