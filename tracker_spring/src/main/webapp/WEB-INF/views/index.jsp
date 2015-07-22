@@ -13,9 +13,9 @@
 
     <!-- Bootstrap -->
     <link href="/tracker/resources/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/overwrite.css">
+	<link rel="stylesheet" href="/tracker/resourcescss/font-awesome.min.css">
+	<link rel="stylesheet" href="/tracker/resourcescss/animate.css">
+	<link rel="stylesheet" href="/tracker/resourcescss/overwrite.css">
 	<link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
 	<link href="/tracker/resources/css/style.css" rel="stylesheet" />	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -36,21 +36,25 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="home.action">Bikin</a>
+                    <a class="navbar-brand" href="home.action">Tracker</a>
                 </div>				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#header">Home</a></li>
-                        <li><a href="#feature">Feature</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#pricing">Price & Plan</a></li>
-                        <li><a href="#our-team">Our Team</a></li> 
-                        <li><a href="#contact">Contact</a></li>                        
+                        <li class="active"><a href="#header">Intro</a></li>
+                        <li><a href="#mypage">My Page</a></li>
+                        <li><a href="#managemember">회원관리</a></li>
+                        <li><a href="#manageequipment">장비관리</a></li>
+                        <li><a href="#company">Company</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#gpstracker">GPS Tracker</a></li> 
+                        <li><a href="#community">Community</a></li> 
+                        <li><a href="#faq">FAQ</a></li>                        
                     </ul>
                 </div>
             </div><!--/.container-->
         </nav><!--/nav-->		
     </header><!--/header-->	
+    
 	<div class="slider">		
 		<div id="about-slider">
 			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
@@ -139,14 +143,47 @@
 		</div><!--/#about-slider-->
 	</div><!--/#slider-->
 	
-	<div id="feature">
+	<div id="mypage">
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
-					<h3>Features</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+					<h3>My Page</h3>
+					<p>My page content</p>
 				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+			</div>
+		</div>
+	</div><!-- /#mypage -->
+	
+	<div id="managemember">
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<h3>회원관리</h3>
+					<p>회원관리 내용</p>
+				</div>
+			</div>
+		</div>
+	</div><!-- /#managemember -->
+	
+	<div id="manageequipment">
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<h3>장비관리</h3>
+					<p>장비관리 내용</p>
+				</div>
+			</div>
+		</div>
+	</div><!-- /#manageequipment -->
+	
+	<div id="company">
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<h3>Company</h3>
+					<p>우리회사 좋은회사!!!</p>
+				</div>
+				<!-- <div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
 						<div class="hi-icon-wrap hi-icon-effect">
 							<i class="fa fa-laptop"></i>						
@@ -181,18 +218,18 @@
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
 						</div>
 					</div>
-				</div>
-			</div>
+				</div> 
+			</div>-->
 		</div>
-	</div>
+	</div><!-- /#company -->
 	
-	<div id="gallery">
+	<div id="products">
 		<div class="container">
 			<div class="text-center">
-				<h3>Gallery</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+				<h3>Products</h3>
+				<p>우리 제품 좋은 제품!!!</p>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<figure class="effect-chico">						
 					<div class="col-md-3 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 						<a href="/tracker/resources/img/work/1.jpg" class="flipLightBox">
@@ -255,15 +292,15 @@
 						</div>
 					</figure>
 				</div>
-			</div>
+			</div> -->
 		</div>
-	</div><!--/#gallery-->
+	</div><!--/#products-->
 	
-	<div class="parallax-window">
+	<div class="gpstracker">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="text-center">
 				<div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.2s">
-					<h2>Parallax Landing Page</h2>
+					<h2>GPS Tracker</h2>
 				</div>
 				<div class="wow bounceIn" data-wow-offset="0" data-wow-delay="0.6s">
 					<p>In a elit in lorem congue varius Sed nec arcu<br>
@@ -288,12 +325,12 @@
 				</div>
 			</div>
 		</div>
-	</div><!--/#parallax-window-->
+	</div><!--/#gpstracker-->
 	
-	<div id="pricing">
+	<div id="community">
 		<div class="container">
 			<div class="text-center">
-				<h3>Pricing Table</h3>
+				<h3>Community</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br>
 				et dolore magna aliqua. Ut enim ad minim veniam</p>
 			</div>
@@ -423,12 +460,12 @@
                 </div>
             </div><!--/pricing-area-->			
 		</div>
-	</div><!--/#pricing-->
+	</div><!--/#community-->
 	
-	<div id="our-team">
+	<div id="faq">
 		<div class="container">
 			<div class="text-center">
-				<h3>Our Team</h3>
+				<h3>FAQ</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
 			</div>
 			<div class="row">
@@ -496,7 +533,7 @@
 				</div>
 			</div>
 		</div>
-	</div><!--/#our-team-->
+	</div><!--/#faq-->
 	
 	<footer>
 		<div id="contact">
