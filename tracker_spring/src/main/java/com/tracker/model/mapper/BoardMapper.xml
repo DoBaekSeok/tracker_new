@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace : 패키지명.클래스이름 을 논리적으로 선언 -->
+<mapper namespace="com.tracker.model.mapper.BoardMapper">
+	
+	<insert id="insertBoard" useGeneratedKeys="true" keyColumn="boardno" parameterType="Board">
+		INSERT INTO
+		board
+		(
+			boardno,
+			boardkind,
+			boardwriter,
+			boardtitle,
+			boardcontent
+		)
+		VALUES
+		(
+			board_seq.nextval,
+			#{ boardkind },
+			#{ boardwriter },
+			#{ boardtitle },
+			#{ boardcontent }
+		)
+	</insert>
+	
+	<sql id="boardcolumn">
+		boardno,
+		boardkind,
+		boardwriter,
+		boardtitle,
+		boardcontent,
+		boardregdate,
+		boarddeleted
+		boardreadcount	
+	</sql>
+	
+	<select id="getBoardList" parameterType="Board" resultType="Board">
+		SELECT
+			<include refid="boardcolumn" />
+		FROM
+			board	
+	</select>
+	
+	<select id="getBoardByBoardNo" parameterType="int" resultType="Board">
+		SELECT
+			<include refid="boardcolumn" />
+		FROM
+			board
+		WHERE
+			boardno=#{ boardno }
+	</select>
+		
+	<update id="updateBoard" parameterType="Board">
+		UPDATE
+			board
+		SET
+			boardtitle=#{ boardtitle },
+			boardcontent=#{ boardcontent },
+		WHERE
+			boardno=#{ boardno }
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		UPDATE
+			board
+		SET
+			boarddeleted = '1'
+		WHERE
+			boardno=#{ boardno }
+	</delete>
+	
+	<insert id="insertBoardComment" useGeneratedKeys="true" keyColumn="commentno" keyProperty="commentNo" parameterType="BoardComment">
+		INSERT INTO
+		boardcomment
+		(
+			commentno,
+			commentwriter,
+			boardno,
+			commentcontent
+		)
+		VALUES
+		(
+			boardcomment_seq.nextval,
+			
+		)
+		
+		
+	</insert>
+	
+	<select id="getCommentListByBoardNo"></select>
+	
+	<update id="updateBoardComment"></update>
+	
+	<delete id="deleteBoardComment"></delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
