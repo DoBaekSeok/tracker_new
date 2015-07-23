@@ -111,7 +111,7 @@
 			boardno=#{ boardno }
 	</delete>
 	
-	<insert id="insertBoardComment" useGeneratedKeys="true" keyColumn="commentno" keyProperty="commentNo" parameterType="BoardComment">
+	<insert id="insertBoardComment" useGeneratedKeys="true" keyColumn="commentno" keyProperty="commentNo" parameterType="Comment">
 		INSERT INTO
 		boardcomment
 		(
@@ -129,7 +129,7 @@
 		
 	</insert>
 	
-	<update id="updateBoardComment" parameterType="BoardComment">
+	<update id="updateBoardComment" parameterType="Comment">
 		UPDATE
 			boardcomment
 		SET
