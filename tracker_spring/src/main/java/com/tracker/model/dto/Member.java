@@ -9,7 +9,7 @@ public class Member implements Serializable {
 	private String name;
 	private String email;
 	private String active;
-	private String passwd;
+	private String password;
 	private String address;
 	private int deleted;
 	private Date regDate;
@@ -37,11 +37,11 @@ public class Member implements Serializable {
 	public void setActive(String active) {
 		this.active = active;
 	}
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getAddress() {
 		return address;
