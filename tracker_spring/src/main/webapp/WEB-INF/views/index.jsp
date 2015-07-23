@@ -17,13 +17,16 @@
 	<link rel="stylesheet" href="/tracker/resources/css/animate.css">
 	<link rel="stylesheet" href="/tracker/resources/css/overwrite.css">
 	<link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
-	<link href="/tracker/resources/css/style.css" rel="stylesheet" />	
+	<link href="/tracker/resources/css/style.css" rel="stylesheet" />
+	<link href="/tracker/resources/css/ui-blitzer/jquery-ui.css" rel="stylesheet" />
+    <link href="/tracker/resources/css/ui.jqgrid.css" rel="stylesheet" />	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
   </head>
   <body>	
 	<header id="header">
@@ -316,6 +319,9 @@
 	<script src="/tracker/resources/js/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>
+    <script src="/tracker/resources/js/jquery.jqGrid.min.js"></script>
 	<script>
 		wow = new WOW({}).init();
 	</script>	
