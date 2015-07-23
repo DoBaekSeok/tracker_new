@@ -22,6 +22,7 @@ public class Board {
 	public void setComments(List<BoardComment> comments) {
 		this.comments = comments;
 	}
+	///////////////////////////////////////////////////////
 	public int getBoardNo() {
 		return boardNo;
 	}

@@ -9,12 +9,15 @@
 	<!-- Mapper 파일에서 사용하는 타입에 대한 단축 이름을 지정하는 설정 -->
 	<typeAliases>
 		<typeAlias type="com.tracker.model.dto.Equipment" alias="Equipment" />
-		<typeAlias type="com.tracker.model.dto.Member" alias="Member"/>		
+		<typeAlias type="com.tracker.model.dto.Member" alias="Member"/>	
+		<typeAlias type="com.tracker.model.dto.Board" alias="Board"/>
+		<typeAlias type="com.tracker.model.dto.BoardComment" alias="Comment"/>		
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="com/tracker/model/mapper/EquipmentMapper.xml" />
 		<mapper resource="com/tracker/model/mapper/MemberMapper.xml"/>
+		<mapper resource="com/tracker/model/mapper/BoardMapper.xml"/>
 	</mappers>
 
 </configuration>

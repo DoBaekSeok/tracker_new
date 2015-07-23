@@ -38,6 +38,15 @@
 		boardreadcount	
 	</sql>
 	
+	<sql id="boardcommentcolumn">	
+		commentno,
+		commentwriter,
+		boardno,
+		commentcontent,
+		commentregdate
+		commentdeleted,
+	</sql>
+	
 	<select id="getBoardList" parameterType="Board" resultType="Board">
 		SELECT
 			<include refid="boardcolumn" />
@@ -45,11 +54,40 @@
 			board	
 	</select>
 	
-	<select id="getBoardByBoardNo" parameterType="int" resultType="Board">
+	<resultMap type="Board" id="boardByBoardNo">
+		<id column="boardno" property="boardNo" />
+		<result column="boardkind" property="boardKind" />
+		<result column="boardwriter" property="boardWriter" />
+		<result column="boardtitle" property="boardTitle" />
+		<result column="boardcontent" property="boardContent" />
+		<result column="boardregdate" property="boardRegDate" />
+		<result column="boarddeleted" property="boardDeleted" />
+		<result column="boardreadcount" property="boardReadCount" />
+		<collection property="comments" column="boardno" resultMap="commentListByBoardNo" />	
+	</resultMap>
+	
+	<resultMap type="Comment" id="commentListByBoardNo">
+		<id column="commentno" property="commentNo" />
+		<result column="commentwriter" property="commentWriter"/>
+		<result column="commentcontent" property="commentContent"/>
+		<result column="commentregdate" property="commentRegDate"/>
+		<result column="commentdeleted" property="commentDeleted"/>
+	</resultMap>
+	
+	<select id="getBoardByBoardNo" parameterType="int" resultMap="boardByBoardNo">
 		SELECT
 			<include refid="boardcolumn" />
 		FROM
 			board
+		WHERE
+			boardno=#{ boardno }
+	</select>
+	
+	<select id="getCommentListByBoardNo" parameterType="int" resultMap="commentListByBoardNo">
+		SELECT
+			<include refid="boardcommentcolumn" />
+		FROM
+			boardcomment
 		WHERE
 			boardno=#{ boardno }
 	</select>
@@ -91,11 +129,23 @@
 		
 	</insert>
 	
-	<select id="getCommentListByBoardNo"></select>
+	<update id="updateBoardComment" parameterType="BoardComment">
+		UPDATE
+			boardcomment
+		SET
+			commentcontent=#{ commentcontent }		
+		WHERE
+			commentno=#{ commentno }
+	</update>
 	
-	<update id="updateBoardComment"></update>
-	
-	<delete id="deleteBoardComment"></delete>
+	<delete id="deleteBoardComment">
+		UPDATE
+			boardcomment
+		SET
+			commentdeleted='1'
+		WHERE
+			commentno=#{ commentno }
+	</delete>
 	
 	
 	
