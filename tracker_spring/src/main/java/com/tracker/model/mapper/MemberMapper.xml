@@ -6,24 +6,22 @@
   
 <mapper namespace="com.tracker.model.mapper.MemberMapper">
 
-	<insert id="insertMember" parameterType="Member">
+	<insert id="insertMember" parameterType="Member" >
 		INSERT INTO member 
 		(
 			memberId, 
 			memberName, 
 			memberEmail, 
-			memberActive, 
-			memberPasswd,
+			memberPassword,
 			memberAddress
 		) 
 		VALUES 
 		(
-			#{memberId}, 
-			#{memberName}, 
-			#{memberEmail}, 
-			#{memberActive}, 
-			#{memberPasswd},
-			#{memberAddress}
+			#{id}, 
+			#{name}, 
+			#{email}, 
+			#{password},
+			#{address}
 		)
 	</insert>
 	
