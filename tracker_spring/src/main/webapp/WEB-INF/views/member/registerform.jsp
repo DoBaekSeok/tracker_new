@@ -178,7 +178,7 @@
 									<dd>
 										<input autocapitalize="off" autofocus="autofocus"
 											data-autocheck-url="/signup_check/username" id="user_login"
-											name="user[login]" size="30" type="text" />
+											name="id" size="30" type="text" />
 										<p class="note">사용가능한 아이디 입니다/중복된 아이디입니다.</p>
 									</dd>
 								</dl>
@@ -188,12 +188,12 @@
 									<dt class="input-label">
 										<label autocapitalize="off" autofocus="autofocus"
 											data-autocheck-url="/signup_check/username" for="user_login"
-											name="user[login]">사용자 이름</label>
+											name="name">사용자 이름</label>
 									</dt>
 									<dd>
 										<input autocapitalize="off" autofocus="autofocus"
 											data-autocheck-url="/signup_check/username" id="user_login"
-											name="user[login]" size="30" type="text" />
+											name="name" size="30" type="text" />
 									</dd>
 								</dl>
 								
@@ -206,7 +206,7 @@
 									<dd>
 										<input autocapitalize="off"
 											data-autocheck-url="/signup_check/email" id="user_email"
-											name="user[email]" size="30" type="text" />
+											name="address" size="30" type="text" />
 										<p class="note">올바른 주소가 아닙니다.</p>
 									</dd>
 								</dl>
@@ -220,7 +220,7 @@
 									<dd>
 										<input autocapitalize="off"
 											data-autocheck-url="/signup_check/email" id="user_email"
-											name="user[email]" size="30" type="text" />
+											name="email" size="30" type="text" />
 										<p class="note">이메일 주소에 '@' 를 포함해 주세요.</p>
 									</dd>
 								</dl>
@@ -232,7 +232,7 @@
 									</dt>
 									<dd>
 										<input data-autocheck-url="/signup_check/password"
-											id="user_password" name="user[password]" size="30"
+											id="user_password" name="password" size="30"
 											type="password" />
 										<p class="note">Use at least one lowercase letter, one
 											numeral, and seven characters.</p>

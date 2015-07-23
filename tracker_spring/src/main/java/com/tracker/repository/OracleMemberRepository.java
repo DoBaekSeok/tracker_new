@@ -13,7 +13,9 @@ import com.tracker.model.mapper.MemberMapper;
 @Repository(value="memberRepository")
 public class OracleMemberRepository implements MemberRepository {
 
+	
 	private MemberMapper memberMapper;
+	
 	@Autowired
 	@Qualifier("memberMapper")
 	public void setMemberMapper(MemberMapper memberMapper){
