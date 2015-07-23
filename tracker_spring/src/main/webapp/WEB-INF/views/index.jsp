@@ -17,13 +17,16 @@
 	<link rel="stylesheet" href="/tracker/resources/css/animate.css">
 	<link rel="stylesheet" href="/tracker/resources/css/overwrite.css">
 	<link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
-	<link href="/tracker/resources/css/style.css" rel="stylesheet" />	
+	<link href="/tracker/resources/css/style.css" rel="stylesheet" />
+	<link href="/tracker/resources/css/ui-blitzer/jquery-ui.css" rel="stylesheet" />
+    <link href="/tracker/resources/css/ui.jqgrid.css" rel="stylesheet" />	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
   </head>
   <body>	
 	<header id="header">
@@ -172,6 +175,11 @@
 				<div class="text-center">
 					<h3>장비관리</h3>
 					<p>장비관리 내용</p>
+					<div>
+					
+					<table id="grid"></table>
+   					<div id="pager"></div>
+   					</div>
 				</div>
 			</div>
 		</div>
@@ -317,8 +325,57 @@
 	<script src="/tracker/resources/js/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>
+    <script src="/tracker/resources/js/jquery.jqGrid.min.js"></script>
 	<script>
 		wow = new WOW({}).init();
+		
+		$(document).ready(function () {
+		    // 변수를 선언합니다.
+		    var customDialog = {
+		        onclickSubmit: function (params) {
+		            var selectedRow = $('#grid').getGridParam('selrow');
+		            rowData = $('#grid').getRowData(selectedRow);
+		            return { id: rowData.id };
+		        }
+		    };
+
+		    $('#grid').jqGrid({
+		        url: "",	  // 조회(전체, 검색) 기능을 수행하는 서버 경로
+		        editurl: "", // 삽입, 삭제, 변경 기능을 수행하는 서버 경로
+		        datatype: "",
+		        pager: '#pager',
+		        caption: '장비관리',
+		        height: '100%',
+		        rowNum: 10,							 // 한 페이지에 표시될 행 갯수
+		        rowList: [10, 20, 30],				 // rowNum 에 대한 선택 옵션
+		        colNames: ['장비번호', '장비이름', '모델명', '가격', '내용', '사진'], // 헤더 부분
+		        colModel: [														 // 바인딩 될 데이터
+		            { name: 'equipNo', index: 'id', width: 80 },
+		            { name: 'equipName', index: 'name', width: 230, editable: true, edittype: 'text' },
+		            { name: 'modelName', index: 'author', width: 180, editable: true, edittype: 'text' },
+		            { name: 'equipPrice', index: 'publisher', width: 150, editable: true, edittype: 'text' },
+		            { name: 'equipContent', index: 'isbn', width: 250, editable: true, edittype: 'text' },
+		            { name: 'fileToUpload', index: 'customer_id', width: 250, editable: true, edittype: 'file',
+		              editoptions: {
+		                    enctype: "multipart/form-data",
+		                    required: true
+		                },	
+		            },
+		        ],
+		        loadError : function(xhr, status, error){
+		        	console.log(error);
+		        }
+		    }).navGrid('#pager', {
+		        search: true,
+		        edit: true,
+		        add: true,
+		        del: true
+		    });//, customDialog, {}, customDialog);
+		});	
+		
+
 	</script>	
   </body>
 </html>
