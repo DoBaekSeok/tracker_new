@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.tracker.common.Util;
 import com.tracker.model.dto.Member;
-import com.tracker.repository.MemberRepository;
 import com.tracker.service.MemberService;
 
 @Controller
@@ -30,8 +28,7 @@ public class MemberController {
 	@RequestMapping(value="register.action", method = RequestMethod.POST)
 	public String register(@ModelAttribute Member member){
 		
-
-		
+		memberService.insertMember(member);
 		return "redirect:/home.action";
 	}
 
