@@ -169,6 +169,7 @@
 			<div class="row">
 				<div class="text-center">
 					<h3>장비관리</h3>
+					<c:import url="./equipment/equipmentform.jsp" />
 					<p>장비관리 내용</p>
 				</div>
 			</div>

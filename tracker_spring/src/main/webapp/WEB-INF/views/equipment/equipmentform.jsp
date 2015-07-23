@@ -1,159 +1,57 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>jQuery UI Dialog - Modal form</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-    body { font-size: 62.5%; }
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    div#users-contain { width: 350px; margin: 20px 0; }
-    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-  </style>
-  <script>
-  $(function() {
-    var dialog, form,
- 
-      // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-      emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-      name = $( "#name" ),
-      email = $( "#email" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( name ).add( email ).add( password ),
-      tips = $( ".validateTips" );
- 
-    function updateTips( t ) {
-      tips
-        .text( t )
-        .addClass( "ui-state-highlight" );
-      setTimeout(function() {
-        tips.removeClass( "ui-state-highlight", 1500 );
-      }, 500 );
-    }
- 
-    function checkLength( o, n, min, max ) {
-      if ( o.val().length > max || o.val().length < min ) {
-        o.addClass( "ui-state-error" );
-        updateTips( "Length of " + n + " must be between " +
-          min + " and " + max + "." );
-        return false;
-      } else {
-        return true;
-      }
-    }
- 
-    function checkRegexp( o, regexp, n ) {
-      if ( !( regexp.test( o.val() ) ) ) {
-        o.addClass( "ui-state-error" );
-        updateTips( n );
-        return false;
-      } else {
-        return true;
-      }
-    }
- 
-    function addUser() {
-      var valid = true;
-      allFields.removeClass( "ui-state-error" );
- 
-      valid = valid && checkLength( name, "username", 3, 16 );
-      valid = valid && checkLength( email, "email", 6, 80 );
-      valid = valid && checkLength( password, "password", 5, 16 );
- 
-      valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
-      valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
-      valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
- 
-      if ( valid ) {
-        $( "#users tbody" ).append( "<tr>" +
-          "<td>" + name.val() + "</td>" +
-          "<td>" + email.val() + "</td>" +
-          "<td>" + password.val() + "</td>" +
-        "</tr>" );
-        dialog.dialog( "close" );
-      }
-      return valid;
-    }
- 
-    dialog = $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      height: 300,
-      width: 350,
-      modal: true,
-      buttons: {
-        "Create an account": addUser,
-        Cancel: function() {
-          dialog.dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-        allFields.removeClass( "ui-state-error" );
-      }
+	<meta charset="utf-8" />
+    <title>Index</title>
+    <link href="css/ui-blitzer/jquery-ui.css" rel="stylesheet" />
+    <link href="css/ui.jqgrid.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="js/i18n/grid.locale-en.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // 변수를 선언합니다.
+        var customDialog = {
+            onclickSubmit: function (params) {
+                var selectedRow = $('#grid').getGridParam('selrow');
+                rowData = $('#grid').getRowData(selectedRow);
+                return { id: rowData.id };
+            }
+        };
+
+        $('#grid').jqGrid({
+            url: '/examples-web/books/get2',	  // 조회(전체, 검색) 기능을 수행하는 서버 경로
+            editurl: '/examples-web/books/edit2', // 삽입, 삭제, 변경 기능을 수행하는 서버 경로
+            datatype: 'json',
+            pager: '#pager',
+            caption: 'Books',
+            height: '100%',
+            rowNum: 10,							 // 한 페이지에 표시될 행 갯수
+            rowList: [10, 20, 30],				 // rowNum 에 대한 선택 옵션
+            colNames: ['id', 'name', 'author', 'publisher', 'isbn', 'page', 'poto'], // 헤더 부분
+            colModel: [														 // 바인딩 될 데이터
+                { name: 'id', index: 'id', width: 30 },
+                { name: 'name', index: 'name', width: 230, editable: true, edittype: 'text' },
+                { name: 'author', index: 'author', width: 90, editable: true, edittype: 'text' },
+                { name: 'publisher', index: 'publisher', width: 80, editable: true, edittype: 'text' },
+                { name: 'isbn', index: 'isbn', width: 80, editable: true, edittype: 'text' },
+                { name: 'page', index: 'page', width: 40, editable: true, edittype: 'text' },
+                { name: 'poto', index: 'poto', width: 40, editable: true, edittype: 'text' }
+            ],
+            loadError : function(xhr, status, error){
+            	console.log(error);
+            }
+        }).navGrid('#pager', {
+            search: true,
+            edit: true,
+            add: true,
+            del: true
+        });//, customDialog, {}, customDialog);
     });
- 
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-      event.preventDefault();
-      addUser();
-    });
- 
-    $( "#create-user" ).button().on( "click", function() {
-      dialog.dialog( "open" );
-    });
-  });
-  </script>
+</script>
 </head>
 <body>
- 
-<div id="dialog-form" title="Create new user">
-  <p class="validateTips">All form fields are required.</p>
- 
-  <form>
-    <fieldset>
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-    </fieldset>
-  </form>
-</div>
- 
- 
-<div id="users-contain" class="ui-widget">
-  <h1>Existing Users:</h1>
-  <table id="users" class="ui-widget ui-widget-content">
-    <thead>
-      <tr class="ui-widget-header ">
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<button id="create-user">Create new user</button>
- 
- 
+    <table id="grid"></table>
+    <div id="pager"></div>
 </body>
 </html>
