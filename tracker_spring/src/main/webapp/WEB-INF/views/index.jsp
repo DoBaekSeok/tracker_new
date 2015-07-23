@@ -354,9 +354,9 @@
 		            { name: 'equipNo', index: 'id', width: 80 },
 		            { name: 'equipName', index: 'name', width: 230, editable: true, edittype: 'text' },
 		            { name: 'modelName', index: 'author', width: 180, editable: true, edittype: 'text' },
-		            { name: 'equipPrice', index: 'publisher', width: 100, editable: true, edittype: 'text' },
-		            { name: 'equipContent', index: 'isbn', width: 230, editable: true, edittype: 'text' },
-		            { name: 'fileToUpload', index: 'customer_id', width: 150, editable: true, edittype: 'file',
+		            { name: 'equipPrice', index: 'publisher', width: 150, editable: true, edittype: 'text' },
+		            { name: 'equipContent', index: 'isbn', width: 250, editable: true, edittype: 'text' },
+		            { name: 'fileToUpload', index: 'customer_id', width: 250, editable: true, edittype: 'file',
 		              editoptions: {
 		                    enctype: "multipart/form-data",
 		                    required: true
