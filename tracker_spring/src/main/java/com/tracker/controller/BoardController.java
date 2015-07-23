@@ -3,6 +3,7 @@ package com.tracker.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,14 +14,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tracker.model.dto.Board;
 import com.tracker.model.dto.BoardComment;
-import com.tracker.service.BoardService;
+import com.tracker.service.OracleBoardService;
 
 @Controller
 @RequestMapping(value="board")
 public class BoardController {
 	
+	private OracleBoardService boardService;
 	@Autowired
-	private BoardService boardService;
+	@Qualifier("boardService")
+	public void setBoardService(OracleBoardService boardService) {
+		this.boardService = boardService;
+	}
+	
 	
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public  ModelAndView getBoardList() {
@@ -97,7 +103,7 @@ public class BoardController {
 		return "redirect:/board/boardlist.action=" + boardNo;
 	}
 	
-	@RequestMapping(value = "update.action", method = RequestMethod.GET)
+	@RequestMapping(value = "commentupdate.action", method = RequestMethod.GET)
 	public String commentEdit(@RequestParam("boardno") int boardNo,  Model model) {
 		
 		Board board = boardService.getBoardByBoardNo(boardNo);

@@ -13,6 +13,7 @@
 	<aop:aspectj-autoproxy />
 
 	<context:component-scan base-package="com.tracker.repository" />
+	<context:component-scan base-package="com.tracker.service" />
 			
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp2.BasicDataSource"
@@ -47,6 +48,11 @@
 		<property name="mapperInterface" value="com.tracker.model.mapper.EquipmentMapper" />
 		<property name="sqlSessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.tracker.model.mapper.BoardMapper"/>
+		<property name="sqlSessionFactory" ref="sessionFactory"/>
+	</bean>	
 	
 
 	<!-- ===================================================================== -->

@@ -20,10 +20,10 @@
 		VALUES
 		(
 			board_seq.nextval,
-			#{ boardkind },
-			#{ boardwriter },
-			#{ boardtitle },
-			#{ boardcontent }
+			#{ boardKind },
+			#{ boardWriter },
+			#{ boardTitle },
+			#{ boardContent }
 		)
 	</insert>
 	
@@ -80,7 +80,7 @@
 		FROM
 			board
 		WHERE
-			boardno=#{ boardno }
+			boardno=#{ boardNo }
 	</select>
 	
 	<select id="getCommentListByBoardNo" parameterType="int" resultMap="commentListByBoardNo">
@@ -89,17 +89,17 @@
 		FROM
 			boardcomment
 		WHERE
-			boardno=#{ boardno }
+			boardno=#{ boardNo }
 	</select>
 		
 	<update id="updateBoard" parameterType="Board">
 		UPDATE
 			board
 		SET
-			boardtitle=#{ boardtitle },
-			boardcontent=#{ boardcontent },
+			boardtitle=#{ boardTitle },
+			boardcontent=#{ boardContent },
 		WHERE
-			boardno=#{ boardno }
+			boardno=#{ boardNo }
 	</update>
 	
 	<delete id="deleteBoard" parameterType="int">
@@ -108,7 +108,7 @@
 		SET
 			boarddeleted = '1'
 		WHERE
-			boardno=#{ boardno }
+			boardno=#{ boardNo }
 	</delete>
 	
 	<insert id="insertBoardComment" useGeneratedKeys="true" keyColumn="commentno" keyProperty="commentNo" parameterType="Comment">
@@ -133,9 +133,9 @@
 		UPDATE
 			boardcomment
 		SET
-			commentcontent=#{ commentcontent }		
+			commentcontent=#{ commentContent }		
 		WHERE
-			commentno=#{ commentno }
+			commentno=#{ commentNo }
 	</update>
 	
 	<delete id="deleteBoardComment">
@@ -144,7 +144,7 @@
 		SET
 			commentdeleted='1'
 		WHERE
-			commentno=#{ commentno }
+			commentno=#{ commentNo }
 	</delete>
 	
 	

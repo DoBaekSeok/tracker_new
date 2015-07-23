@@ -3,6 +3,7 @@ package com.tracker.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tracker.model.dto.Board;
@@ -10,10 +11,14 @@ import com.tracker.model.dto.BoardComment;
 import com.tracker.repository.BoardRepository;
 
 @Service(value="boardService")
-public class BoardService {
-	
-	@Autowired
+public class OracleBoardService  {
+		
 	private BoardRepository boardRepository;
+	@Autowired
+	@Qualifier("boardRepository")
+	public void setBoardRepository(BoardRepository boardRepository) {
+		this.boardRepository = boardRepository;
+	}
 	
 	public void insertBoard(Board board) {
 		boardRepository.insertBoard(board);
