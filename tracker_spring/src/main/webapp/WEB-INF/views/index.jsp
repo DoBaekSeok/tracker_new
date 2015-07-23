@@ -174,6 +174,7 @@
 					<h3>장비관리</h3>
 					<p>장비관리 내용</p>
 					<div>
+					
 					<table id="grid"></table>
    					<div id="pager"></div>
    					</div>
@@ -352,9 +353,14 @@
 		            { name: 'equipNo', index: 'id', width: 80 },
 		            { name: 'equipName', index: 'name', width: 230, editable: true, edittype: 'text' },
 		            { name: 'modelName', index: 'author', width: 180, editable: true, edittype: 'text' },
-		            { name: 'equipPrice', index: 'publisher', width: 80, editable: true, edittype: 'text' },
-		            { name: 'equipContent', index: 'isbn', width: 200, editable: true, edittype: 'text' },
-		            { name: 'Photo', index: 'Photo', width: 150, editable: true, edittype: 'text' },
+		            { name: 'equipPrice', index: 'publisher', width: 100, editable: true, edittype: 'text' },
+		            { name: 'equipContent', index: 'isbn', width: 230, editable: true, edittype: 'text' },
+		            { name: 'fileToUpload', index: 'customer_id', width: 150, editable: true, edittype: 'file',
+		              editoptions: {
+		                    enctype: "multipart/form-data",
+		                    required: true
+		                },	
+		            },
 		        ],
 		        loadError : function(xhr, status, error){
 		        	console.log(error);
