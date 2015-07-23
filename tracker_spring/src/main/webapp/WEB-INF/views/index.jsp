@@ -50,7 +50,8 @@
                         <li><a href="#company">Company</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#gpstracker">GPS Tracker</a></li> 
-                        <li><a href="#support">Support</a></li>                                                
+                        <li><a href="#support">Support</a></li>        
+                        <li><a href="/tracker/member/register.action">Join</a></li>                                           
                     </ul>
                 </div>
             </div><!--/.container-->
