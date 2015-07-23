@@ -49,6 +49,7 @@
                         <li><a href="#gpstracker">GPS Tracker</a></li> 
                         <li><a href="#support">Support</a></li>        
                         <li><a href="/tracker/member/register.action">Join</a></li>                                           
+                        <li><a href="/tracker/account/login.action">Login</a></li>                                           
                     </ul>
                 </div>
             </div><!--/.container-->
