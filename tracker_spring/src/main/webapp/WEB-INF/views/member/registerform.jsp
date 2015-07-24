@@ -83,7 +83,7 @@
 		class="accessibility-aid js-skip-to-content">Skip to content</a>
 	<div class="wrapper">
 
-		<div class="header header-logged-out" role="banner">
+	<!-- 	<div class="header header-logged-out" role="banner">
 			<div class="container clearfix">
 
 				<a class="header-logo-wordmark" href="https://github.com/"
@@ -137,9 +137,9 @@
 				</ul>
 
 			</div>
-		</div>
-
-
+		</div> -->
+	
+		 <% pageContext.include("/WEB-INF/views/include/header.jsp"); %>
 		<div id="start-of-content" class="accessibility-aid"></div>
 		<div class="site clearfix" role="main">
 

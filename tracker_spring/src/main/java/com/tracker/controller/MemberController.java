@@ -2,12 +2,14 @@ package com.tracker.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tracker.model.dto.Member;
+import com.tracker.model.mapper.MemberMapper;
 import com.tracker.service.MemberService;
 
 @Controller
@@ -15,8 +17,13 @@ import com.tracker.service.MemberService;
 public class MemberController {
 	
 	
-	@Autowired
+
 	private MemberService memberService;
+	@Autowired
+	@Qualifier("memberService")
+	public void setMemberService(MemberService memberService){
+		this.memberService = memberService;
+	}
 	
 	
 	@RequestMapping(value = "register.action", method = RequestMethod.GET)
