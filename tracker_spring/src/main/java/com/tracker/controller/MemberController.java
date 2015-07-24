@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tracker.model.dto.Member;
-import com.tracker.model.mapper.MemberMapper;
 import com.tracker.service.MemberService;
+import com.tracker.service.TrackerMemberService;
 
 @Controller
 @RequestMapping(value = "member")
@@ -21,7 +21,7 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	@Qualifier("memberService")
-	public void setMemberService(MemberService memberService){
+	public void setMemberService(TrackerMemberService memberService){
 		this.memberService = memberService;
 	}
 	
