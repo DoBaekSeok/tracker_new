@@ -15,7 +15,6 @@ public class OracleMemberRepository implements MemberRepository {
 
 	
 	private MemberMapper memberMapper;
-	
 	@Autowired
 	@Qualifier("memberMapper")
 	public void setMemberMapper(MemberMapper memberMapper){

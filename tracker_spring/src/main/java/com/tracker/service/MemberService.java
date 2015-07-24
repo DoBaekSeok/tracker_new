@@ -2,18 +2,23 @@ package com.tracker.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.tracker.model.dto.Member;
+import com.tracker.model.mapper.MemberMapper;
 import com.tracker.repository.MemberRepository;
 
-//@Component
 @Service
 public class MemberService {
 	
-	@Autowired
 	private MemberRepository memberRepository;
-
+	@Autowired
+	@Qualifier
+	public void setMemberRepository(MemberRepository memberRepository){
+		this.memberRepository = memberRepository;
+	}
+	
 	public void insertMember(Member member){
 		memberRepository.insertMember(member);
 	}

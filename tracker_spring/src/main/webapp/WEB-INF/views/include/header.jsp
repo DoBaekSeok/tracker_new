@@ -1,48 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
-		<div id="header">
-            <div class="left">
-                <a href="/machinemanager/home.action">자판기 관리 시스템</a>
-            </div>
-
-        </div>        
-        <div id="menu">
-            <div>
-                <ul>
-                    <li>
-                    	<a href="#">자판기관리</a>   
-                    	<ul id="first">             	
-	                   		<li><a href="/machinemanager/machine/machinelist.action">자판기관리</a></li>
-	                   		<li><a href="/machinemanager/machine/setuplist.action">설치관리</a></li>
-	                   		<li><a href="/machinemanager/machine/withdrawlist.action">회수내역</a></li>	                   		
-	                   		<li><a href="/machinemanager/machine/machinestocklist.action">입/출고내역</a></li>	   	                   		
-	                   	</ul>                    	
-                    </li>
-
-                    <li>
-                    	<a href="#">주문관리</a>
-                    	<ul id="second">
-                    		<li><a href="/machinemanager/order/orderlist.action">주문내역</a></li>
-                    		<li><a href="/machinemanager/order/orderwrite.action">주문서작성</a></li>
-                    	</ul>
-                    </li>
-					<li>
-						<a href="#">재고관리</a>
-						<ul id="third">
-							<li><a href="/machinemanager/stock/orderinput.action?pageno=1">주문입고</a></li>
-							<li><a href="/machinemanager/stock/list.action?pageno=1">재고조회</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">거래처관리</a>
-						<ul id="fourth">
-							<li><a href="/machinemanager/supply/list.action">물품거래처</a>
-							<li><a href="/machinemanager/lease/leaselist.action">임대거래처</a>
-						</ul>
-					</li>
-					<li><a href="/machinemanager/product/list.action">제품관리</a></li>
-					<!-- <li><a href="#">매출관리</a></li> -->
-					<li><a href="/machinemanager/stock/machineoutputform.action">판매시뮬레이션</a></li>
-                </ul>
-            </div>
+<!-- Bootstrap -->
+<link href="/tracker/resources/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/tracker/resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="/tracker/resources/css/animate.css">
+<link rel="stylesheet" href="/tracker/resources/css/overwrite.css">
+<link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
+<link href="/tracker/resources/css/style.css" rel="stylesheet" />
+<link href="/tracker/resources/css/ui-blitzer/jquery-ui.css" rel="stylesheet" />
+<link href="/tracker/resources/css/ui.jqgrid.css" rel="stylesheet" />	
+<header id="header">
+	<nav class="navbar navbar-fixed-top" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="home.action">Tracker</a>
+			</div>
+			<div class="collapse navbar-collapse navbar-right">
+				<ul class="nav navbar-nav">
+					<li><a href="#header">Intro</a></li>
+					<li><a href="#mypage">My Page</a></li>
+					<li><a href="#managemember">회원관리</a></li>
+					<li><a href="#manageequipment">장비관리</a></li>
+					<li><a href="#company">Company</a></li>
+					<li><a href="#products">Products</a></li>
+					<li><a href="#gpstracker">GPS Tracker</a></li>
+					<li><a href="#support">Support</a></li>
+					<li><a href="/tracker/member/register.action">Join</a></li>
+					<li><a href="/tracker/account/login.action">Login</a></li>
+				</ul>
+			</div>
 		</div>
+		<!--/.container-->
+	</nav>
+	<!--/nav-->
+</header>
+<!--/header-->
