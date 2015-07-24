@@ -15,8 +15,8 @@ public interface MemberRepository {
 	List<Member> getMemberList();
 	
 	// 아이디 중복체크
-	Member getMemberById(String memberId);
+	Member getMemberById(String id);
 	
 	//로그인
-	Member getMwmberByIdAndPasswd(String id, String passwd);
+	Member getMwmberByIdAndPasswd(String id, String password);
 }

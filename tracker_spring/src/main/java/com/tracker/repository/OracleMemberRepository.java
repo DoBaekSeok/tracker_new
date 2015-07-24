@@ -1,6 +1,7 @@
 package com.tracker.repository;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,14 +46,19 @@ public class OracleMemberRepository implements MemberRepository {
 	}
 
 	@Override
-	public Member getMemberById(String memberId) {
+	public Member getMemberById(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Member getMwmberByIdAndPasswd(String id, String passwd) {
-		// TODO Auto-generated method stub
-		return null;
+	public Member getMwmberByIdAndPasswd(String id, String password) {
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("id", id);
+		params.put("password", password);
+		Member member = memberMapper.getMwmberByIdAndPasswd(params);
+		
+		return member;
 	}
 }

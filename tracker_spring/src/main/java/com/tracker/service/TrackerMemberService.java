@@ -23,4 +23,17 @@ public class TrackerMemberService implements MemberService{
 		memberRepository.insertMember(member);
 	}
 
+	@Override
+	public Member getMemberById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Member getMemberByIdAndPassword(String id, String password) {
+		Member member = memberRepository.getMwmberByIdAndPasswd(id, password);
+		
+		return member;
+	}
+
 }
