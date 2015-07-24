@@ -14,7 +14,7 @@ public class MemberService {
 	
 	private MemberRepository memberRepository;
 	@Autowired
-	@Qualifier
+	@Qualifier(value = "memberRepository")
 	public void setMemberRepository(MemberRepository memberRepository){
 		this.memberRepository = memberRepository;
 	}
