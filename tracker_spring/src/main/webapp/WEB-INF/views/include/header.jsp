@@ -7,7 +7,8 @@
 <link href="/tracker/resources/css/animate.min.css" rel="stylesheet"> 
 <link href="/tracker/resources/css/style.css" rel="stylesheet" />
 <link href="/tracker/resources/css/ui-blitzer/jquery-ui.css" rel="stylesheet" />
-<link href="/tracker/resources/css/ui.jqgrid.css" rel="stylesheet" />	
+<link href="/tracker/resources/css/ui.jqgrid.css" rel="stylesheet" />
+
 <header id="header">
 	<nav class="navbar navbar-fixed-top" role="banner">
 		<div class="container">
@@ -31,7 +32,7 @@
 					<li><a href="#gpstracker">GPS Tracker</a></li>
 					<li><a href="#support">Support</a></li>
 					<li><a href="/tracker/member/register.action">Join</a></li>
-					<li><a href="/tracker/account/login.action">Login</a></li>
+					<li><a id="create-user" href="#">Login</a></li>
 				</ul>
 			</div>
 		</div>
