@@ -35,18 +35,17 @@
 </head>
 <body>
 
-	<%
-		pageContext.include("/WEB-INF/views/include/header.jsp");
-	%>
+	<% pageContext.include("/WEB-INF/views/include/header.jsp");%>
 
+	<!-- modal jQuery -->
 	<div id="dialog-form" title="로그인">
 		<form>
 			<fieldset>
 				<label for="id">아이디</label>
-				<input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+				<input type="text" name="id" id="id" value="아이디" class="text ui-widget-content ui-corner-all">
 				
 				<label for="password">비밀번호</label>
-				<input type="password"name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+				<input type="password"name="password" id="password" value="비밀번호" class="text ui-widget-content ui-corner-all">
 				
 				<!-- Allow form submission with keyboard without duplicating the dialog button -->
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
@@ -405,33 +404,21 @@
 				}
 			}
 
-			function addUser() {
-				var valid = true;
-				allFields.removeClass("ui-state-error");
-
-				valid = valid && checkLength(name, "username", 3, 16);
-				valid = valid && checkLength(email, "email", 6, 80);
-				valid = valid && checkLength(password, "password", 5, 16);
-
-				valid = valid
-						&& checkRegexp(
-								name,
-								/^[a-z]([0-9a-z_\s])+$/i,
-								"Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter.");
-				valid = valid
-						&& checkRegexp(email, emailRegex, "eg. ui@jquery.com");
-				valid = valid
-						&& checkRegexp(password, /^([0-9a-zA-Z])+$/,
-								"Password field only allow : a-z 0-9");
-
-				if (valid) {
-					$("#users tbody").append(
-							"<tr>" + "<td>" + name.val() + "</td>" + "<td>"
-									+ email.val() + "</td>" + "<td>"
-									+ password.val() + "</td>" + "</tr>");
-					dialog.dialog("close");
-				}
-				return valid;
+			function loginUser(event) {
+				
+				$.ajax({
+					url : "/tracker/account/login.action",
+					async : true,
+					data : {},
+					method : "post",
+					success : function(result, status, xhr){
+						alert(result.name + "/" + result.address);
+					},
+					error : function(xht, status, ex){
+						alert('로그인실패');
+					}
+				})
+				event.preventDefault();
 			}
 
 			dialog = $("#dialog-form").dialog({
@@ -440,7 +427,8 @@
 				width : 350,
 				modal : true,
 				buttons : {
-					"로그인" : addUser,
+					"로그인" : 
+						loginUser,
 					취소 : function() {
 						dialog.dialog("close");
 					}
