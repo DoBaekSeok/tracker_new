@@ -54,6 +54,10 @@
 		<property name="sqlSessionFactory" ref="sessionFactory"/>
 	</bean>	
 	
+	<bean id="trackingMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.tracker.model.mapper.TrackingMapper"/>
+		<property name="sqlSessionFactory" ref="sessionFactory"/>
+	</bean>	
 
 	<!-- ===================================================================== -->
 			

@@ -3,13 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="ko">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Tacker - HTML Bootstrap Template</title>
-
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -237,11 +237,17 @@
 		<div class="container">
 			<div class="text-center">
 				<h3>Gps Tracker</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-					eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut
-					enim ad minim veniam
-				</p>
+				<div id="map_view" class="container" style="width:600px;height:450px;float:left" >			
+				</div>
+				<div style="float:left">
+					번호 <input type="text" id="onEquipNo" width="100px" value="1" /><br />
+
+					위도 <input type="text" id="latitude" width="150px" readonly="readonly" value="37.0"/><br />
+
+					경도 <input type="text" id="longitude" width="150px" readonly="readonly" value="127.4"/><br />
+
+					주소 <input type="text" id="address" style="width:300px" readonly="readonly" value="" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -350,22 +356,32 @@
 					title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>.
 				All Rights Reserved.
 			</div>
-		</div>
-	</footer>
-	<!--/#footer-->
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/tracker/resources/js/jquery-2.1.1.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/tracker/resources/js/bootstrap.min.js"></script>
+		</div>									
+	</footer><!--/#footer-->
+	
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/tracker/resources/js/jquery-2.1.1.min.js"></script>		
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/tracker/resources/js/bootstrap.min.js"></script>	
+
 	<script src="/tracker/resources/js/parallax.min.js"></script>
 	<script src="/tracker/resources/js/wow.min.js"></script>
 	<script src="/tracker/resources/js/jquery.easing.min.js"></script>
 	<script type="text/javascript" src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
+
+	<script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="/tracker/resources/js/sockjs-0.3.4.js"></script>
+    <script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>
+    <script src="/tracker/resources/js/jquery.jqGrid.min.js"></script>  
+    <script src="/tracker/resources/js/tracking.js"></script>
+
 	<script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>
 	<script src="/tracker/resources/js/jquery.jqGrid.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
 	<script>
 		/* modal jQuery*/
 		$(function() {
