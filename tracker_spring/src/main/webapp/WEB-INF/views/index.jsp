@@ -19,9 +19,19 @@
     <![endif]-->
 
 <!-- jQuery UI Dialog - Modal form -->
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<style>
+	  body { font-size: 50.5%; }
+	  label, input { display:block; }
+	  input.text { margin-bottom:12px; width:95%; padding: .4em; }
+	  fieldset { padding:0; border:0; margin-top:25px; }
+	  h1 { font-size: 1.2em; margin: .6em 0; }
+	  div#users-contain { width: 350px; margin: 20px 0; }
+	  div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+	  div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+	  .ui-dialog .ui-state-error { padding: .3em; }
+	  .validateTips { border: 1px solid transparent; padding: 0.3em; }
+</style>
 </head>
 <body>
 
@@ -29,23 +39,17 @@
 		pageContext.include("/WEB-INF/views/include/header.jsp");
 	%>
 
-	<div id="dialog-form" title="Create new user">
-		<p class="validateTips">All form fields are required.</p>
+	<div id="dialog-form" title="로그인">
 		<form>
 			<fieldset>
-				<label for="name">Name</label> <input type="text" name="name"
-					id="name" value="Jane Smith"
-					class="text ui-widget-content ui-corner-all"> <label
-					for="email">Email</label> <input type="text" name="email"
-					id="email" value="jane@smith.com"
-					class="text ui-widget-content ui-corner-all"> <label
-					for="password">Password</label> <input type="password"
-					name="password" id="password" value="xxxxxxx"
-					class="text ui-widget-content ui-corner-all">
-
+				<label for="id">아이디</label>
+				<input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+				
+				<label for="password">비밀번호</label>
+				<input type="password"name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+				
 				<!-- Allow form submission with keyboard without duplicating the dialog button -->
-				<input type="submit" tabindex="-1"
-					style="position: absolute; top: -1000px">
+				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
 	</div>
@@ -358,8 +362,7 @@
 	<script src="/tracker/resources/js/parallax.min.js"></script>
 	<script src="/tracker/resources/js/wow.min.js"></script>
 	<script src="/tracker/resources/js/jquery.easing.min.js"></script>
-	<script type="text/javascript"
-		src="/tracker/resources/js/fliplightbox.min.js"></script>
+	<script type="text/javascript" src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>
 	<script src="/tracker/resources/js/jquery.jqGrid.min.js"></script>
@@ -377,7 +380,7 @@
 			function updateTips(t) {
 				tips.text(t).addClass("ui-state-highlight");
 				setTimeout(function() {
-					tips.removeClass("ui-state-highlight", 1500);
+					tips.removeClass("ui-state-highlight", 500);
 				}, 500);
 			}
 
@@ -432,13 +435,13 @@
 			}
 
 			dialog = $("#dialog-form").dialog({
-				autoOpen : false,
+				autoOpen : true,
 				height : 300,
 				width : 350,
 				modal : true,
 				buttons : {
-					"Create an account" : addUser,
-					Cancel : function() {
+					"로그인" : addUser,
+					취소 : function() {
 						dialog.dialog("close");
 					}
 				},
