@@ -32,10 +32,12 @@ public class AccountController {
 	@RequestMapping(value = "login.action", method=RequestMethod.POST)
 	@ResponseBody
 	public Member login(HttpServletRequest req){
+
+		String id = req.getParameter("id");
+		String password = req.getParameter("password");
 		
-		Member m = new Member();
-		m.setName("신건식");
-		m.setAddress("왕십리");
-		return m;
+		Member member = memberService.getMemberByIdAndPassword(id, password);
+		
+		return member;
 	}
 }

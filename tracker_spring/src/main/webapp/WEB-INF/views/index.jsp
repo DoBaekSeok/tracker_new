@@ -42,10 +42,12 @@
 		<form>
 			<fieldset>
 				<label for="id">아이디</label>
-				<input type="text" name="id" id="id" value="아이디" class="text ui-widget-content ui-corner-all">
+				<input id="id" name="id" type="text" placeholder="아이디"" class="text ui-widget-content ui-corner-all">
 				
 				<label for="password">비밀번호</label>
-				<input type="password"name="password" id="password" value="비밀번호" class="text ui-widget-content ui-corner-all">
+				<input id="password" name="password" type="password" placeholder="비밀번호" class="text ui-widget-content ui-corner-all">
+				
+				<label id="message"></label>
 				
 				<!-- Allow form submission with keyboard without duplicating the dialog button -->
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
@@ -385,7 +387,7 @@
 	<script>
 		/* modal jQuery*/
 		$(function() {
-
+			
 			var dialog, form,
 
 			// From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
@@ -425,13 +427,16 @@
 				$.ajax({
 					url : "/tracker/account/login.action",
 					async : true,
-					data : {},
+					data : {
+						id : $('#id').val(),
+						password : $('#password').val()
+					},
 					method : "post",
 					success : function(result, status, xhr){
 						alert(result.name + "/" + result.address);
 					},
 					error : function(xht, status, ex){
-						alert('로그인실패');
+						$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	
 					}
 				})
 				event.preventDefault();
@@ -439,7 +444,7 @@
 
 			dialog = $("#dialog-form").dialog({
 				autoOpen : true,
-				height : 300,
+				height : 330,
 				width : 350,
 				modal : true,
 				buttons : {

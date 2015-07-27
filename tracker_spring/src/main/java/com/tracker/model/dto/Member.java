@@ -13,6 +13,7 @@ public class Member implements Serializable {
 	private String address;
 	private int deleted;
 	private Date regDate;
+	
 	public String getId() {
 		return id;
 	}

@@ -6,6 +6,28 @@
   
 <mapper namespace="com.tracker.model.mapper.MemberMapper">
 
+	<resultMap type="Member" id="memberResultMap">
+		<id column="memberId" property="id" />
+		<result column="memberName" property="name" />
+		<result column="memberEmail" property="email" />
+		<result column="memberActive" property="active" />
+		<result column="memberPassword" property="password" />
+		<result column="memberAddress" property="address" />
+		<result column="memberDeleted" property="deleted" />
+		<result column="regDate" property="regDate" />
+	</resultMap>
+
+	<sql id="memberListColums">
+		memberId,
+		memberName,
+		memberEmail,
+		memberActive,
+		memberPassword,
+		memberAddress,
+		memberDeleted,
+		regDate
+	</sql>
+	
 	<insert id="insertMember" parameterType="Member" >
 		INSERT INTO member 
 		(
@@ -24,6 +46,42 @@
 			#{address}
 		)
 	</insert>
+	
+	<select id="getMemberList" resultType="Member">
+		SELECT
+			<include refid="memberListColums"/>
+		 FROM member
+	</select>
+	
+	<select id="getMemberById" resultType="Member" parameterType="string">
+		SELECT memberId
+		FROM member
+		WHERE memberId = #{id}
+	</select>
+	
+	<select id="getMemberByIdAndPasswd" resultType="Member" parameterType="hashmap">
+		SELECT 
+			memberId,
+		memberName,
+		memberEmail,
+		memberActive,
+		memberPassword,
+		memberAddress,
+		memberDeleted,
+		regDate
+		FROM
+			member
+		WHERE memberId = #{id} AND memberPassword = #{password}
+	</select>
+	
+	<select id="getMemberByIdAndPasswd2" resultMap="memberResultMap" parameterType="hashmap">
+	
+		SELECT 
+			<include refid="memberListColums"/>
+		FROM
+			member
+		WHERE memberId = #{id} AND memberPassword = #{password}	
+	</select>
 	
 	
 </mapper>

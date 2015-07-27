@@ -1,6 +1,8 @@
 package com.tracker.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,24 @@ public class TrackerMemberService implements MemberService{
 	}
 
 	@Override
+	public void updateMember(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteMember(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Member> getMemberList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public Member getMemberById(String id) {
 		// TODO Auto-generated method stub
 		return null;
@@ -31,9 +51,14 @@ public class TrackerMemberService implements MemberService{
 
 	@Override
 	public Member getMemberByIdAndPassword(String id, String password) {
-		Member member = memberRepository.getMwmberByIdAndPasswd(id, password);
+		
+		Member member = memberRepository.getMemberByIdAndPasswd(id, password);
+		
+		/* Null 처리 로직*/
 		
 		return member;
 	}
+
+
 
 }

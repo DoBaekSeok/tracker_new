@@ -18,5 +18,5 @@ public interface MemberRepository {
 	Member getMemberById(String id);
 	
 	//로그인
-	Member getMwmberByIdAndPasswd(String id, String password);
+	Member getMemberByIdAndPasswd(String id, String password);
 }

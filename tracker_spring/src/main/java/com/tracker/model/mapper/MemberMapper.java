@@ -16,8 +16,10 @@ public interface MemberMapper {
 	List<Member> getMemberList();
 	
 	// 아이디 중복체크
-	Member getMemberById(String memberId);
+	Member getMemberById(String id);
 	
 	//로그인
-	Member getMwmberByIdAndPasswd(HashMap<String, Object> params);
+	Member getMemberByIdAndPasswd(HashMap<String, String> params);
+	
+	Member getMemberByIdAndPasswd2(HashMap<String, Object> params);
 }
