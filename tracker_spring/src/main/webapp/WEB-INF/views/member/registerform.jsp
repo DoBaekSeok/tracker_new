@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -138,8 +138,7 @@
 
 			</div>
 		</div> -->
-	
-		 <% pageContext.include("/WEB-INF/views/include/header.jsp"); %>
+		<c:import url="/WEB-INF/views/include/header.jsp" />	
 		<div id="start-of-content" class="accessibility-aid"></div>
 		<div class="site clearfix" role="main">
 
