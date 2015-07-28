@@ -19,7 +19,5 @@ public interface MemberMapper {
 	Member getMemberById(String id);
 	
 	//로그인
-	Member getMemberByIdAndPasswd(HashMap<String, String> params);
-	
-	Member getMemberByIdAndPasswd2(HashMap<String, Object> params);
+	Member getMemberByIdAndPasswd(HashMap<String, Object> params);
 }

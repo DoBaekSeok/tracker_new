@@ -47,6 +47,22 @@
 		)
 	</insert>
 	
+	<update id="updateMember" parameterType="Member">
+		UPDATE member
+		SET 
+			memberName = #{name}, 
+			memberEmail = #{email}, 
+			memberPassword = #{password}, 
+			memberAddress = #{address}
+		WHERE memberId = #{id}
+	</update>
+	
+	<update id="deleteMember">
+		UPDATE member
+		SET memberDeleted = '1'
+		WHERE memberId = #{id}
+	</update>
+	
 	<select id="getMemberList" resultType="Member">
 		SELECT
 			<include refid="memberListColums"/>
@@ -59,30 +75,13 @@
 		WHERE memberId = #{id}
 	</select>
 	
-	<select id="getMemberByIdAndPasswd" resultType="Member" parameterType="hashmap">
-		SELECT 
-			memberId,
-		memberName,
-		memberEmail,
-		memberActive,
-		memberPassword,
-		memberAddress,
-		memberDeleted,
-		regDate
-		FROM
-			member
-		WHERE memberId = #{id} AND memberPassword = #{password}
-	</select>
-	
-	<select id="getMemberByIdAndPasswd2" resultMap="memberResultMap" parameterType="hashmap">
-	
+	<select id="getMemberByIdAndPasswd" resultMap="memberResultMap" parameterType="hashmap">
 		SELECT 
 			<include refid="memberListColums"/>
 		FROM
 			member
-		WHERE memberId = #{id} AND memberPassword = #{password}	
+		WHERE memberId = #{id} AND memberPassword = #{password}
 	</select>
-	
 	
 </mapper>
 

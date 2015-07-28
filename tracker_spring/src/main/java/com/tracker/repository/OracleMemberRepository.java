@@ -57,8 +57,7 @@ public class OracleMemberRepository implements MemberRepository {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
 		params.put("password", password);
-		//Member member = memberMapper.getMemberByIdAndPasswd(params);
-		Member member = memberMapper.getMemberByIdAndPasswd2(params);
+		Member member = memberMapper.getMemberByIdAndPasswd(params);
 		
 		
 		System.out.println("왜 값을 못 가져 오니 " + params + "/" + member.getId());
