@@ -17,7 +17,7 @@
 					<li><a href="#header">Intro</a></li>
 					<li><a href="#mypage">My Page</a></li>
 					<li><a href="#managemember">회원관리</a></li>
-					<li><a href="#manageequipment">장비관리</a></li>
+					<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 					<li><a href="#company">Company</a></li>
 					<li><a href="#products">Products</a></li>
 					<li><a href="#gpstracker">GPS Tracker</a></li>
