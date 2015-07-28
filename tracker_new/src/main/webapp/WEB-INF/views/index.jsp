@@ -44,7 +44,7 @@
 <body>	
 
 	<!-- header -->
-	<c:import url="./include/header.jsp" />
+	<c:import url="/WEB-INF/views/include/header.jsp" />
 	    
 	<div class="slider">		
 		<div id="about-slider">
