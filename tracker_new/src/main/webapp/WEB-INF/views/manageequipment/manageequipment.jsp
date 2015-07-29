@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="/tracker/resources/css/style.css" />	
 	<link rel="stylesheet" href="/tracker/resources/css/jquery-ui/jquery-ui.css" />	
 	<link rel="stylesheet" href="/tracker/resources/css/jqgrid/ui.jqgrid.css" />
+	
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -29,7 +30,8 @@
 	<![endif]-->
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/tracker/resources/js/jquery-2.1.1.min.js"></script>		
+    <!-- <script src="/tracker/resources/js/jquery-2.1.1.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>		
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/tracker/resources/js/bootstrap.min.js"></script>	
 	<script src="/tracker/resources/js/parallax.min.js"></script>
@@ -39,19 +41,22 @@
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
 	<script src="/tracker/resources/js/jqgrid/jquery.jqGrid.min.js"></script>
-	<script src="/tracker/resources/js/i18n/grid.locale-en.js"></script>	
+	<script src="/tracker/resources/js/jqgrid/i18n/grid.locale-en.js"></script>	
 	<script>
 	wow = new WOW({}).init();
+	</script>	
+	
+	<script>
 	
 	$(document).ready(function () {
         // 변수를 선언합니다.
-        var customDialog = {
+    /*     var customDialog = {
             onclickSubmit: function (params) {
                 var selectedRow = $('#grid').getGridParam('selrow');
                 rowData = $('#grid').getRowData(selectedRow);
                 return { id: rowData.id };
             }
-        };
+        }; */
 
         $('#grid').jqGrid({
             url: 'equipmentlistajax.action',	  // 조회(전체, 검색) 기능을 수행하는 서버 경로
@@ -59,16 +64,16 @@
             datatype: 'json',
             pager: '#pager',
             caption: '장비관리',
-            height: 'auto%',
+            height: 'auto',
             rowNum: 10,							 // 한 페이지에 표시될 행 갯수
             rowList: [10, 20, 30],				 // rowNum 에 대한 선택 옵션
         	colNames : [ '순서', '장비이름', '모델명', '가격', '내용', '사진' ], // 헤더 부분
             colModel: [														 // 바인딩 될 데이터
-                { name: 'equipNo', index: 'equipNo', width: 50, editable: true, hidden: true, editrules: { edithidden: false }, hidedlg: true},
-                { name: 'equipName', index: 'equipName', width: 150, editable: true, edittype: 'text' },
-                { name: 'modelName', index: 'modelName', width: 150, editable: true, edittype: 'text' },
+                { name: 'equipNo', index: 'equipNo', width: 50, hidden:true,key:true, editable:true},
+                { name: 'equipName', index: 'equipName', width: 100, editable: true, edittype: 'text' },
+                { name: 'modelName', index: 'modelName', width: 100, editable: true, edittype: 'text' },
                 { name: 'equipPrice', index: 'equipPrice', width: 80, editable: true, edittype: 'text' },
-                { name: 'equipContent', index: 'equipContent', width: 600, editable: true, edittype: 'text' },
+                { name: 'equipContent', index: 'equipContent', width: 700, editable: true, edittype: 'text' },
                 { name: 'fileToUpload', index: 'fileToUpload', width: 100, editable: true, edittype: 'file' },
           
             ],
@@ -78,11 +83,14 @@
         }).navGrid('#pager', {
             search: true,
             edit: true,
-            add: true,
+            add: false,
             del: true
         });//, customDialog, {}, customDialog);
+		
     });
-	</script>	
+    
+	
+	</script>
 </head>
 <body>	
 
