@@ -62,7 +62,7 @@
             url: 'equipmentlistajax.action',	  // 조회(전체, 검색) 기능을 수행하는 서버 경로
             editurl: 'equipmenteditajax.action', // 삽입, 삭제, 변경 기능을 수행하는 서버 경로
             datatype: 'json',
-            pager: '#pager',
+            pager: '#pager',  
             caption: '장비관리',
             height: 'auto',
             rowNum: 10,							 // 한 페이지에 표시될 행 갯수

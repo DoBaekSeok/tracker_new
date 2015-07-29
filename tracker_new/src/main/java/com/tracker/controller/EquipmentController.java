@@ -43,7 +43,7 @@ public class EquipmentController extends HttpServlet{
 	}
 	
 	@RequestMapping("equipmenteditajax.action")
-	public void getEquipmentedit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void getEquipmentedit(HttpServletRequest req, HttpServletResponse resp) {
 		
 		
 		String oper = req.getParameter("oper");
