@@ -34,4 +34,22 @@ public class OracleEquipmentRepository implements EquipmentRepository {
 		return equipments;
 		
 	}
+
+	@Override
+	public void insertEquipment(Equipment equipment) {
+		equipmentMapper.insertEquipment(equipment);
+		
+	}
+
+	@Override
+	public void deleteEquipment(int equipment) {
+		equipmentMapper.deleteEquipment(equipment);
+		
+	}
+
+	@Override
+	public void updateEquipment(Equipment equipment) {
+		equipmentMapper.updateEquipment(equipment);
+		
+	}
 }

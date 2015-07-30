@@ -14,4 +14,47 @@
 			equipment  
 	</select>
 	
+	
+		<insert id="insertEquipment"  parameterType="Equipment">
+		INSERT INTO
+		Equipment
+		(
+			equipNo,
+			equipName,
+			modelName,
+			equipPrice,
+			equipContent
+		)
+		VALUES
+		(
+			Equipment_seq.nextval,
+			#{ equipName },
+			#{ modelName },
+			#{ equipPrice },
+			#{ equipContent }
+		)
+	</insert>
+	
+	<delete id="deleteEquipment" parameterType="int">
+		UPDATE
+			Equipment
+		SET
+			equipDeleted = '1'
+		WHERE
+			equipNo=#{ equipNo }
+	</delete>
+	
+	
+	<update id="updateEquipment" parameterType="Equipment">
+		UPDATE
+			Equipment
+		SET
+		equipName=#{equipName},
+		modelName=#{modelName},
+		equipPrice=#{equipPrice},
+		equipContent=#{equipContent}
+		WHERE
+		equipNo=#{equipNo}
+	</update>
+	
 </mapper>

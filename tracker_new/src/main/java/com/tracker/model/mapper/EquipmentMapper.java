@@ -9,4 +9,12 @@ public interface EquipmentMapper {
 
 	List<Equipment> getShowEquipmentList();
 	
+	
+	void insertEquipment(Equipment equipment);
+	
+	void deleteEquipment(int equipment);
+	
+	void updateEquipment(Equipment equipments);
+
+	
 }
