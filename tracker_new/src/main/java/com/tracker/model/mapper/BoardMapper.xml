@@ -34,7 +34,7 @@
 		boardtitle,
 		boardcontent,
 		boardregdate,
-		boarddeleted
+		boarddeleted,
 		boardreadcount	
 	</sql>
 	
@@ -43,8 +43,8 @@
 		commentwriter,
 		boardno,
 		commentcontent,
-		commentregdate
-		commentdeleted,
+		commentregdate,
+		commentdeleted
 	</sql>
 	
 	<select id="getBoardList" parameterType="Board" resultType="Board">

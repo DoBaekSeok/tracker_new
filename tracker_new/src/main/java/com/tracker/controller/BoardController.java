@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tracker.model.dto.Board;
@@ -27,17 +28,19 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
-	
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
-	public  ModelAndView getBoardList() {
+	public String getBoardList() {
+		
+		return "/board/boardlist";
+	}
+	
+	@RequestMapping(value = "listjason.action")
+	@ResponseBody
+	public  List<Board> getBoardListJson() {
 		
 		List<Board> boards = boardService.getBoardList();
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/list");
-		mav.addObject("boards", boards);
-		
-		return mav;
+				
+		return boards;
 	}
 	@RequestMapping(value = "write.action", method = RequestMethod.GET)
 	public String writeForm() {

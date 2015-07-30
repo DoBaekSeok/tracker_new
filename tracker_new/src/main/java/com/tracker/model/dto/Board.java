@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Board {
 	private int boardNo;
-	private int boardKind;
+	private String boardKind;
 	private String boardWriter;
 	private String boardTitle;
 	private String boardContent;
@@ -29,10 +29,10 @@ public class Board {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public int getBoardKind() {
+	public String getBoardKind() {
 		return boardKind;
 	}
-	public void setBoardKind(int boardKind) {
+	public void setBoardKind(String boardKind) {
 		this.boardKind = boardKind;
 	}
 	public String getBoardWriter() {

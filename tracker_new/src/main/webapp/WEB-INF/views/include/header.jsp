@@ -21,7 +21,7 @@
 					<li><a href="#company">Company</a></li>
 					<li><a href="#products">Products</a></li>
 					<li><a href="#gpstracker">GPS Tracker</a></li>
-					<li><a href="#support">Support</a></li>
+					<li><a href="/tracker/board/list.action">Support</a></li>
 					<li><a href="#join">Join</a></li>
 					<li><a href="#login">Login</a></li>
 				</ul>
