@@ -3,6 +3,7 @@ jQuery(document).ready(function (){
 		$form_login  	= $form_modal.find('#cd-login'),
 		$form_signup 	= $form_modal.find('#cd-signup'),
 		$loginUser  	= $form_modal.find('#loginUser'),
+		$createUser		= $form_modal.find('#createUser'),
 		$form_forgot_password = $form_modal.find('#cd-reset-password'),
 		$form_modal_tab = $('.cd-switcher'),
 		$tab_login 		= $form_modal_tab.children('li').eq(0).children('a'),
@@ -13,7 +14,6 @@ jQuery(document).ready(function (){
 
 	//open modal
 	$main_nav.on('click', function(event){
-		alert('commit22');
 		if( $(event.target).is($main_nav) ) {
 			// on mobile open the submenu
 			$(this).children('ul').toggleClass('is-visible');
@@ -41,26 +41,84 @@ jQuery(document).ready(function (){
 	    }
     });
 	
+	//로그인
 	$loginUser.on('click', function(event){
-		alert('서버로 가랏');
+		
+		var user_id = $('#id');
+		var user_password = $('#password');
+		
+		if(user_id.val() == "" || user_id.val() == null){
+			$("#login_message").html("<p style='color:red'>아이디를 입력 해주세요.</p>");
+			return;
+		}
+		
+
+		if(user_password.val() == "" || user_password.val() == null){
+			$("#login_message").html("<p style='color:red'>비밀번호를 입력 해주세요.</p>");
+			return;
+		}
+		
+		
 		$.ajax({
 			url : "/tracker/account/login.action",
 			async : true,
 			data : {
-				id : $('#signin-id').val(),
-				password : $('#signin-password').val()
+				id : $('#id').val(),
+				password : $('#password').val()
 			},
 			method : "post",
 			success : function(result, status, xhr){
-				alert(result.name + "/" + result.address);
+				$("#login_message").html("<p style='color:red'>로그인 성공.</p>");
 			},
 			error : function(xht, status, ex){
-				$("#message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	
+				$("#login_message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	
 			}
 		})
 		event.preventDefault();
 		
 	});
+	
+	//회원가입
+/*	$createUser.on('click', function(event){
+		txtFieldCheck();
+		
+		event.preventDefault();
+		
+	});
+	*/
+	
+	//회원가입
+	$('#cd-form').submit(function(event){
+		txtFieldCheck();
+		event.preventDefault();
+		
+	});
+
+	function txtFieldCheck() {
+			
+		// form안의 모든 text type 조회
+		var inputText = $("#cd-form input[type=text]");
+	
+		for (var i = 0; i < inputText.length; i++) {
+			if ($(inputText[i]).val() == "" || $(inputText[i]).val() == null) {
+				var ele_id = $(inputText[i]).attr("id");
+				var label_txt = $("label[for='" + ele_id + "']").text();
+			
+				showErrorMessage(ele_id, label_txt);
+	
+				return true;
+			}
+		}
+		submit();
+	}
+		
+	function showErrorMessage(ele_id, label_txt){
+		
+		$("#join_message").html("<p style='color:red'>"+label_txt+"입력해주세요.</p>");
+		
+		// 해당 id에 focus.
+		$("#" + ele_id).focus();
+	}
 	
 	
 	//switch from a tab to another

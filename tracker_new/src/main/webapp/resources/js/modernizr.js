@@ -23,7 +23,6 @@
  */
 
 window.Modernizr = (function( window, document, undefined ) {
-	var test = 'test22';
     var version = '2.7.1',
 
     Modernizr = {},

@@ -45,18 +45,19 @@
 			<div id="cd-login"> <!-- log in form -->
 				<form class="cd-form">
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-id">아이디</label>
-						<input class="full-width has-padding has-border" id="signin-id" type="text" placeholder="아이디">
+						<label class="image-replace cd-email" for="id">아이디</label>
+						<input class="full-width has-padding has-border" id="id" type="text" placeholder="아이디">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-password" for="signin-password">비밀번호</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="패스워드">
+						<label class="image-replace cd-password" for="password">비밀번호</label>
+						<input class="full-width has-padding has-border" id="password" type="text"  placeholder="패스워드">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
-
+					<div id="login_message"></div>
+					
 					<p class="fieldset">
 						<input type="checkbox" id="remember-me" checked>
 						<label for="remember-me">Remember me</label>
@@ -66,39 +67,49 @@
 						<input id="loginUser" class="full-width" type="submit" value="로그인">
 					</p>
 				</form>
-				
 				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
 				<!-- <a href="#0" class="cd-close-form">Close</a> -->
 			</div> <!-- cd-login -->
 
 			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form">
+				<form id="cd-form" class="cd-form" action="/tracker/member/register.action" method="POST">
 					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+						<label class="image-replace cd-username" for="user_id">아이디</label>
+						<input class="full-width has-padding has-border" id="id" name="id" type="text" placeholder="아이디">
+					</p>
+				
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="name">사용자 이름</label>
+						<input class="full-width has-padding has-border" id="name" name="name" type="text" placeholder="사용자 이름">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+						<label class="image-replace cd-email" for="email">E-mail</label>
+						<input class="full-width has-padding has-border" id="email" name="email" type="text" placeholder="E-mail">
 						<span class="cd-error-message">Error message here!</span>
 					</p>
 
 					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+						<label class="image-replace cd-password" for="user_password">비밀번호</label>
+						<input class="full-width has-padding has-border" id="password" name="password" type="text"  placeholder="비밀번호">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
-
+					
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="address">사용자 주소</label>
+						<input class="full-width has-padding has-border" id="address" name="address" type="text" placeholder="사용자 주소">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					<div id="join_message"></div>
 					<p class="fieldset">
 						<input type="checkbox" id="accept-terms">
 						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
 					</p>
 
 					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="회원가입">
+						<input id="createUser" class="full-width"  type="submit" value="회원가입">
 					</p>
 				</form>
 

@@ -25,17 +25,13 @@ public class MemberController {
 	}
 	
 	
-	
-	@RequestMapping(value = "register.action", method = RequestMethod.GET)
-	public String registerForm() {
-		
-		return "member/registerform";
-	}
-	
 	@RequestMapping(value="register.action", method = RequestMethod.POST)
 	public String register(@ModelAttribute Member member){
 		
-		memberService.insertMember(member);
+		if(member.getId() != null){
+			memberService.insertMember(member);
+		}
+		
 		return "redirect:/home.action";
 	}
 

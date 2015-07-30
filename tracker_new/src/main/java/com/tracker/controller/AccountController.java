@@ -25,11 +25,15 @@ public class AccountController {
 	@RequestMapping(value = "login.action", method=RequestMethod.POST)
 	@ResponseBody
 	public Member login(HttpServletRequest req){
-
-	/*	String id = req.getParameter("signin-id");
-		String password = req.getParameter("signin-password");*/
+		Member member = null;
+		String id = req.getParameter("id");
+		String password = req.getParameter("password");
 		
-		Member member = memberService.getMemberByIdAndPasswd("test4", "test4");
+		if(id == null || id.length() == 0 || password == null || password.length() == 0){
+			return member;
+		}
+		
+		member = memberService.getMemberByIdAndPasswd(id, password);
 		
 		return member;
 	}
