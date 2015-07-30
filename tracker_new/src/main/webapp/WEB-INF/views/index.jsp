@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 
-<html lang="ko">
+<html lang="ko" class="no-js">
 
 <head>
 	<meta charset="utf-8">
@@ -37,15 +37,21 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
+	
+	<!-- modal jQuery-->
+	<script src="/tracker/resources/js/modernizr.js" ></script> <!-- Modernizr -->
+	<script src="/tracker/resources/js/main.js" ></script> <!-- Gem jQuery -->
+	
+	
 	<script>
 	wow = new WOW({}).init();
 	</script>	
 </head>
 <body>	
-
 	<!-- header -->
 	<c:import url="/WEB-INF/views/include/header.jsp" />
-	    
+	
+	
 	<div class="slider">		
 		<div id="about-slider">
 			<div id="carousel-slider" class="carousel slide" data-ride="carousel">

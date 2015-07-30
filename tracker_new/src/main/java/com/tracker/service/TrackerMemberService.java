@@ -50,15 +50,14 @@ public class TrackerMemberService implements MemberService{
 	}
 
 	@Override
-	public Member getMemberByIdAndPassword(String id, String password) {
-		
+	public Member getMemberByIdAndPasswd(String id, String password) {
+		System.out.println("id 값 넘어왔니 서비스" +id);
 		Member member = memberRepository.getMemberByIdAndPasswd(id, password);
 		
-		/* Null 처리 로직*/
-		
+		if(member != null){
+			System.out.println("서비스단입니다" + member.getId());
+		}
 		return member;
 	}
-
-
 
 }

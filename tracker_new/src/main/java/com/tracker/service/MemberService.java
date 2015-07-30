@@ -16,5 +16,5 @@ public interface MemberService {
 	
 	Member getMemberById(String id);
 	
-	Member getMemberByIdAndPassword(String id, String password);
+	Member getMemberByIdAndPasswd(String id, String password);
 }

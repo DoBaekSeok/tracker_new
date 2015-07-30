@@ -22,21 +22,14 @@ public class AccountController {
 	public void setMemberService(MemberService memberSerivce){
 		this.memberService = memberSerivce;
 	}
-	
-	@RequestMapping(value = "login.action", method=RequestMethod.GET)
-	public String loginForm(){
-		
-		return "account/loginform"; 
-	}
-	
 	@RequestMapping(value = "login.action", method=RequestMethod.POST)
 	@ResponseBody
 	public Member login(HttpServletRequest req){
 
-		String id = req.getParameter("id");
-		String password = req.getParameter("password");
+	/*	String id = req.getParameter("signin-id");
+		String password = req.getParameter("signin-password");*/
 		
-		Member member = memberService.getMemberByIdAndPassword(id, password);
+		Member member = memberService.getMemberByIdAndPasswd("test4", "test4");
 		
 		return member;
 	}
