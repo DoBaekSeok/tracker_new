@@ -359,23 +359,23 @@ hr {
 }
 
 /*************************
-*******services******
+*******products******
 **************************/
-#gallery {
+#products {
 	padding-top:70px;
 	padding-bottom:70px;
 	background:#f4f4f4;
 }
-#gallery img {
+#products img {
 	border-radius:8px;
 }
 
-.gallery {
+.products {
 	margin-top:60px;
 	margin-bottom:30px;
 }
 
-#gallery .text-center {
+#products .text-center {
 	padding-top:20px;
 	margin-bottom:50px;
 	padding-bottom:20px;
@@ -392,6 +392,10 @@ figure.effect-chico:hover img {
 	opacity: 0.5;
 	-webkit-transform: scale(1);
 	transform: scale(1);
+}
+
+figure.effect-chico p {
+	height: 20px;
 }
 
 /*************************
