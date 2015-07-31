@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Bikin - HTML Bootstrap Template</title>
-
+	
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/tracker/resources/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/tracker/resources/css/font-awesome.min.css" />
@@ -26,7 +26,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	
+	<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/tracker/resources/js/jquery-2.1.1.min.js"></script>		
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -37,6 +37,7 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
+	<script src="/tracker/resources/js/tracking.js"></script>
 	<script>
 	wow = new WOW({}).init();
 	</script>	
@@ -44,55 +45,61 @@
 <body>	
 
 	<!-- header -->
-	<c:import url="./include/header.jsp" />
+	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
-	<div id="feature">
+	<div id="gpstracker">
 		<div class="container">
-			<div class="row">
-				<div class="text-center">
-					<h3>Features</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+			<div class="text-center">
+				<br /><br /><br /><br /><br />
+				<h3>Gps Tracker</h3>
+				<div id="map_view" class="container" style="width:600px;height:450px;float:left" >			
 				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-laptop"></i>						
-							<h2>Fully Responsive</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-heart-o"></i>
-							<h2>Retina Ready</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-cloud"></i>
-							<h2>Easily Customize</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-camera"></i>
-							<h2>Quality Code</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
-					</div>
+				<div style="width:480px;height:440px;float:left">
+					<table border="5" style="width:480px;height:440px;font-size:13pt;">
+						<tr style="width:480px;height:40px">
+							<td style="width:80px;text-align:center">번호</td> 
+							<td style="padding-left:10px">
+								<select id="onEquipNo" width="100px">
+								    <option value="1" selected="selected">1번 장비</option>
+								    <option value="2" >2번 장비</option>
+								    <option value="3" >3번 장비</option>
+								</select>	
+							</td>
+						</tr>
+						<tr style="width:480px;height:100px">
+							<td style="width:80px;text-align:center">위도</td> 
+							<td>
+								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+							</td>
+						</tr>
+						<tr style="width:480px;height:100px">
+							<td style="width:80px;text-align:center">경도</td> 
+							<td>
+								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+							</td>
+						</tr>
+						<tr style="width:480px;height:100px">
+							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
+							<td>
+								<textarea id="address" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								</textarea>
+							</td>
+						</tr>
+						<tr style="width:480px;height:100px">
+							<td>
+								<textarea id="address2" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								</textarea>
+							</td>
+						</tr>
+
+					</table>
+
+
 				</div>
 			</div>
 		</div>
 	</div>
-		
+		<br /><br />
 	<footer>	
 		<div class="text-center">
 			<div class="copyright">

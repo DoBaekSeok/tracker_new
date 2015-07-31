@@ -11,11 +11,12 @@
 		SELECT
 			equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
 		FROM
-			equipment  
+			equipment
+		ORDER BY equipNo DESC	
 	</select>
 	
 	
-		<insert id="insertEquipment"  parameterType="Equipment">
+	<insert id="insertEquipment"  parameterType="Equipment">
 		INSERT INTO
 		Equipment
 		(
@@ -27,7 +28,7 @@
 		)
 		VALUES
 		(
-			Equipment_seq.nextval,
+			equipment_seq.nextval,
 			#{ equipName },
 			#{ modelName },
 			#{ equipPrice },

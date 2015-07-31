@@ -48,48 +48,138 @@
 	
 	<script>
 	
-	$(document).ready(function () {
-        // 변수를 선언합니다.
-    /*     var customDialog = {
-            onclickSubmit: function (params) {
-                var selectedRow = $('#grid').getGridParam('selrow');
-                rowData = $('#grid').getRowData(selectedRow);
-                return { id: rowData.id };
-            }
-        }; */
 
-        $('#grid').jqGrid({
-            url: 'equipmentlistajax.action',	  // 조회(전체, 검색) 기능을 수행하는 서버 경로
-            editurl: 'equipmenteditajax.action', // 삽입, 삭제, 변경 기능을 수행하는 서버 경로
-            datatype: 'json',
-            pager: '#pager',  
-            caption: '장비관리',
-            height: 'auto',
-            rowNum: 10,							 // 한 페이지에 표시될 행 갯수
-            rowList: [10, 20, 30],				 // rowNum 에 대한 선택 옵션
-        	colNames : [ '순서', '장비이름', '모델명', '가격', '내용', '사진' ], // 헤더 부분
-            colModel: [														 // 바인딩 될 데이터
-                { name: 'equipNo', index: 'equipNo', width: 50, hidden:true,key:true, editable:true},
-                { name: 'equipName', index: 'equipName', width: 100, editable: true, edittype: 'text' },
-                { name: 'modelName', index: 'modelName', width: 100, editable: true, edittype: 'text' },
-                { name: 'equipPrice', index: 'equipPrice', width: 80, editable: true, edittype: 'text' },
-                { name: 'equipContent', index: 'equipContent', width: 700, editable: true, edittype: 'text' },
-                { name: 'fileToUpload', index: 'fileToUpload', width: 100, editable: true, edittype: 'file' },
-          
-            ],
-            loadError : function(xhr, status, error){
-            	console.log(error);
-            }
-        }).navGrid('#pager', {
-            search: true,
-            edit: true,
-            add: false,
-            del: true
-        });//, customDialog, {}, customDialog);
-		
-    });
     
-	
+    
+    $(document).ready(function () {
+		var template = "<div><div style='display:none;'> equipNo </div><div style='display:none;'> {equipNo} </div>";
+		template += "<div> 장비명: </div><div>{equipName} </div>";
+		template += "<div> 모델명: </div><div>{modelName} </div>";
+		template += "<div> 가격: </div><div>{equipPrice} </div>";
+		template += "<div> 내용:</div><div> {equipContent} </div>";
+		template += "<div> 사진:</div><div> {fileToUpload} </div>";
+		template += "<hr style='width:100%;'/>";
+		template += "<div> {sData} {cData}  </div></div>";
+		
+		
+        $("#jqGrid").jqGrid({
+            url: 'equipmentlistajax.action',
+			// we set the changes to be made at client side using predefined word clientArray
+            editurl: 'equipmenteditajax.action',
+            datatype: "json",
+            colModel: [
+                {
+					label: '순서',
+                    name: 'equipNo',
+                    width: 50,
+                    hidden:true,
+					key: true,
+					editable: true
+                },
+                {
+					label: '장비이름',
+                    name: 'equipName',
+                    width: 100,
+                    editable: true // must set editable to true if you want to make the field editable
+                },
+                {
+					label : '모델이름',
+                    name: 'modelName',
+                    width: 100,
+                    editable: true
+                },
+                {
+					label: '가격',
+                    name: 'equipPrice',
+                    width: 100,
+                    editable: true
+                },
+                {
+					label: '내용',
+                    name: 'equipContent',
+                    width: 700,
+                    editable: true
+                },
+                {               	
+					label: '사진명',
+                    name: 'FileName',
+                    width: 150,
+                    hidden:true,
+					key: true,
+                    editable: true,
+                    
+                    edittype: 'file'
+                },  
+                {
+                	label: '사진',
+                    name: 'Photo',
+                    width: 150,
+					align: 'center',
+                    formatter: formatImage
+                }
+            ],
+			sortname: 'equipNo',
+			sortorder : 'desc',
+			loadonce: true,
+			viewrecords: true,
+            width: '1200',
+            height: 'auto',
+            rowNum: 10,
+            pager: "#jqGridPager"                                    
+        });
+			
+        $('#jqGrid').navGrid('#jqGridPager',
+            
+            { edit: true, add: true, del: false, search: true, refresh: true, view: false, position: "left", cloneToTop: false },
+           		
+            {closeAfterEdit: true, reloadAfterSubmit: false},
+            {closeAfterAdd: true, reloadAfterSubmit: false},
+            {reloadAfterSubmit: true},
+                
+            {
+                editCaption: "The Edit Dialog",
+				template: template,
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
+            },
+            // options for the Add Dialog
+            {
+				template: template,
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
+            },
+            // options for the Delete Dailog
+            {
+                errorTextFormat: function (data) {
+                    return 'Error: ' + data.responseText
+                }
+            });
+    });
+
+    
+    
+   
+    function formatImage(cellValue, options, rowObject) {
+        var imageHtml = "<img src='img/" + cellValue + "' originalValue='" + cellValue + "' />";
+        return imageHtml;
+    }
+
+
+    function unformatImage(cellValue, options, cellObject) {
+        return $(cellObject.html()).attr("originalValue");
+    }
+
+    function formatRating(cellValue, options, rowObject) {
+        var color = (parseInt(cellValue) > 0) ? "green" : "red";
+        var cellHtml = "<span style='color:" + color + "' originalValue='" +
+                             cellValue + "'>" + cellValue + "</span>";
+
+        return cellHtml;
+    }
+
+    
 	</script>
 </head>
 <body>	
@@ -106,8 +196,8 @@
 				</div>				
 			</div>
 			<div>
-				<table id="grid"></table>
-				<div id="pager"></div>
+				  <table id="jqGrid"></table>
+   				 <div id="jqGridPager"></div>
 			</div>
 		</div>
 	</div>

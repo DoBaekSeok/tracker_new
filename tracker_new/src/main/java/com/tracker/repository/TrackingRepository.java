@@ -10,6 +10,6 @@ public interface TrackingRepository {
 
 	void insertTracking(HashMap<String, Object> params);
 	
-	Tracking getTracking(int onEquipNo);
+	List<Tracking> getTracking(int onEquipNo);
 
 }

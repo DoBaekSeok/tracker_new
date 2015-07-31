@@ -2,6 +2,8 @@ package com.tracker.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,10 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
 import com.tracker.model.dto.Member;
 import com.tracker.model.dto.Tracking;
@@ -31,55 +37,44 @@ public class TrackingController {
 		this.trackingService = trackingService;
 	}
 	
-	@RequestMapping(value = "gps.action", method = RequestMethod.GET)
-	public String tracking(int onEquipNo, HttpServletRequest req, HttpServletResponse resp) {
+	
+	@RequestMapping(value="tracking.action", method = RequestMethod.GET)
+	public String tracking(){
 		
-		Tracking tracking = trackingService.getTracking(onEquipNo);
+		return "gpstracker/gpstracker";
+	}
+	
+	@RequestMapping(value = "gps.action", method = RequestMethod.GET)
+	public @ResponseBody Map<String, Object> gpsTracking(int onEquipNo, Model model) {
+		
+		List<Tracking> tracking = trackingService.getTracking(onEquipNo);
 		
 		System.out.println("No : " + onEquipNo);
-		System.out.println(tracking);
-		System.out.println("Lat : " + tracking.getLatitude());
-		System.out.println("Lng : " + tracking.getLongitude());
+		System.out.println("Lat : " + tracking.get(0).getLatitude());
+		System.out.println("Lng : " + tracking.get(0).getLongitude());
 		
-		req.setAttribute("onEquipNo", onEquipNo);
-		req.setAttribute("latitude", tracking.getLatitude());
-		req.setAttribute("longitude", tracking.getLongitude());
+		Map<String, Object> jsonObject = new HashMap<String, Object>();
 		
-		double latitude = tracking.getLatitude();
-		double longitude = tracking.getLongitude();
+		jsonObject.put("results", tracking);
 		
-		HashMap<String, Double> location = new HashMap<String, Double>();
-		location.put("latitude", latitude);
-		location.put("longitude", longitude);
-		
-		Gson gson = new Gson();
-		
-		String json = gson.toJson(location);
-		System.out.println(json);
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		try {
-			resp.getWriter().write(json);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return "index";
+		return jsonObject;
 	}
 	
 	@RequestMapping(value="gps.action", method = RequestMethod.POST)
-	public String register(@ModelAttribute Tracking tracking){
+	public String gpsReceive(String onEquipNo, String latitude, String longitude){
 		
-			System.out.println(tracking.onEquipNo);
-			System.out.println(tracking.latitude);
-			System.out.println(tracking.longitude);
+			System.out.println(onEquipNo);
+			System.out.println(latitude);
+			System.out.println(longitude);
 			
-		if(tracking.latitude != 0 && tracking.longitude != 0){
-			trackingService.insertTracking(tracking.onEquipNo, tracking.latitude, tracking.longitude);
+		if(Double.parseDouble(latitude) != 0 && Double.parseDouble(longitude) != 0){
+			trackingService.insertTracking(
+					Integer.parseInt(onEquipNo), 
+					Double.parseDouble(latitude), 
+					Double.parseDouble(longitude));
 		}
 		
-		return "index";
+		return "gpstracker/gpstracker";
 	}
 
 }
