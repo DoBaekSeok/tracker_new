@@ -140,13 +140,8 @@
 		</div><!--/#about-slider-->
 	</div><!--/#slider-->
 	
-	<footer>
-		<div class="text-center">
-			<div class="copyright">
-				&copy; 2015 <a target="_blank" href="http://bootstraptaste.com/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">bootstraptaste</a>. All Rights Reserved.
-			</div>
-		</div>									
-	</footer>
+	<!-- header -->
+	<c:import url="/WEB-INF/views/include/footer.jsp" />	
     
 </body>
 </html>
