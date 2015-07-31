@@ -46,6 +46,17 @@
 	wow = new WOW({}).init();
 	</script>	
 	<script>
+	$(function() {
+        $( "#tabs" ).tabs({
+		    beforeLoad: function( event, ui ) {
+		        ui.jqXHR.fail(function() {
+		            ui.panel.html(
+		                "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+		                "If this wouldn't be a demo." );
+		        });
+		    }
+		});
+    });	
 	$(document).ready(function () {
 	  
 		$('#grid').jqGrid({
@@ -55,22 +66,27 @@
 	        height: '100%',
 	        rowNum: 5,									//한 페이지에 표시될 행 갯수
 	        rowList: [10, 20, 30],						//rowNum에 대한 선택 옵션
-	        colNames: ['NO', '제목', '작성자', '작성일'],
+	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
 	            { name: 'boardNo', index: 'boardNo', width: 30 },
-	            { name: 'boardTitle', index: 'boardTitle', width: 270, editable: true, edittype: 'text' },
-	            { name: 'boardWriter', index: 'boardWriter', width: 90, editable: true, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width: 80, editable: true, edittype: 'date' }
+	            { name: 'boardTitle', index: 'boardTitle', width: 270, editable: false, edittype: 'text' },
+	            { name: 'boardWriter', index: 'boardWriter', width: 90, editable: false, edittype: 'text' },
+	            { name: 'boardRegDate', index: 'boardRegDate', width: 80, editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
+	            { name: 'view', index: 'view', width: 100, editable: false, formatter: viewcontent}
 	        ],
 	        loadError : function(xhr, status, error) {
 	        	console.log(error);
 	        }
+	        
 	    }).navGrid('#pager', {
 	        search: true,
-	        edit: true,
-	        add: true,
-	        del: true
+	        edit: false,
+	        add: false,
+	        del: false
 	    });
+		function viewcontent(cellValue, options, rowdata) {
+            return "<a href='http://www.google.com' >내용보기</a>";
+        } 
 	});
 </script>
 </head>
@@ -84,13 +100,19 @@
 			<div class="row">
 				<div class="text-center">
 					<h3>Features</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+					<div id="tabs">
+						<ul>
+						    <li><a href="#tabs-2">공지사항</a></li>
+						    <li><a href="ajax/content2.html">Q & A</a></li>
+						    <li><a href="ajax/content3-slow.php">자유 게시판</a></li>
+					  	</ul>
+						<div id="tabs-2" align="center">
+							<table id="grid"></table>
+							<div id="pager"></div>
+						</div>
+					</div>
 				</div>				
-			</div>
-			<div>
-				<table id="grid"></table>
-				<div id="pager"></div>
-			</div>
+			</div>			
 		</div>
 	</div>
 
