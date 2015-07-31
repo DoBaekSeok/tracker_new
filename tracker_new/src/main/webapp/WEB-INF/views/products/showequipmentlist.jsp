@@ -47,29 +47,37 @@
 <body>	
 
 	<!-- header -->
-	<c:import url="./include/header.jsp" />
+	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
-	<div class="row">    
-	<c:choose>
-		<c:when test="${ fn:length(equipments) ne 0 }">
-			<c:forEach var="equipment" items="${ equipments }">
-				<figure class="effect-chico">									
-					<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-						<h2>${ equipment.modelName }</h2>						
-						<a href="/tracker/resources/img/equipment/tractive.png" class="flipLightBox">
-						<img src="/tracker/resources/img/equipment/tractive.png" class="img-responsive" alt="">
-						</a>
-						<p>${ equipment.equipContent }</p>
-					</div>
-				</figure>				
-			</c:forEach>
-		</c:when>
-		<c:otherwise>		
-				<div class="text-center">
-					<h2>등록된 제품이 없습니다.</h2>					
-				</div>									
-		</c:otherwise>
-	</c:choose>
+	<div id="products">
+		<div class="container">
+			<div class="text-center">
+				<h3>Product</h3>
+				<p>Preview!!!</p>
+			</div>
+			<div class="row">    
+			<c:choose>
+				<c:when test="${ fn:length(equipments) ne 0 }">
+					<c:forEach var="equipment" items="${ equipments }">
+						<figure class="effect-chico">									
+							<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+								<h2>${ equipment.modelName }</h2>						
+								<a href="/tracker/resources/img/work/5.jpg" class="flipLightBox">
+								<img src="/tracker/resources/img/work/5.jpg" class="img-responsive" alt="">
+								</a>
+								<p>${ equipment.equipContent }</p>
+							</div>
+						</figure>				
+					</c:forEach>
+				</c:when>
+				<c:otherwise>		
+						<div class="text-center">
+							<h2>등록된 제품이 없습니다.</h2>					
+						</div>									
+				</c:otherwise>
+			</c:choose>
+			</div>
+		</div>
 	</div>
 		
 	<footer>	

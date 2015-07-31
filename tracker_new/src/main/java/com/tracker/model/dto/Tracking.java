@@ -9,7 +9,14 @@ public class Tracking {
 	public double latitude;
 	public double longitude;
 	public Date savedTime;
+	public int ranking;
 	
+	public int getRanking() {
+		return ranking;
+	}
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
 	public int getTrackingNo() {
 		return trackingNo;
 	}

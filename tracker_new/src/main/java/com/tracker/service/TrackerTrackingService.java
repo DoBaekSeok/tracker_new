@@ -2,6 +2,7 @@ package com.tracker.service;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,8 +34,8 @@ public class TrackerTrackingService implements TrackingService{
 	}
 
 
-	public Tracking getTracking(int onEquipNo) {
-		Tracking tracking = trackingRepository.getTracking(onEquipNo);
+	public List<Tracking> getTracking(int onEquipNo) {
+		List<Tracking> tracking = trackingRepository.getTracking(onEquipNo);
 		return tracking;
 	}
 

@@ -79,16 +79,8 @@ jQuery(document).ready(function (){
 	});
 	
 	//회원가입
-/*	$createUser.on('click', function(event){
-		txtFieldCheck();
-		
-		event.preventDefault();
-		
-	});
-	*/
-	
-	//회원가입
 	$('#cd-form').submit(function(event){
+		
 		txtFieldCheck();
 		event.preventDefault();
 		

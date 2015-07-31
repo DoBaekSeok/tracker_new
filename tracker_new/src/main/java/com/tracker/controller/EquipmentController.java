@@ -1,10 +1,8 @@
 package com.tracker.controller;
 
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +18,7 @@ import com.tracker.service.EquipmentService;
 
 @Controller
 @RequestMapping(value = "manageequipment")
-public class EquipmentController extends HttpServlet{	
+public class EquipmentController{	
 	
 	@Autowired
 	private EquipmentService equipmentService;
@@ -82,13 +80,8 @@ public class EquipmentController extends HttpServlet{
 
 			equipmentService.EditEquipment(equipment);
 			
-		}else{
-			
-			
 		}
 		
-	
 
-	
 	}
 }

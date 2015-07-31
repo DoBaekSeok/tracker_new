@@ -30,8 +30,8 @@ public class OracleTrackingRepository implements TrackingRepository {
 	}
 
 	@Override
-	public Tracking getTracking(int onEquipNo) {
-		Tracking tracking = trackingMapper.getTracking(onEquipNo);
+	public List<Tracking> getTracking(int onEquipNo) {
+		List<Tracking> tracking = trackingMapper.getTracking(onEquipNo);
 		return tracking;
 	}
 }

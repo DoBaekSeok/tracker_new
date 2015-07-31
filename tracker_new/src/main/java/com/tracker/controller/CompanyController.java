@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("company")
+public class CompanyController {
 	
-	@RequestMapping(value = { "/", "home.action" }, method = RequestMethod.GET)
+	@RequestMapping(value = "company.action", method = RequestMethod.GET)
 	public String home() {
 		
-		return "index";
+		return "company/company";
 	}
 }
