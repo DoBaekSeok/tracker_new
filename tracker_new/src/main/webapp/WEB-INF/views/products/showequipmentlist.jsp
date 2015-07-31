@@ -66,7 +66,7 @@
 		</c:when>
 		<c:otherwise>		
 				<div class="text-center">
-					<h2>등록된 제품이 없습니다.</h2>					
+					<h2>등록된 제품이 없습니다1.</h2>					
 				</div>									
 		</c:otherwise>
 	</c:choose>
