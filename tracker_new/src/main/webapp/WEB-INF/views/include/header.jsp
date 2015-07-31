@@ -19,7 +19,7 @@
 					<li><a href="#mypage">My Page</a></li>
 					<li><a href="#managemember">회원관리</a></li>
 					<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
-					<li><a href="#company">Company</a></li>
+					<li><a href="/tracker/company/company.action">Company</a></li>
 					<li><a href="/tracker/product/product.action">Products</a></li>
 					<li><a href="/tracker/tracking/tracking.action">GPS Tracker</a></li>
 					<li><a href="/tracker/board/list.action">Support</a></li>

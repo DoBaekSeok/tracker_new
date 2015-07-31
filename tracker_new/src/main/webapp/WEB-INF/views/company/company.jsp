@@ -44,54 +44,80 @@
 <body>	
 
 	<!-- header -->
-	<c:import url="./include/header.jsp" />
+	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
-	<div id="feature">
+	<div id="our-team">
 		<div class="container">
+			<div class="text-center">
+				<h3>Company</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+			</div>
 			<div class="row">
-				<div class="text-center">
-					<h3>Features</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
-				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-laptop"></i>						
-							<h2>Fully Responsive</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
+						<img src="/tracker/resources/img/team/1.png" alt="">
+						<h2>신건식</h2>
+						<h4>Founder & CEO</h4>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
 					</div>
 				</div>
-				<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="col-md-4 wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-heart-o"></i>
-							<h2>Retina Ready</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-						</div>
+						<img src="/tracker/resources/img/team/2.png" alt="">
+						<h2>신건식</h2>
+						<h4>Creative Director</h4>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
 					</div>
 				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
+				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-cloud"></i>
-							<h2>Easily Customize</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+						<img src="/tracker/resources/img/team/3.png" alt="">
+						<h2>신건식</h2>
+						<h4>Creative Director</h4>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="team">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+						<div class="text-center">
+							<img src="/tracker/resources/img/team/team1.jpg" class="img-responsive" alt="">
+							<h2>신건식</h2>
+							<h4>Founder & CEO</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<div class="hi-icon-wrap hi-icon-effect">
-							<i class="fa fa-camera"></i>
-							<h2>Quality Code</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
+						<div class="text-center">
+							<img src="/tracker/resources/img/team/team2.jpg" class="img-responsive" alt="">
+							<h2>신건식</h2>
+							<h4>Creative Director</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
+						</div>
+					</div>
+					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
+						<div class="text-center">
+							<img src="/tracker/resources/img/team/team3.jpg" class="img-responsive" alt="">
+							<h2>신건식</h2>
+							<h4>Creative Director</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
+						</div>
+					</div>
+					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
+						<div class="text-center">
+							<img src="/tracker/resources/img/team/team4.jpg" class="img-responsive" alt="">
+							<h2>신건식</h2>
+							<h4>Creative Director</h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><!--/#our-team-->
 		
 	<footer>	
 		<div class="text-center">

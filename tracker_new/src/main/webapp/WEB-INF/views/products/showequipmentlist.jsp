@@ -49,13 +49,11 @@
 	<!-- header -->
 	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
-	<div id="product">
+	<div id="products">
 		<div class="container">
-			<div class="row">
-				<div class="text-center">
-					<h3>products</h3>
-					<p>preview!!!</p>
-				</div>				
+			<div class="text-center">
+				<h3>Product</h3>
+				<p>Preview!!!</p>
 			</div>
 			<div class="row">    
 			<c:choose>
@@ -64,8 +62,8 @@
 						<figure class="effect-chico">									
 							<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 								<h2>${ equipment.modelName }</h2>						
-								<a href="/tracker/resources/img/equipment/tractive.png" class="flipLightBox">
-								<img src="/tracker/resources/img/equipment/tractive.png" class="img-responsive" alt="">
+								<a href="/tracker/resources/img/work/5.jpg" class="flipLightBox">
+								<img src="/tracker/resources/img/work/5.jpg" class="img-responsive" alt="">
 								</a>
 								<p>${ equipment.equipContent }</p>
 							</div>
@@ -80,6 +78,7 @@
 			</c:choose>
 			</div>
 		</div>
+	</div>
 		
 	<footer>	
 		<div class="text-center">
