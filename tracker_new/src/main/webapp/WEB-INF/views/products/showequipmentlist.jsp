@@ -80,7 +80,6 @@
 			</c:choose>
 			</div>
 		</div>
-	</div>
 		
 	<footer>	
 		<div class="text-center">
