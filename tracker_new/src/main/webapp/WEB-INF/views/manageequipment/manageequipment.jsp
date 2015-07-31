@@ -191,7 +191,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
-					<h3>Features</h3>
+					<h3>장비관리</h3>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
 				</div>				
 			</div>

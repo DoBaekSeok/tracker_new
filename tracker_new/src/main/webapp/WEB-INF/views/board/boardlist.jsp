@@ -99,7 +99,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
-					<h3>Features</h3>
+					<h3>Support</h3>
 					<div id="tabs">
 						<ul>
 						    <li><a href="#tabs-2">공지사항</a></li>
