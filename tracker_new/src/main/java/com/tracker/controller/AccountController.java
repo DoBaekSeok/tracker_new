@@ -22,6 +22,7 @@ public class AccountController {
 	public void setMemberService(MemberService memberSerivce){
 		this.memberService = memberSerivce;
 	}
+	
 	@RequestMapping(value = "login.action", method=RequestMethod.POST)
 	@ResponseBody
 	public Member login(HttpServletRequest req){
