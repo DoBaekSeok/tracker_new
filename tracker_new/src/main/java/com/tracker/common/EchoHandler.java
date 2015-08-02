@@ -24,7 +24,7 @@ public class EchoHandler extends TextWebSocketHandler{
             TextMessage message) throws Exception {
     	System.out.println("{ " + session.getId() + " } 로부터 { " + message.getPayload() + " } 받음");
 
-        for(WebSocketSession sess : sessionList){
+        for(WebSocketSession sess : sessionList){ 
             sess.sendMessage(new TextMessage(session.getId() + " : " + message.getPayload()));
         }
     }    
