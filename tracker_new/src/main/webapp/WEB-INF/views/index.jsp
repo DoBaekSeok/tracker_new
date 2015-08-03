@@ -79,24 +79,24 @@
 				</div>
 				<div class="collapse navbar-collapse navbar-right">					
 					<c:choose>		            	
-		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser ne 'admin'}">
+		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
 		            		<ul class="nav navbar-nav">
-			            		<li>${ loginuser.memberId }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+		            			<li>${ loginuser.id }님 환영합니다.
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="#mypage">My Page</a></li>
 							</ul>
 		            	</c:when>
-		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser eq 'admin'}">
+		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
 		            		<ul class="nav navbar-nav">			            		
-		            			<li>${ loginuser.memberId }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+		            			<li>${ loginuser.id }님 환영합니다.
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
-			            		<li><button id='button_open_dialog'>1:1 상담</button></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#">회원관리</a></li>
 								<li><a href="#">장비관리</a></li>
@@ -109,8 +109,7 @@
 		            	<c:otherwise>
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
-			            		<li><a id="button_open_dialog">1:1 상담</a></li>
-								<li><a href="#header">Intro</a></li>
+			            		<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
