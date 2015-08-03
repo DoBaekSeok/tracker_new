@@ -51,8 +51,8 @@
 	<!-- gpstracking div 영역에 있음 -->
 		
 	<!-- modal jQuery-->
-	<script src="/tracker/resources/js/modernizr.js" ></script> <!-- Modernizr -->
-	<script src="/tracker/resources/js/main.js" ></script> <!-- Gem jQuery -->
+	<script src="/tracker/resources/js/modernizr.js" ></script> 
+	<script src="/tracker/resources/js/main.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
@@ -77,26 +77,33 @@
 					</button>
 					<a class="navbar-brand" href="/tracker/home.action">Tracker</a>
 				</div>
-				<div class="collapse navbar-collapse navbar-right">					
+				<div class="collapse navbar-collapse navbar-right">														
 					<c:choose>		            	
-		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser ne 'admin'}">
+		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">
-			            		<li>${ loginuser.memberId }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+		            			<li>${ loginuser.name }님 환영합니다.
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li>
+									<c:url value="/member/view.action" var="viewUrl">
+        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
+        							</c:url>
+        							<a href="${ viewUrl }">My Page</a>
+								</li>
 							</ul>
 		            	</c:when>
-		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser eq 'admin'}">
+		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">			            		
-		            			<li>${ loginuser.memberId }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+		            			<li>${ loginuser.name }님 환영합니다.
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
-			            		<li><button id='button_open_dialog'>1:1 상담</button></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#">회원관리</a></li>
 								<li><a href="#">장비관리</a></li>
@@ -109,8 +116,7 @@
 		            	<c:otherwise>
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
-			            		<li><a id="button_open_dialog">1:1 상담</a></li>
-								<li><a href="#header">Intro</a></li>
+			            		<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
@@ -395,8 +401,8 @@
 				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
 				</div>
 				<div style="width:480px;height:440px;float:left">
-					<table border="5" style="width:480px;height:440px;font-size:13pt;">
-						<tr style="width:480px;height:40px">
+					<table border="5" style="width:480px;height:480px;font-size:13pt;">
+						<tr style="width:480px;height:60px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
 								<select id="onEquipNo" width="100px">
@@ -404,11 +410,10 @@
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
 								&nbsp;&nbsp;
-								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="60px" height="60px">
-								&nbsp;&nbsp;
-								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="45px" height="45px">
-								
+								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
 						</tr>
 						<tr style="width:480px;height:100px">

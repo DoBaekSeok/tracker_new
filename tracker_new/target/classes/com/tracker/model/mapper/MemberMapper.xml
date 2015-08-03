@@ -69,8 +69,9 @@
 		 FROM member
 	</select>
 	
-	<select id="getMemberById" resultType="Member" parameterType="string">
-		SELECT memberId
+	<select id="getMemberById" resultMap="memberResultMap" parameterType="string">
+		SELECT 
+			<include refid="memberListColums"/>
 		FROM member
 		WHERE memberId = #{id}
 	</select>

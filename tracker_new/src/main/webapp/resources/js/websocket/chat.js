@@ -9,12 +9,20 @@ $(function() {
 	});
 	
 	$("#sendBtn").click(function(){
-		sendMessage();		
+		if(new RegExp(/^\s/).test($("#message").val()) || $("#message").val() == ""){
+			$("#message").val('').focus();
+		}else{
+			sendMessage();			
+		}
     });
 	
 	$("#message").keydown(function(key){
-		if(key.keyCode == 13){			
-			sendMessage();		
+		if(key.keyCode == 13){
+			if(new RegExp(/^\s/).test($("#message").val()) || $("#message").val() == ""){
+				$("#message").val('').focus();
+			}else{
+				sendMessage();			
+			}
 		}		
 	});
 });
@@ -31,12 +39,12 @@ sock.onclose = onClose;
 
 function sendMessage(){
 	//websocket으로 메시지를 보내겠다.
-    sock.send($("#message").val());    
+    sock.send(($("#userId").val() == 'admin' ? '관리자' : $("#userId").val()) + "#@#%&@@#@!" + $("#message").val());    
 }
         
 //evt 파라미터는 websocket이 보내준 데이터다.
 function onMessage(event){
-    var data = event.data;
+    var data = event.data;    
     $("#data").append(data + "<br />");
     $("#data").scrollTop($("#data").prop("scrollHeight"));
     $("#message").val('').focus();	    
