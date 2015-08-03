@@ -77,9 +77,10 @@
 					</button>
 					<a class="navbar-brand" href="/tracker/home.action">Tracker</a>
 				</div>
-				<div class="collapse navbar-collapse navbar-right">					
+				<div class="collapse navbar-collapse navbar-right">														
 					<c:choose>		            	
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">
 		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
@@ -98,6 +99,7 @@
 							</ul>
 		            	</c:when>
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">			            		
 		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
