@@ -65,7 +65,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "edit.action", method = RequestMethod.POST)
 	public String edit(@ModelAttribute Member member){
-		System.out.println("***************수정에서 보내는 아이디 " + member.getId());
 		
 		if(member.getId() != null){
 			memberService.updateMember(member);

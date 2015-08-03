@@ -95,7 +95,6 @@ jQuery(document).ready(function (){
 	
 	//회원정보 수정
 	$('#edit-form').submit(function(event){
-		alert('회원정보수정');
 		
 		submit();
 		event.preventDefault();
