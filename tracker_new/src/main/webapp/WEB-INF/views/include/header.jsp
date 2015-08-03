@@ -14,7 +14,7 @@
 				<a class="navbar-brand" href="/tracker/home.action">Tracker</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-right">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav">					
 					<li><a href="#header">Intro</a></li>
 					<li><a href="#mypage">My Page</a></li>
 					<li><a href="#managemember">회원관리</a></li>
