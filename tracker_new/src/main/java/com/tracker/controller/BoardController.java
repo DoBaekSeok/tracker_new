@@ -55,17 +55,18 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "view.action", method = RequestMethod.GET)
-	public ModelAndView view(@RequestParam("boardno") int boardNo) {
+	public String view(@RequestParam("boardno") int boardNo) {
+		
+		return "/board/view?boardno=" + boardNo;
+	}
+	
+	@RequestMapping(value = "viewjason.action")
+	@ResponseBody
+	public Board getBoardListByBoardNoJason(int boardNo) {
 		
 		Board board = boardService.getBoardByBoardNo(boardNo);
-		List<BoardComment> comments = boardService.getCommentListByBoardNo(boardNo);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/view");
-		mav.addObject("board", board);
-		mav.addObject("comments", comments);
-		
-		return mav;
+		return board;
 	}
 	
 	@RequestMapping(value = "update.action", method = RequestMethod.GET)
