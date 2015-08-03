@@ -49,4 +49,12 @@ public class AccountController {
 		}
 	
 	}
+	
+	@RequestMapping(value = "logout.action", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		
+		session.removeAttribute("loginuser");
+		
+		return "redirect:/home.action";
+	}
 }
