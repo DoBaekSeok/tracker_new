@@ -405,6 +405,12 @@
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
+
+								&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">
+								
 							</td>
 						</tr>
 						<tr style="width:480px;height:100px">

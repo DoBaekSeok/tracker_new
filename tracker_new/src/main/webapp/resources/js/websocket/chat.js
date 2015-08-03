@@ -9,12 +9,20 @@ $(function() {
 	});
 	
 	$("#sendBtn").click(function(){
-		sendMessage();		
+		if(new RegExp(/\s/g).test($("#message").val()) || $("#message").val() == ""){
+			$("#message").val('').focus();
+		}else{
+			sendMessage();			
+		}
     });
 	
 	$("#message").keydown(function(key){
-		if(key.keyCode == 13){			
-			sendMessage();		
+		if(key.keyCode == 13){
+			if(new RegExp(/\s/g).test($("#message").val()) || $("#message").val() == ""){
+				$("#message").val('').focus();
+			}else{
+				sendMessage();			
+			}
 		}		
 	});
 });
