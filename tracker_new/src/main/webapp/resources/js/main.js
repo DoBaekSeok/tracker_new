@@ -68,7 +68,9 @@ jQuery(document).ready(function (){
 			},
 			method : "post",
 			success : function(result, status, xhr){
+				alert(result);
 				$("#login_message").html("<p style='color:red'>로그인 성공.</p>");
+				
 			},
 			error : function(xht, status, ex){
 				$("#login_message").html("<p style='color:red'>아이디 또는 비밀번호가 잘못되었습니다.</p>");	

@@ -35,6 +35,7 @@ public class AccountController {
 		
 		member = memberService.getMemberByIdAndPasswd(id, password);
 		
+		System.out.println(member.getId());
 		return member;
 	}
 }
