@@ -1,68 +1,66 @@
    
 	var latitude = document.getElementById("latitude");
 	var longitude = document.getElementById("longitude");
-	
+	var tracking = false;
 	var latlngList = [];
 	var onEquipNo = 0;
+	var marker;
+	var map;
+	var mapOptions;	
+	var myIcon = new google.maps.MarkerImage("/tracker/resources/img/marker/iconImg.png", null, null, null, new google.maps.Size(50,50));
+	var timer;
 	
-    $(function() {
-    	initialize();
-		timer = setInterval( function () {
-	    	
-			$.ajax ({
-				url : '/tracker/tracking/gps.action',
-				type : 'GET',
-				async : false,
-				data : {
-					onEquipNo : $("#onEquipNo").val()
-				},
-				datatype : 'json',
-				success : function (data) {
-					if(onEquipNo != document.getElementById("onEquipNo").value){
-						onEquipNo = document.getElementById("onEquipNo").value;
-						initialize();	
-						map.panTo(new google.maps.LatLng(data.results[0].latitude,  data.results[0].longitude));
-						for(var i=0;i<latlngList.length;i++){
-							latlngList.length = 0;
-						}
+    initialize();
+    
+    function request(){
+    	
+    	$.ajax ({
+			url : '/tracker/tracking/gps.action',
+			type : 'GET',
+			async : false,
+			data : {
+				onEquipNo : $("#onEquipNo").val()
+			},
+			datatype : 'json',
+			success : function (data) {
+				if(onEquipNo != document.getElementById("onEquipNo").value){
+					onEquipNo = document.getElementById("onEquipNo").value;
+					initialize();	
+					map.panTo(new google.maps.LatLng(data.results[0].latitude, data.results[0].longitude));
+					for(var i=0;i<latlngList.length;i++){
+						latlngList.length = 0;
 					}
-					
-					for(var i=0;i<data.results.length;i++){
-						latlngList[i] = new google.maps.LatLng(data.results[i].latitude, data.results[i].longitude);									
-					}
-					line(latlngList);
-					
-					marker_move(data.results[0].latitude, data.results[0].longitude);
-
-					var locating = document.getElementById("latitude").value + "," + document.getElementById("longitude").value + "&language=ko";
-					var geoUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + locating;
-					$.ajax ({
-						url : geoUrl,
-						type : 'GET',
-						async : false,
-						datatype : 'json',
-						success : function (data) {
-							$('#address').val(data.results[0].formatted_address),
-							$('#address2').val(data.results[1].formatted_address)
-						}
-					});
-					
 				}
-			});
+				
+				for(var i=0;i<data.results.length;i++){
+					latlngList[i] = new google.maps.LatLng(data.results[i].latitude, data.results[i].longitude);									
+				}
+				line(latlngList);
+				
+				marker_move(data.results[0].latitude, data.results[0].longitude);
 
-		}, 3000); // 2초에 한번씩 받아온다.
-	});
-    
-    var marker;
-    var map;
-    var mapOptions;	
-    var myIcon = new google.maps.MarkerImage("/tracker/resources/img/marker/iconImg.png", null, null, null, new google.maps.Size(50,50));
-    
+				var locating = document.getElementById("latitude").value + "," + document.getElementById("longitude").value + "&language=ko";
+				var geoUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + locating;
+				$.ajax ({
+					url : geoUrl,
+					type : 'GET',
+					async : false,
+					datatype : 'json',
+					success : function (data) {
+						$('#address1').val(data.results[0].formatted_address),
+						$('#address2').val(data.results[1].formatted_address)
+					}
+				});
+				
+			}
+		});
+    }
+
 		function initialize() {
 
 			var latitude = document.getElementById("latitude");
 			var longitude = document.getElementById("longitude");
-		
+
 			var Y_point			= latitude.value;		// Y 좌표
 			var X_point			= longitude.value;		// X 좌표
 
@@ -131,4 +129,21 @@
 			document.getElementById("latitude").value = latitude;
 			document.getElementById("longitude").value = longitude;
 		}
+		
+		function trackingStart(){
+			if(tracking == true){
+				return;
+			}
+			timer = setInterval( function () { request(); }, 3000);
+			tracking = true;
+		}
+	
+		function trackingStop(){
+			clearInterval(timer);
+			tracking = false;
+		}
+	
+	
+		
+		
 		

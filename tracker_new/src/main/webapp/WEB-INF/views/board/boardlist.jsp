@@ -57,37 +57,34 @@
 		    }
 		});
     });	
+
 	$(document).ready(function () {
-	  
-		$('#grid').jqGrid({
+		var pageWidth = $("#grid2").parent().width() - 100;
+		$('#grid2').jqGrid({
 	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
-	        pager: '#pager',
-	        height: '100%',
-	        rowNum: 5,									//한 페이지에 표시될 행 갯수
-	        rowList: [10, 20, 30],						//rowNum에 대한 선택 옵션
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width: 30 },
-	            { name: 'boardTitle', index: 'boardTitle', width: 270, editable: false, edittype: 'text' },
-	            { name: 'boardWriter', index: 'boardWriter', width: 90, editable: false, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width: 80, editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
-	            { name: 'view', index: 'view', width: 100, editable: false, formatter: viewcontent}
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
+	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
+	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
+	            { name: 'view', index: 'view', width:(pageWidth*(10/100)), editable: false, formatter: viewcontent}
 	        ],
-	        loadError : function(xhr, status, error) {
-	        	console.log(error);
-	        }
-	        
-	    }).navGrid('#pager', {
-	        search: true,
-	        edit: false,
-	        add: false,
-	        del: false
+	        height: '100%',
+	        rowNum: 5,									//한 페이지에 표시될 행 갯수
+	        rowList: [5, 10, 15],						//rowNum에 대한 선택 옵션
+	        pager: '#pager2',
+	        sortname: 'boardNo',
+	        viewrecords: true,
+	        sortorder: "desc"
 	    });
+		$('#grid2').jqGrid('navGrid', '#pager2', { add:true,edit:false,del:false,search:true });
 		function viewcontent(cellValue, options, rowdata) {
             return "<a href='http://www.google.com' >내용보기</a>";
         } 
 	});
+
 </script>
 </head>
 <body>	
@@ -103,13 +100,15 @@
 					<div id="tabs">
 						<ul>
 						    <li><a href="#tabs-2">공지사항</a></li>
-						    <li><a href="ajax/content2.html">Q & A</a></li>
-						    <li><a href="ajax/content3-slow.php">자유 게시판</a></li>
+						    <li><a href="#tabs-1">Q & A</a></li>
+						    <li><a href="#tabs-3">자유 게시판</a></li>
 					  	</ul>
+						
 						<div id="tabs-2" align="center">
-							<table id="grid"></table>
-							<div id="pager"></div>
+							<table id="grid2"></table>
+							<div id="pager2"></div>
 						</div>
+						
 					</div>
 				</div>				
 			</div>			

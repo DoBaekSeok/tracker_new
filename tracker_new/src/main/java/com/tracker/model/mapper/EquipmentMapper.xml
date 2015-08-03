@@ -61,4 +61,148 @@
 		equipNo=#{equipNo}
 	</update>
 	
+	<!-- 
+	<resultMap type="Auction" id="auctionResult">
+		<id column="aucno" property="aucNo" />
+		<result column="auctitle" property="aucTitle" />
+		<result column="aucstartdate" property="aucStartDate" />
+		<result column="aucenddate" property="aucEndDate" />
+		<result column="aucitemname" property="aucItemName" />
+		<result column="auccategory" property="aucCategory" />
+		<result column="aucdetail" property="aucDetail" />
+		<result column="aucstartprice" property="aucStartPrice" />
+		<result column="aucfinalprice" property="aucFinalPrice" />
+		<result column="aucstate" property="aucState" />
+		<result column="aucregdate" property="aucRegdate" />
+		<result column="aucreportingcount" property="aucReportingCount" />
+		<result column="aucblindcheck" property="aucBlindCheck" />
+		<result column="auctype" property="aucType" />
+		<result column="aucreadcount" property="aucReadCount" />
+		<result column="aucwriter" property="aucWriter" />
+		<result column="aucadtext" property="aucAdText" />
+		<result column="aucgetter" property="aucGetter" />
+		<association property="countBidders" column="aucno" select="getCountBidders" />
+		<association property="bidding" column="aucno" select="getBiddingInfoByAucNo" />
+		<collection property="auctionImage" column="aucno" select="getAuctionImageByAuctionNo" />
+	</resultMap>
+	
+	<resultMap type="auctionImage" id="auctionImageResult">
+		<id column="aucimgno" property="aucImgNo"/>
+		<result column="aucimgname" property="aucImgName" />
+		<result column="aucno" property="aucNo" />
+		<result column="aucimgregdate" property="aucImgRegdate" />
+	</resultMap>
+
+
+	<resultMap type="Bidding" id="biddingResult">
+ 		<id column="bidno" property="bidNo" />
+		<result column="bidgettercheck" property="bidGetterCheck" />
+		<result column="aucno" property="aucNo" />
+		<result column="bidprice" property="bidPrice" />
+		<result column="mbid" property="mbId" />
+		<result column="biddate" property="bidDate" />
+	</resultMap>
+
+
+	<sql id="auctioncolumns">
+			 aucno, auctitle, aucstartdate, aucenddate, 
+			 aucitemname, auccategory, aucdetail, aucstartprice, 
+			 aucfinalprice, aucstate, aucregdate, aucreportingcount,
+			 aucblindcheck, auctype, aucreadcount, aucwriter, aucadtext, aucgetter
+	</sql>
+	
+	<sql id="insertcolumns">
+			aucno, auctitle, aucstartdate, aucenddate,  aucitemname,
+			auccategory, aucadtext, aucdetail, aucstartprice, aucwriter
+	</sql> 	
+	
+  	<insert id="insertAuction" parameterType="Auction" >
+	  <selectKey keyProperty="aucNo" order="AFTER" resultType="int" >
+	  	select SEQUENCEAUCTIONNO.currval from dual
+	  </selectKey>
+		INSERT INTO auction(aucno, auctitle, aucstartdate, aucenddate,  aucitemname,
+			auccategory, aucadtext, aucdetail, aucstartprice, aucwriter )  
+		       VALUES(SEQUENCEAUCTIONNO.nextVal, #{aucTitle}, 
+		       		  #{aucStartDate},#{aucEndDate},
+		       		  #{aucItemName}, #{aucCategory},#{aucAdText},#{aucDetail},
+		     		  #{aucStartPrice},#{aucWriter})
+	</insert> 
+	
+	<insert id="insertAuctionPhotoImage" parameterType="auctionImage">
+		INSERT INTO AUCTIONIMAGE(aucimgno, aucimgname, aucno)
+			VALUES(SEQUENCEAUCTIONIMAGENO.nextVal, #{ aucImgName }, #{ aucNo })
+	</insert> 
+	
+	
+	
+	<select id="getAuctionImageByAuctionNo" resultMap="auctionImageResult" parameterType="int">
+		select aucimgno, aucimgname, aucno
+		from AUCTIONIMAGE
+		where aucno = #{ aucNo }
+	</select>
+	
+	
+	
+	
+	<select id="getAuctionList" resultMap="auctionResult" parameterType="int">
+		select  aucno, auctitle, aucstartdate, aucenddate, 
+			 aucitemname, auccategory, aucdetail, aucstartprice, aucstate,auctype, aucwriter, aucadtext
+		from AUCTION
+		order By
+		aucno DESC
+	</select>
+	
+	
+	<select id="getAuctionDetailByAuctioNo" resultMap="auctionResult" parameterType="int">
+		select  aucno, auctitle, aucstartdate, aucenddate, 
+			 aucitemname, auccategory, aucdetail, aucstartprice, aucstate,auctype, aucwriter, aucadtext
+		from AUCTION
+		where aucno = #{ aucNo }
+	</select>
+	
+
+	<update id="updateAuctionReportCount" parameterType="int">
+	     update auction 
+   		set aucreportingcount = (select aucreportingcount from auction where aucno= #{ aucNo }) +1
+   		where aucno =#{ aucNo }
+	</update>
+
+	<select id="getBiddingInfoByAucNo" resultMap="biddingResult" parameterType="int">
+		select bidprice, mbid
+		from bidding
+		where aucno = #{ aucNo } and bidprice = (select max(bidprice) from bidding where aucno= #{aucNo})
+	</select>
+	
+	<select id="getCountBidders" resultType="int" parameterType="int">
+		select count(*) from bidding where aucno= #{aucNo}
+	</select>
+
+ 	<update id="updateReportingCount" parameterType="int">
+		update auction set aucreportingcount= (select aucreportingcount from auction where aucno = #{aucNo}) +1 where aucno= #{aucNo};	
+	</update> 
+ 관리자 auction controller 
+	<select id="getAuctionListByAdmin" resultMap="auctionResult">
+		select  <include refid="auctioncolumns" />
+		from AUCTION
+		where aucblindcheck != 1
+		order By
+		aucno DESC
+	</select>
+	<select id="getAucReportList" resultMap="auctionResult">
+				select  <include refid="auctioncolumns" />
+		from AUCTION
+		where aucreportingcount >= 1
+		order By
+		aucno DESC
+	</select>
+	<update id="setBlindAuction" parameterType="int">
+		update auction 
+		set aucblindcheck = 1 
+		where aucno = #{ aucNo }
+	</update>
+
+</mapper>
+-->
+	
+	
 </mapper>
