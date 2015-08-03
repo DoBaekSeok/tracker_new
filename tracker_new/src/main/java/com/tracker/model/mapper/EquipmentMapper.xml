@@ -13,7 +13,6 @@
 		<result column="modelname" property="modelName" />
 		<result column="equipprice" property="equipPrice" />
 		<result column="equipcontent" property="equipContent" />
-		<result column="savedfilename" property="SavedFileName" />
 		<association property="savedfilename" column="equipno" select="getShowEquipmentList" />
 	</resultMap>
 	
