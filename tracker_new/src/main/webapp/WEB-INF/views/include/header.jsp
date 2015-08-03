@@ -1,3 +1,5 @@
+<%@page import="com.tracker.model.dto.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <header id="header">
@@ -16,7 +18,9 @@
 			<div class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li><a href="#header">Intro</a></li>
-					<li><a href="#mypage">My Page</a></li>
+					<%if( session.getAttribute("loginuser") != null) {%>
+						<li><a href="#mypage">My Page</a></li>
+					<%} %>
 					<li><a href="#managemember">회원관리</a></li>
 					<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 					<li><a href="/tracker/company/company.action">Company</a></li>
