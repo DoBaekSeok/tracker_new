@@ -57,7 +57,7 @@
 		template += "<div> 모델명: </div><div>{modelName} </div>";
 		template += "<div> 가격: </div><div>{equipPrice} </div>";
 		template += "<div> 내용:</div><div> {equipContent} </div>";
-		template += "<div> 사진:</div><div> {FileName} </div>";
+		template += "<div> 사진:</div><div> {Photo} </div>";
 		template += "<hr style='width:100%;'/>";
 		template += "<div> {sData} {cData}  </div></div>";
 		
@@ -102,7 +102,7 @@
                 },
                 {               	
 					label: '사진명',
-                    name: 'FileName',
+                    name: 'SavedFileName',
                     width: 150,
 					key: true,
                     editable: true,
