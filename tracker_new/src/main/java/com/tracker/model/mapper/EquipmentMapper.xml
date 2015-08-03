@@ -6,18 +6,58 @@
   
 <!-- namespace : 패키지명.클래스이름 을 논리적으로 선언 -->
 <mapper namespace="com.tracker.model.mapper.EquipmentMapper">
+	
+	<resultMap type="Equipment" id="equipmentResult">
+		<id column="equipno" property="equipNo" />
+		<result column="equipname" property="equipName" />
+		<result column="modelname" property="modelName" />
+		<result column="equipprice" property="equipPrice" />
+		<result column="equipcontent" property="equipContent" />
+		<result column="savedfilename" property="SavedFileName" />
+		<association property="savedfilename" column="equipno" select="getShowEquipmentList" />
+	</resultMap>
+	
+	
+	<resultMap type="savedfilename" id="savedfilenameResult">
+		<id column="equipphotono" property="EquipPhotoNo"/>
+		<result column="savedfilename" property="SavedFileName" />
+		<result column="equipno" property="equipNo" />
+	</resultMap>
+	
+	<select id="getShowEquipmentList" resultMap="equipmentResult" parameterType="int">
+		select  equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
+		from Equipment
+		order By
+		equipNo DESC
+	</select>
 
-
-	<select id="getShowEquipmentList" resultType="Equipment">
+<!-- 기존 SQL -->
+<!-- 	<select id="getShowEquipmentList" resultType="Equipment">
 		SELECT
 			equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
 		FROM
 			equipment
 		ORDER BY equipNo DESC	
-	</select>
+	</select> -->
 	
 	
-	<insert id="insertEquipment"  parameterType="Equipment">
+	 <insert id="insertEquipment" parameterType="Equipment" >
+	  <selectKey keyProperty="equipNo" order="AFTER" resultType="int" >
+	  	select EQUIPPHOTO_SEQ.currval from dual
+	  </selectKey>
+		INSERT INTO Equipment(equipNo, equipName, modelName, equipPrice, equipContent)  
+		       VALUES(EQUIPMENT_SEQ.nextVal, #{equipName}, 
+		       		  #{modelName},#{equipPrice},
+		       		  #{equipContent}
+	</insert> 
+	
+	<insert id="insertAuctionPhotoImage" parameterType="auctionImage">
+		INSERT INTO EquipPhoto(EquipPhotoNo, SavedFileName, equipNo)
+			VALUES(EQUIPPHOTO_SEQ.nextVal, #{ SavedFileName }, #{ equipNo })
+	</insert> 
+	
+<!-- 기존 SQL문 -->
+<!-- 	<insert id="insertEquipment"  parameterType="Equipment">
 		INSERT INTO
 		Equipment
 		(
@@ -35,7 +75,7 @@
 			#{ equipPrice },
 			#{ equipContent }
 		)
-	</insert>
+	</insert> -->
 	
 
 	
