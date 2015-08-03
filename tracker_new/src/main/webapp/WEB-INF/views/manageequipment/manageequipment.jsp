@@ -57,7 +57,7 @@
 		template += "<div> 모델명: </div><div>{modelName} </div>";
 		template += "<div> 가격: </div><div>{equipPrice} </div>";
 		template += "<div> 내용:</div><div> {equipContent} </div>";
-		template += "<div> 사진:</div><div> {Photo} </div>";
+		template += "<div> 사진:</div><div> {equipPhoto} </div>";
 		template += "<hr style='width:100%;'/>";
 		template += "<div> {sData} {cData}  </div></div>";
 		
@@ -101,23 +101,20 @@
                     editable: true
                 },
                 {               	
-					label: '사진명',
-                    name: 'SavedFileName',
+					label: '사진',
+                    name: 'equipPhoto',
+                    jsonmap: 'equipPhoto.savedFileName',
                     width: 150,
 					key: true,
+					enctype: "multipart/form-data",
                     editable: true,
                     edittype: 'file',
+                    align: 'center',
+					formatter : formatImage  
+
                 },  
-                {
-                	label: '사진',
-                    name: 'Photo',
-                    width: 150,
-					align: 'center',
-                    formatter: formatImage
-                }
+  
             ],
-			sortname: 'equipNo',
-			sortorder : 'desc',
 			loadonce: true,
 			viewrecords: true,
             width: '1200',
@@ -160,7 +157,7 @@
     
    
     function formatImage(cellValue, options, rowObject) {
-        var imageHtml = "<img src='img/product" + cellValue + "' originalValue='" + cellValue + "' />";
+        var imageHtml = "<img width='150' height='100' src='/tracker/resources/img/product/" + cellValue + "'/>";
         return imageHtml;
     }
 
@@ -183,7 +180,7 @@
 <body>	
 
 	<!-- header -->
-	<c:import url="/WEB-INF/views/include/header.jsp" />
+<%-- 	<c:import url="/WEB-INF/views/include/header.jsp" / --%>>
 	
 	<div id="feature">
 		<div class="container">

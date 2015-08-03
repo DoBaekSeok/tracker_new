@@ -26,10 +26,10 @@ public class OracleEquipmentRepository implements EquipmentRepository {
 	}
 
 	@Override
-	public List<Equipment> getShowEquipmentList() {
+	public List<Equipment> getEquipment() {
 		
 		// 데이터베이스에서 장비 리스트 조회
-		List<Equipment> equipments = equipmentMapper.getShowEquipmentList();
+		List<Equipment> equipments = equipmentMapper.getEquipment();
 		
 		return equipments;
 		

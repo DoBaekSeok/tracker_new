@@ -13,22 +13,25 @@
 		<result column="modelname" property="modelName" />
 		<result column="equipprice" property="equipPrice" />
 		<result column="equipcontent" property="equipContent" />
-		<association property="savedfilename" column="equipno" select="getShowEquipmentList" />
+		<association property="equipPhoto" column="equipno" select="getEquipPhoto" />
 	</resultMap>
 	
 	
-	<resultMap type="savedfilename" id="savedfilenameResult">
+	<resultMap type="EquipPhoto" id="equipPhotoResult">
 		<id column="equipphotono" property="EquipPhotoNo"/>
 		<result column="savedfilename" property="SavedFileName" />
 		<result column="equipno" property="equipNo" />
 	</resultMap>
-	
-	<select id="getShowEquipmentList" resultMap="equipmentResult" parameterType="int">
-		select  equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
-		from Equipment
-		order By
-		equipNo DESC
+	<select id="getEquipment" resultMap="equipmentResult">
+	  select equipno, equipname, modelname, equipprice, equipcontent
+	  from Equipment
 	</select>
+	<select id='getEquipPhoto' resultMap="equipPhotoResult" parameterType="int">
+		select equipphotono, savedfilename, equipno
+		from EquipPhoto
+		where equipno = #{ equipNo }
+	</select>
+	
 
 <!-- 기존 SQL -->
 <!-- 	<select id="getShowEquipmentList" resultType="Equipment">
@@ -40,20 +43,21 @@
 	</select> -->
 	
 	
-	 <insert id="insertEquipment" parameterType="Equipment" >
+ 	<insert id="insertEquipment" parameterType="Equipment" >
 	  <selectKey keyProperty="equipNo" order="AFTER" resultType="int" >
-	  	select EQUIPPHOTO_SEQ.currval from dual
+	  	select EQUIPMENT_SEQ.currval from dual
 	  </selectKey>
 		INSERT INTO Equipment(equipNo, equipName, modelName, equipPrice, equipContent)  
 		       VALUES(EQUIPMENT_SEQ.nextVal, #{equipName}, 
 		       		  #{modelName},#{equipPrice},
 		       		  #{equipContent}
+		       		  )
 	</insert> 
 	
-	<insert id="insertAuctionPhotoImage" parameterType="auctionImage">
+	<insert id="insertEquipmentPhoto" parameterType="EquipPhoto">
 		INSERT INTO EquipPhoto(EquipPhotoNo, SavedFileName, equipNo)
 			VALUES(EQUIPPHOTO_SEQ.nextVal, #{ SavedFileName }, #{ equipNo })
-	</insert> 
+	</insert>  
 	
 <!-- 기존 SQL문 -->
 <!-- 	<insert id="insertEquipment"  parameterType="Equipment">
@@ -79,7 +83,7 @@
 
 	
 
-	<delete id="deleteEquipment" parameterType="int">
+<!-- 	<delete id="deleteEquipment" parameterType="int">
 		UPDATE
 			Equipment
 		SET
@@ -99,62 +103,18 @@
 		equipContent=#{equipContent}
 		WHERE
 		equipNo=#{equipNo}
-	</update>
+	</update> -->
 	
 	<!-- 
-	<resultMap type="Auction" id="auctionResult">
-		<id column="aucno" property="aucNo" />
-		<result column="auctitle" property="aucTitle" />
-		<result column="aucstartdate" property="aucStartDate" />
-		<result column="aucenddate" property="aucEndDate" />
-		<result column="aucitemname" property="aucItemName" />
-		<result column="auccategory" property="aucCategory" />
-		<result column="aucdetail" property="aucDetail" />
-		<result column="aucstartprice" property="aucStartPrice" />
-		<result column="aucfinalprice" property="aucFinalPrice" />
-		<result column="aucstate" property="aucState" />
-		<result column="aucregdate" property="aucRegdate" />
-		<result column="aucreportingcount" property="aucReportingCount" />
-		<result column="aucblindcheck" property="aucBlindCheck" />
-		<result column="auctype" property="aucType" />
-		<result column="aucreadcount" property="aucReadCount" />
-		<result column="aucwriter" property="aucWriter" />
-		<result column="aucadtext" property="aucAdText" />
-		<result column="aucgetter" property="aucGetter" />
-		<association property="countBidders" column="aucno" select="getCountBidders" />
-		<association property="bidding" column="aucno" select="getBiddingInfoByAucNo" />
-		<collection property="auctionImage" column="aucno" select="getAuctionImageByAuctionNo" />
-	</resultMap>
 	
-	<resultMap type="auctionImage" id="auctionImageResult">
-		<id column="aucimgno" property="aucImgNo"/>
-		<result column="aucimgname" property="aucImgName" />
-		<result column="aucno" property="aucNo" />
-		<result column="aucimgregdate" property="aucImgRegdate" />
-	</resultMap>
-
-
-	<resultMap type="Bidding" id="biddingResult">
- 		<id column="bidno" property="bidNo" />
-		<result column="bidgettercheck" property="bidGetterCheck" />
-		<result column="aucno" property="aucNo" />
-		<result column="bidprice" property="bidPrice" />
-		<result column="mbid" property="mbId" />
-		<result column="biddate" property="bidDate" />
-	</resultMap>
-
-
-	<sql id="auctioncolumns">
-			 aucno, auctitle, aucstartdate, aucenddate, 
-			 aucitemname, auccategory, aucdetail, aucstartprice, 
-			 aucfinalprice, aucstate, aucregdate, aucreportingcount,
-			 aucblindcheck, auctype, aucreadcount, aucwriter, aucadtext, aucgetter
-	</sql>
 	
-	<sql id="insertcolumns">
-			aucno, auctitle, aucstartdate, aucenddate,  aucitemname,
-			auccategory, aucadtext, aucdetail, aucstartprice, aucwriter
-	</sql> 	
+
+
+
+
+
+
+	
 	
   	<insert id="insertAuction" parameterType="Auction" >
 	  <selectKey keyProperty="aucNo" order="AFTER" resultType="int" >

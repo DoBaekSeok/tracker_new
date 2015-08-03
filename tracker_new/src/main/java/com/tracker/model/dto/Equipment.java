@@ -10,7 +10,7 @@ public class Equipment implements Serializable{
 	private int equipPrice; 
 	private String equipContent; 
 	private String equipDeleted;
-	private String equipPhoto;
+	private EquipPhoto equipPhoto;
 	
 	public Equipment(){}
 
@@ -62,13 +62,14 @@ public class Equipment implements Serializable{
 		this.equipDeleted = equipDeleted;
 	}
 
-	public String getEquipPhoto() {
+	public EquipPhoto getEquipPhoto() {
 		return equipPhoto;
 	}
 
-	public void setEquipPhoto(String equipPhoto) {
-		this.equipPhoto = equipPhoto;
-	}
+
+
+
+
 
 
 	
