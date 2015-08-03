@@ -441,6 +441,7 @@
 				</div>
 			</div>
 		</div>
+		<script src="/tracker/resources/js/tracking.js"></script>
 	</div><!--/#gpstracker-->
 	<br /><br />
 	
