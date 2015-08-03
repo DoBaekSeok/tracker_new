@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
-
+<!-- modified 2015-08-03 -->
 <html lang="ko" class="no-js">
 
 <head>
