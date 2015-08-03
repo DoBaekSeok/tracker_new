@@ -89,13 +89,13 @@
 								<li><a href="/tracker/board/list.action">Support</a></li>
 								<li><a href="#mypage">My Page</a></li>
 								<li>${ loginuser.id }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 							</ul>
 		            	</c:when>
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
 		            		<ul class="nav navbar-nav">			            		
 		            			<li>${ loginuser.id }님 환영합니다.
-			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#">회원관리</a></li>
