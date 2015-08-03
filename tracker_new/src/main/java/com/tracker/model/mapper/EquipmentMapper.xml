@@ -7,6 +7,7 @@
 <!-- namespace : 패키지명.클래스이름 을 논리적으로 선언 -->
 <mapper namespace="com.tracker.model.mapper.EquipmentMapper">
 
+
 	<select id="getShowEquipmentList" resultType="Equipment">
 		SELECT
 			equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
