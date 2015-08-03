@@ -37,7 +37,7 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
-	<script src="/tracker/resources/js/tracking.js"></script>
+
 	<script>
 	wow = new WOW({}).init();
 	</script>	
@@ -52,7 +52,7 @@
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
 				<h3>Gps Tracker</h3>
-				<div id="map_view" class="container" style="width:600px;height:450px;float:left" >			
+				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
 				</div>
 				<div style="width:480px;height:440px;float:left">
 					<table border="5" style="width:480px;height:440px;font-size:13pt;">
@@ -64,6 +64,11 @@
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+								&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="60px" height="60px">
+								&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="45px" height="45px">
+								
 							</td>
 						</tr>
 						<tr style="width:480px;height:100px">
@@ -81,7 +86,7 @@
 						<tr style="width:480px;height:100px">
 							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
 							<td>
-								<textarea id="address" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address1" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>
@@ -94,10 +99,10 @@
 
 					</table>
 
-
 				</div>
 			</div>
 		</div>
+		<script src="/tracker/resources/js/tracking.js"></script>
 	</div>
 		<br /><br />
 	<footer>	
