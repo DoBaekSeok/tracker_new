@@ -83,6 +83,7 @@
 		            		<ul class="nav navbar-nav">
 			            		<li>${ loginuser.memberId }님 환영합니다.
 			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
@@ -94,6 +95,8 @@
 		            		<ul class="nav navbar-nav">			            		
 		            			<li>${ loginuser.memberId }님 환영합니다.
 			            		<a href="/mvcdemoweb3/account/logout.action">로그아웃</a></li>
+			            		<li><a id="button_open_dialog">1:1 상담</a></li>
+			            		<li><button id='button_open_dialog'>1:1 상담</button></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#">회원관리</a></li>
 								<li><a href="#">장비관리</a></li>
@@ -104,8 +107,9 @@
 							</ul>
 		            	</c:when>
 		            	<c:otherwise>
-		            		<ul class="nav navbar-nav">			            		
+		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
+			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
@@ -272,16 +276,6 @@
 			</div> <!--/#carousel-slider-->
 		</div><!--/#about-slider-->
 	</div><!--/#slider-->
-	
-	<div id="chat">
-		<div class="container">
-			<div class="text-center">
-				<h3>1:1 상담</h3>
-				<p>상담!!!</p>	
-				<button id='button_open_dialog'>1:1 상담</button>				
-			</div>						
-		</div>
-	</div><!--/#chat-->
 		
 	<div id="dialog" title="1:1 상담">
 		<div id="data"></div>

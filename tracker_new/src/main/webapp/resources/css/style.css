@@ -276,9 +276,13 @@ hr {
 *******chat******
 **************************/
 #chat {
-	padding-top:50px;
-	background:#fff;
-	padding-bottom:70px;
+	padding-top: 50px;
+	background: #fff;
+	padding-bottom: 70px;
+}
+
+#button_open_dialog {
+	cursor: pointer;
 }
 
 /*************************
