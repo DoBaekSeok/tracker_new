@@ -123,7 +123,7 @@
             width: '1200',
             height: 'auto',
             rowNum: 10,
-            pager: "#jqGridPager"                                    
+            pager: "#jqGridPager"
         });
 			
         $('#jqGrid').navGrid('#jqGridPager',
@@ -160,7 +160,7 @@
     
    
     function formatImage(cellValue, options, rowObject) {
-        var imageHtml = "<img src='img/" + cellValue + "' originalValue='" + cellValue + "' />";
+        var imageHtml = "<img src='img/product" + cellValue + "' originalValue='" + cellValue + "' />";
         return imageHtml;
     }
 

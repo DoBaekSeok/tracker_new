@@ -16,26 +16,45 @@
 	</select>
 	
 	
+
+	
 	<insert id="insertEquipment"  parameterType="Equipment">
+	
+
 		INSERT INTO
 		Equipment
 		(
-			equipNo,
-			equipName,
-			modelName,
-			equipPrice,
-			equipContent
+			equipNo, equipName, modelName, equipPrice, equipContent
 		)
 		VALUES
 		(
-			equipment_seq.nextval,
-			#{ equipName },
-			#{ modelName },
-			#{ equipPrice },
-			#{ equipContent }
+			equipment_seq.nextval, #{ equipName }, #{ modelName }, #{ equipPrice }, #{ equipContent }
+		)
+		
+	
+	</insert>
+	
+		<insert id="insertEquipmentPhoto"  parameterType="EquipPhoto">
+		INSERT INTO
+		Equipment
+		(
+			EQUIPPHOTONO,
+			SAVEDFILENAME,
+			SAVEDFILENAME,
+			EQUIPPHOTODELETED,
+			EQUIPNO,
+		)
+		VALUES
+		(
+			equipphoto_seq.nextval,
+			#{ SAVEDFILENAME },
+			#{ SAVEDFILENAME },
+			#{ EQUIPPHOTODELETED },
+			#{ EQUIPNO }
 		)
 	</insert>
 	
+
 	<delete id="deleteEquipment" parameterType="int">
 		UPDATE
 			Equipment

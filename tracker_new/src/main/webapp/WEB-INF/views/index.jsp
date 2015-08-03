@@ -48,7 +48,7 @@
 	<script src="/tracker/resources/js/websocket/sockjs-0.3.4.min.js"></script>
 	
 	<!-- tracking js-->
-	<script src="/tracker/resources/js/tracking.js"></script>
+	<!-- <script src="/tracker/resources/js/tracking.js"></script> -->
 		
 	<!-- modal jQuery-->
 	<script src="/tracker/resources/js/modernizr.js" ></script> <!-- Modernizr -->
@@ -115,6 +115,7 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 							</ul>
 		            	</c:otherwise>
 		            </c:choose>
