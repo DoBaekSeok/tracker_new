@@ -55,7 +55,7 @@
 			<div class="row">
 				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
-						<img src="/tracker/resources/img/team/1.png" alt="">
+						<img src="/tracker/resources/img/team/2.png" alt="">
 						<h2>신건식</h2>
 						<h4>Founder & CEO</h4>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
@@ -71,7 +71,7 @@
 				</div>
 				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
 					<div class="text-center">
-						<img src="/tracker/resources/img/team/3.png" alt="">
+						<img src="/tracker/resources/img/team/2.png" alt="">
 						<h2>신건식</h2>
 						<h4>Creative Director</h4>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
@@ -84,7 +84,7 @@
 				<div class="row">
 					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
 						<div class="text-center">
-							<img src="/tracker/resources/img/team/team1.jpg" class="img-responsive" alt="">
+							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
 							<h2>신건식</h2>
 							<h4>Founder & CEO</h4>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
@@ -92,7 +92,7 @@
 					</div>
 					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
 						<div class="text-center">
-							<img src="/tracker/resources/img/team/team2.jpg" class="img-responsive" alt="">
+							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
 							<h2>신건식</h2>
 							<h4>Creative Director</h4>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
@@ -100,7 +100,7 @@
 					</div>
 					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
 						<div class="text-center">
-							<img src="/tracker/resources/img/team/team3.jpg" class="img-responsive" alt="">
+							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
 							<h2>신건식</h2>
 							<h4>Creative Director</h4>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
@@ -108,7 +108,7 @@
 					</div>
 					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
 						<div class="text-center">
-							<img src="/tracker/resources/img/team/team4.jpg" class="img-responsive" alt="">
+							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
 							<h2>신건식</h2>
 							<h4>Creative Director</h4>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
