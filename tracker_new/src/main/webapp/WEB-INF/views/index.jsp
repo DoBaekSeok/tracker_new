@@ -395,8 +395,8 @@
 				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
 				</div>
 				<div style="width:480px;height:440px;float:left">
-					<table border="5" style="width:480px;height:440px;font-size:13pt;">
-						<tr style="width:480px;height:40px">
+					<table border="5" style="width:480px;height:480px;font-size:13pt;">
+						<tr style="width:480px;height:60px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
 								<select id="onEquipNo" width="100px">
@@ -404,10 +404,10 @@
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
 								&nbsp;&nbsp;
-								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="60px" height="60px">
-								&nbsp;&nbsp;
-								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="45px" height="45px">
+								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">
 								
 							</td>
 						</tr>
