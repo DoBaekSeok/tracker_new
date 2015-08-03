@@ -27,26 +27,25 @@ public class TrackerMemberService implements MemberService{
 
 	@Override
 	public void updateMember(Member member) {
-		// TODO Auto-generated method stub
+		memberRepository.updateMember(member);
 		
 	}
 
 	@Override
 	public void deleteMember(Member member) {
-		// TODO Auto-generated method stub
-		
+		memberRepository.deleteMember(member);
 	}
 
 	@Override
 	public List<Member> getMemberList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> members = memberRepository.getMemberList();
+		return members;
 	}
 
 	@Override
 	public Member getMemberById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = memberRepository.getMemberById(id);
+		return member;
 	}
 
 	@Override

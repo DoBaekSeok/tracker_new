@@ -92,7 +92,15 @@ jQuery(document).ready(function (){
 		event.preventDefault();
 		
 	});
-
+	
+	//회원정보 수정
+	$('#edit-form').submit(function(event){
+		alert('회원정보수정');
+		
+		submit();
+		event.preventDefault();
+		
+	});
 	function txtFieldCheck() {
 			
 		// form안의 모든 text type 조회

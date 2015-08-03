@@ -51,8 +51,8 @@
 	<!-- gpstracking div 영역에 있음 -->
 		
 	<!-- modal jQuery-->
-	<script src="/tracker/resources/js/modernizr.js" ></script> <!-- Modernizr -->
-	<script src="/tracker/resources/js/main.js" ></script> <!-- Gem jQuery -->
+	<script src="/tracker/resources/js/modernizr.js" ></script> 
+	<script src="/tracker/resources/js/main.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
@@ -81,7 +81,7 @@
 					<c:choose>		            	
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
 		            		<ul class="nav navbar-nav">
-		            			<li>${ loginuser.id }님 환영합니다.
+		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
@@ -89,12 +89,17 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
-								<li><a href="#mypage">My Page</a></li>
+								<li>
+									<c:url value="/member/view.action" var="viewUrl">
+        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
+        							</c:url>
+        							<a href="${ viewUrl }">My Page</a>
+								</li>
 							</ul>
 		            	</c:when>
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
 		            		<ul class="nav navbar-nav">			            		
-		            			<li>${ loginuser.id }님 환영합니다.
+		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
