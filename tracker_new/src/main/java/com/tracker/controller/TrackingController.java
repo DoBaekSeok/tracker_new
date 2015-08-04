@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -39,13 +40,6 @@ public class TrackingController {
 		this.trackingService = trackingService;
 	}
 	
-	
-	@RequestMapping(value="tracking.action", method = RequestMethod.GET)
-	public String tracking(){
-		
-		return "gpstracker/gpstracker";
-	}
-	
 	@RequestMapping(value = "gps.action", method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> gpsTracking(int onEquipNo, Model model) {
 		
@@ -76,7 +70,7 @@ public class TrackingController {
 					Double.parseDouble(longitude));
 		}
 		
-		return "gpstracker/gpstracker";
+		return "index";
 	}
 	
 	@RequestMapping(value="regist.action", method = RequestMethod.POST)
@@ -84,9 +78,7 @@ public class TrackingController {
 		
 		trackingService.registEquipment(memberId, equipNo, serialNumber);
 		
-		
-		
-		return "gpstracker/gpstracker";
+		return "index";
 	}
 	
 	@RequestMapping(value="delete.action", method = RequestMethod.POST)
@@ -94,28 +86,29 @@ public class TrackingController {
 		
 		trackingService.deletedOnEquip(onEquipNo);
 		
-		return "gpstracker/gpstracker";
+		return "index";
 	}
 	
-	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
-	public ModelAndView getSerialNumber(String memberId){
+	@RequestMapping(value="getserial.action", method = RequestMethod.GET)
+	public ModelAndView getSerialNumber(HttpSession sesson){
 		
+		Member loginUser = null;
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		if(sesson.getAttribute("loginuser") == null){
+			return mav;
+		}
+		loginUser = (Member) sesson.getAttribute("loginuser");
+		String memberId = loginUser.getId();
 		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("products/showequipmentlist");
-		mav.addObject("serialnumbers", serialNumbers);
-				
+		mav.addObject("serialNumbers", serialNumbers);
+		
 		return mav;
 
 	}
 
 }
-
-
-
-
-
 
 
 

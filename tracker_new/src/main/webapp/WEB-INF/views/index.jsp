@@ -399,18 +399,34 @@
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
 				<h3>Gps Tracker</h3>
-				<div id="map_view" class="container" style="width:600px;height:450px;float:left" >			
+				<div id="map_view" class="container" style="width:600px;height:470px;float:left" >			
 				</div>
-				<div style="width:480px;height:440px;float:left">
-					<table border="5" style="width:480px;height:440px;font-size:13pt;">
+				<div style="width:480px;height:470px;float:left">
+					<table border="5" style="width:480px;height:470px;font-size:13pt;">
 						<tr style="width:480px;height:40px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
+							<a href="/tracker/tracking/getserial.action" >장비 조회</a>
+							&nbsp;&nbsp;
+							<c:choose>		            	
+				            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
+					            	<select id="onEquipNo" width="100px">
+					            		<option value="0" selected="selected">장비 선택</option>
+					            		<c:forEach var="serialNumber" items="${ serialNumbers }">
+											 <option value="${serialNumber}" >${serialNumber}</option>
+										</c:forEach>
+									</select>	
+				            	</c:when>
+				            	<c:otherwise>
 								<select id="onEquipNo" width="100px">
-								    <option value="1" selected="selected">1번 장비</option>
+									<option value="0" selected="selected">장비 선택(other)</option>
+								    <option value="1" >1번 장비</option>
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+				            	</c:otherwise>
+				            </c:choose>
+							
 								&nbsp;&nbsp;&nbsp;&nbsp;
 								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
 
