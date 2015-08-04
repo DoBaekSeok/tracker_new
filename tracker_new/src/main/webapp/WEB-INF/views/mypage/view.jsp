@@ -52,11 +52,13 @@
 		
 	<!-- modal jQuery-->
 	<script src="/tracker/resources/js/modernizr.js" ></script> 
-	<script src="/tracker/resources/js/main.js" ></script> 
+	<script src="/tracker/resources/js/member.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
-		
+				<style type="text/css">
+
+</style>
 	<script>
 	wow = new WOW({}).init();	
 	</script>	
@@ -112,7 +114,7 @@
 	  padding:6% 4%;
 	}
 	
-	input[type="text"],input[type="password"]{
+	input[type="text"]{
 	  width:92%;
 	  background:#fff;
 	  margin-bottom:4%;
@@ -123,7 +125,7 @@
 	  color:#555;
 	}
 	
-	input[type="submit"]{
+	input[type="submit"],input[type="button"]{
 	  width:92%;
 	  background:#3399cc;
 	  border:1 solid;
@@ -232,8 +234,13 @@
 			<div id="join_message"></div>
 			
 			<input type="submit" value="수정" /><br />
-			<input type="submit" value="취소" />
+			<input id="deleteUser" type="button" value="탈퇴" />
 		</form>
+	</div>
+	
+	<div id="dialog-confirm" title="탈퇴하시겠습니까?">
+  	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+  		아이디는 즉시 탈퇴됩니다.</p>
 	</div>
     
 </body>

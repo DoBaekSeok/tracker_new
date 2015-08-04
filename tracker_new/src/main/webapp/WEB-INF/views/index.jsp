@@ -52,7 +52,7 @@
 		
 	<!-- modal jQuery-->
 	<script src="/tracker/resources/js/modernizr.js" ></script> 
-	<script src="/tracker/resources/js/main.js" ></script> 
+	<script src="/tracker/resources/js/member.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>

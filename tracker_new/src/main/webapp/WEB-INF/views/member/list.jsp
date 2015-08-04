@@ -55,7 +55,7 @@
 
 <!-- modal jQuery-->
 <script src="/tracker/resources/js/modernizr.js"></script>
-<script src="/tracker/resources/js/main.js"></script>
+<script src="/tracker/resources/js/member.js"></script>
 
 <!-- chat -->
 <script src="/tracker/resources/js/websocket/chat.js"></script>
@@ -127,19 +127,6 @@
 	
 	.CSSTableGenerator tr:hover td {
 		background-color: #ffffff;
-	}
-	
-	.CSSTableGenerator  td:last-child  {
-		vertical-align: middle;
-		background-color: #aad4ff;
-		border: 1px solid #000000;
-		border-width: 0px 1px 1px 0px;
-		text-align: left;
-		padding: 7px;
-		font-size: 15px;
-		font-family: Arial;
-		font-weight: normal;
-		color: red;
 	}
 	
 	.CSSTableGenerator td {
@@ -286,7 +273,7 @@
 							<td>탈퇴</td>
 						</c:when>
 						<c:otherwise>
-							<td>사용중</td>
+							<td style="color: red">사용중</td>
 						</c:otherwise>
 					</c:choose>
 				</tr>
