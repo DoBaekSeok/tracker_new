@@ -462,7 +462,7 @@
 						<tr style="width:480px;height:100px">
 							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
 							<td>
-								<textarea id="address" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address1" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>

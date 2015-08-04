@@ -23,8 +23,8 @@
 			},
 			datatype : 'json',
 			success : function (data) {
-				if(onEquipNo != document.getElementById("onEquipNo").value){
-					onEquipNo = document.getElementById("onEquipNo").value;
+				if(onEquipNo != document.getElementById("serialNumber").value){
+					onEquipNo = document.getElementById("serialNumber").value;
 					initialize();	
 					map.panTo(new google.maps.LatLng(data.results[0].latitude, data.results[0].longitude));
 					for(var i=0;i<latlngList.length;i++){

@@ -45,7 +45,7 @@ public class TrackingController {
 	public @ResponseBody Map<String, Object> gpsTracking(int serialNumber, Model model) {
 		
 		List<Tracking> tracking = trackingService.getTracking(serialNumber);
-		
+
 		System.out.println("No : " + serialNumber);
 		System.out.println("Lat : " + tracking.get(0).getLatitude());
 		System.out.println("Lng : " + tracking.get(0).getLongitude());

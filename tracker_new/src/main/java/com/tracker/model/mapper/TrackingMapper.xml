@@ -36,7 +36,7 @@
 		FROM 
 			tracking 
 		WHERE 
-			onEquipNo = #{onEquipNo}
+			onEquipNo = (select onequipno from onequip where SERIALNUMBER = #{serialNumber})
 	</select>
 	
 	<insert id="registEquipment" parameterType="HashMap" >
