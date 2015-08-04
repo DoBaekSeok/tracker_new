@@ -7,7 +7,7 @@ import com.tracker.model.dto.Equipment;
 
 public interface EquipmentRepository {
 	
-	List<Equipment> getShowEquipmentList();
+	List<Equipment> getEquipment();
 	
 	void insertEquipment(Equipment equipment);
 	

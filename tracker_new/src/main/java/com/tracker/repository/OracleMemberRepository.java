@@ -29,26 +29,27 @@ public class OracleMemberRepository implements MemberRepository {
 
 	@Override
 	public void updateMember(Member member) {
-		// TODO Auto-generated method stub
+		memberMapper.updateMember(member);
 		
 	}
 
 	@Override
 	public void deleteMember(Member member) {
-		// TODO Auto-generated method stub
-		
+		memberMapper.deleteMember(member);
 	}
 
 	@Override
 	public List<Member> getMemberList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Member> members = memberMapper.getMemberList();
+		return members;
 	}
 
+
+	// 아이디 중복체크 or 수정화면
 	@Override
 	public Member getMemberById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Member member = memberMapper.getMemberById(id);
+		return member;
 	}
 
 	@Override

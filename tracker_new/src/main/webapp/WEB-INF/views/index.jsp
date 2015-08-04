@@ -51,8 +51,8 @@
 	<!-- gpstracking div 영역에 있음 -->
 		
 	<!-- modal jQuery-->
-	<script src="/tracker/resources/js/modernizr.js" ></script> <!-- Modernizr -->
-	<script src="/tracker/resources/js/main.js" ></script> <!-- Gem jQuery -->
+	<script src="/tracker/resources/js/modernizr.js" ></script> 
+	<script src="/tracker/resources/js/main.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
@@ -77,11 +77,12 @@
 					</button>
 					<a class="navbar-brand" href="/tracker/home.action">Tracker</a>
 				</div>
-				<div class="collapse navbar-collapse navbar-right">					
+				<div class="collapse navbar-collapse navbar-right">														
 					<c:choose>		            	
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">
-		            			<li>${ loginuser.id }님 환영합니다.
+		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
@@ -89,12 +90,18 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
-								<li><a href="#mypage">My Page</a></li>
+								<li>
+									<c:url value="/member/view.action" var="viewUrl">
+        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
+        							</c:url>
+        							<a href="${ viewUrl }">My Page</a>
+								</li>
 							</ul>
 		            	</c:when>
 		            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
+		            		<input type="hidden" id="userId" value="${ sessionScope.loginuser.id }" />
 		            		<ul class="nav navbar-nav">			            		
-		            			<li>${ loginuser.id }님 환영합니다.
+		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
@@ -114,6 +121,7 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 							</ul>
 		            	</c:otherwise>
 		            </c:choose>
@@ -391,11 +399,11 @@
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
 				<h3>Gps Tracker</h3>
-				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
+				<div id="map_view" class="container" style="width:600px;height:450px;float:left" >			
 				</div>
 				<div style="width:480px;height:440px;float:left">
-					<table border="5" style="width:480px;height:480px;font-size:13pt;">
-						<tr style="width:480px;height:60px">
+					<table border="5" style="width:480px;height:440px;font-size:13pt;">
+						<tr style="width:480px;height:40px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
 								<select id="onEquipNo" width="100px">
@@ -405,6 +413,7 @@
 								</select>	
 								&nbsp;&nbsp;&nbsp;&nbsp;
 								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
+
 								&nbsp;&nbsp;
 								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
@@ -424,7 +433,7 @@
 						<tr style="width:480px;height:100px">
 							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
 							<td>
-								<textarea id="address1" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>
@@ -434,9 +443,7 @@
 								</textarea>
 							</td>
 						</tr>
-
 					</table>
-
 				</div>
 			</div>
 		</div>
