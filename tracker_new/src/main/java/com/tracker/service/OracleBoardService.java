@@ -23,8 +23,8 @@ public class OracleBoardService  {
 	public void insertBoard(Board board) {
 		boardRepository.insertBoard(board);
 	}
-	public List<Board> getBoardList() {
-		List<Board> boards = boardRepository.getBoardList();
+	public List<Board> getBoardList(String boardKind) {
+		List<Board> boards = boardRepository.getBoardList(boardKind);
 		return boards;
 	}
 	public Board getBoardByBoardNo(int boardNo) {

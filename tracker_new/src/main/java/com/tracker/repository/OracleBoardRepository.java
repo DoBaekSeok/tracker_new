@@ -25,8 +25,8 @@ public class OracleBoardRepository implements BoardRepository{
 		boardMapper.insertBoard(board);
 	}
 	@Override
-	public List<Board> getBoardList() {
-		List<Board> boards = boardMapper.getBoardList();
+	public List<Board> getBoardList(String boardKind) {
+		List<Board> boards = boardMapper.getBoardList(boardKind);
 		return boards;
 	}
 	@Override
