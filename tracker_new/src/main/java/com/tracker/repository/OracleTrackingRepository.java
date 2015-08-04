@@ -30,8 +30,8 @@ public class OracleTrackingRepository implements TrackingRepository {
 	}
 
 	@Override
-	public List<Tracking> getTracking(int onEquipNo) {
-		List<Tracking> tracking = trackingMapper.getTracking(onEquipNo);
+	public List<Tracking> getTracking(int serialNumber) {
+		List<Tracking> tracking = trackingMapper.getTracking(serialNumber);
 		return tracking;
 	}
 	
@@ -44,8 +44,8 @@ public class OracleTrackingRepository implements TrackingRepository {
 		return serialNumber;
 	}
 	
-	public void deletedOnEquip(int onEquipNo){
-		trackingMapper.deletedOnEquip(onEquipNo);
+	public void deletedOnEquip(int serialNumber){
+		trackingMapper.deletedOnEquip(serialNumber);
 	}
 	
 }

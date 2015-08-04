@@ -7,14 +7,14 @@ import com.tracker.model.dto.Tracking;
 
 public interface TrackingService {
 
-	public void insertTracking(int onEquipNo, double latitude, double longitude);
+	public void insertTracking(int serialNumber, double latitude, double longitude);
 	
-	public List<Tracking> getTracking(int onEquipNo); 
+	public List<Tracking> getTracking(int serialNumber); 
 	
 	public void registEquipment(String memberId, int equipNo, int serialNumber);
 	
 	public List<Integer> getEquipSerialByMemberId(String memberId);
 	
-	public void deletedOnEquip(int onEquipNo); 
+	public void deletedOnEquip(int serialNumber); 
 	
 }

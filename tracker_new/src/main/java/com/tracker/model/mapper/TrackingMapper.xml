@@ -18,7 +18,7 @@
 		VALUES 
 		(
 			tracking_seq.nextval, 
-			#{onEquipNo}, 
+			(select onequipno from onequip where SERIALNUMBER = #{serialNumber}), 
 			#{latitude}, 
 			#{longitude}, 
 			sysdate
@@ -62,17 +62,21 @@
 	
 	<select id="getEquipSerialByMemberId" parameterType="String" resultType="int">
 		select 
-			serialNumber 
+			serialNumber
 		from 
 			onEquip 
 		where 
-			MEMBERID = #{memberId}
+			MEMBERID = #{memberId} AND onEquipDeleted = 0
 	</select>
 	
-	<delete id="deletedOnEquip" parameterType="int">
-		delete from onEquip 
-		where onEquipNo = #{onEquipNo}
-	</delete>
+	<update id="deletedOnEquip" parameterType="int">
+		update 
+			onEquip
+    	set 
+    		onEquipDeleted = 1
+    	where 
+    		serialNumber = #{serialNumber}
+	</update>
 	
 </mapper>
 

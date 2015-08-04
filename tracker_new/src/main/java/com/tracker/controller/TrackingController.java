@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,11 +42,11 @@ public class TrackingController {
 	}
 	
 	@RequestMapping(value = "gps.action", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> gpsTracking(int onEquipNo, Model model) {
+	public @ResponseBody Map<String, Object> gpsTracking(int serialNumber, Model model) {
 		
-		List<Tracking> tracking = trackingService.getTracking(onEquipNo);
+		List<Tracking> tracking = trackingService.getTracking(serialNumber);
 		
-		System.out.println("No : " + onEquipNo);
+		System.out.println("No : " + serialNumber);
 		System.out.println("Lat : " + tracking.get(0).getLatitude());
 		System.out.println("Lng : " + tracking.get(0).getLongitude());
 		
@@ -57,20 +58,32 @@ public class TrackingController {
 	}
 	
 	@RequestMapping(value="gps.action", method = RequestMethod.POST)
-	public String gpsReceive(String onEquipNo, String latitude, String longitude){
+	public String gpsReceive(String serialNumber, String latitude, String longitude){
 		
-			System.out.println(onEquipNo);
+			System.out.println(serialNumber);
 			System.out.println(latitude);
 			System.out.println(longitude);
 			
 		if(Double.parseDouble(latitude) != 0 && Double.parseDouble(longitude) != 0){
 			trackingService.insertTracking(
-					Integer.parseInt(onEquipNo), 
+					Integer.parseInt(serialNumber), 
 					Double.parseDouble(latitude), 
 					Double.parseDouble(longitude));
 		}
 		
 		return "index";
+	}
+	
+	@RequestMapping(value="regist.action", method = RequestMethod.GET)
+	public ModelAndView registform(HttpSession session){
+		
+		Member loginUser = (Member)session.getAttribute("loginuser");
+		String memberId = loginUser.getId();
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("gpstracker/regist");
+		mov.addObject("id", memberId);
+		
+		return mov;
 	}
 	
 	@RequestMapping(value="regist.action", method = RequestMethod.POST)
@@ -82,9 +95,9 @@ public class TrackingController {
 	}
 	
 	@RequestMapping(value="delete.action", method = RequestMethod.POST)
-	public String delete(int onEquipNo){
+	public String delete(int serialNumber){
 		
-		trackingService.deletedOnEquip(onEquipNo);
+		trackingService.deletedOnEquip(serialNumber);
 		
 		return "index";
 	}
@@ -96,11 +109,12 @@ public class TrackingController {
 		if(sesson.getAttribute("loginuser") == null){
 			return null;
 		}
+		
 		loginUser = (Member) sesson.getAttribute("loginuser");
 		String memberId = loginUser.getId();
 		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
 		
-		sesson.setAttribute("serialnumbers", serialNumbers);
+		sesson.setAttribute("serialNumbers", serialNumbers);
 		
 		return "index";
 	}

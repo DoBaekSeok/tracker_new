@@ -25,17 +25,17 @@ public class TrackerTrackingService implements TrackingService{
 	}
 	
 
-	public void insertTracking(int onEquipNo, double latitude, double longitude){
+	public void insertTracking(int serialNumber, double latitude, double longitude){
 		HashMap<String, Object> params = new HashMap<String, Object>();	
-		params.put("onEquipNo", onEquipNo);
+		params.put("serialNumber", serialNumber);
 		params.put("latitude", latitude);	
 		params.put("longitude", longitude);
 		trackingRepository.insertTracking(params);
 	}
 
 
-	public List<Tracking> getTracking(int onEquipNo) {
-		List<Tracking> tracking = trackingRepository.getTracking(onEquipNo);
+	public List<Tracking> getTracking(int serialNumber) {
+		List<Tracking> tracking = trackingRepository.getTracking(serialNumber);
 		return tracking;
 	}
 
@@ -52,8 +52,8 @@ public class TrackerTrackingService implements TrackingService{
 		return serialNumber;
 	}
 	
-	public void deletedOnEquip(int onEquipNo){
-		trackingRepository.deletedOnEquip(onEquipNo);
+	public void deletedOnEquip(int serialNumber){
+		trackingRepository.deletedOnEquip(serialNumber);
 	}
 
 }

@@ -19,7 +19,7 @@
 			type : 'GET',
 			async : false,
 			data : {
-				onEquipNo : $("#onEquipNo").val()
+				serialNumber : $("#serialNumber").val()
 			},
 			datatype : 'json',
 			success : function (data) {
@@ -149,14 +149,30 @@
 				method : "post",
 				async : false,
 				success : function (data, result, status, xhr) {
-					alert(data);
 					if(result == "success"){
 						location.replace('/tracker');
 					}
 				}
 			});
 		}
-	
+		
+		function deletedOnEquip(){
+			$.ajax ({
+				url : '/tracker/tracking/delete.action',
+				method : "post",
+				async : false,
+				data : {
+					serialNumber : $("#serialNumber").val()
+				},
+				success : function (data, result, status, xhr) {
+					if(result == "success"){
+						location.replace('/tracker');
+					}
+				}
+			});
+			
+		}
+
 		
 		
 		

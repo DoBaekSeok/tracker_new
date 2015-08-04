@@ -403,24 +403,31 @@
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
 				<h3>Gps Tracker</h3>
-				<div id="map_view" class="container" style="width:600px;height:470px;float:left" >			
+				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
 				</div>
-				<div style="width:480px;height:470px;float:left">
-					<table border="5" style="width:480px;height:470px;font-size:13pt;">
+				<div style="width:480px;height:480px;float:left">
+					<table border="5" style="width:480px;height:480px;font-size:13pt;">
+						<tr style="width:480px;height:40px">
+							<td>
+							</td>
+							<td>
+								<a href="/tracker/tracking/regist.action" >장비 등록</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:deletedOnEquip();" >장비 삭제</a>
+							</td>
+						</tr>
 						<tr style="width:480px;height:40px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
-							<a href="javascript:getSerialNumber();" >장비 조회</a>
-							&nbsp;&nbsp;
 							<c:choose>		            	
 				            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
-					            	<select id="onEquipNo" width="100px">
+									<a href="javascript:getSerialNumber();" >조회</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					            	<select id="serialNumber" width="100px">
 					            		<option value="0" selected="selected">장비 선택</option>
-
-						            		<c:forEach var="serialNumber" items="${ serialnumbers }">
+						            		<c:forEach var="serialNumber" items="${ serialNumbers }">
 												 <option value="${serialNumber}" >${serialNumber}</option>
 											</c:forEach>
-
 									</select>	
 				            	</c:when>
 				            	<c:otherwise>
@@ -440,16 +447,16 @@
 								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:80px">
 							<td style="width:80px;text-align:center">위도</td> 
 							<td>
-								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:80px">
 							<td style="width:80px;text-align:center">경도</td> 
 							<td>
-								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
 						<tr style="width:480px;height:100px">
