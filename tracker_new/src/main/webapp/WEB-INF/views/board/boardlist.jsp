@@ -60,7 +60,7 @@
 	$(document).ready(function () {
 		var pageWidth = $("#grid1").parent().width() - 100;
 		$('#grid1').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=notice',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
@@ -87,7 +87,7 @@
 	$(document).ready(function () {
 		var pageWidth = $("#bgrid2").parent().width() - 100;
 		$('#bgrid2').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=qna',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
@@ -113,7 +113,7 @@
 	$(document).ready(function () {
 		var pageWidth = $("#cgrid3").parent().width() - 100;
 		$('#cgrid3').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=community',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [

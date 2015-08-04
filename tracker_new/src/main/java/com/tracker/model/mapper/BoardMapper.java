@@ -9,7 +9,7 @@ public interface BoardMapper {
 	
 	void insertBoard(Board board);
 	
-	List<Board> getBoardList();
+	List<Board> getBoardList(String boardkind);
 
 	Board getBoardByBoardNo(int boardNo);
 	

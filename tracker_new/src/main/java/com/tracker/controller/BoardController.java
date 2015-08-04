@@ -36,9 +36,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "listjason.action")
 	@ResponseBody
-	public  List<Board> getBoardListJson() {
+	public  List<Board> getBoardListJson(@RequestParam("boardkind") String boardKind) {
 		
-		List<Board> boards = boardService.getBoardList();
+		List<Board> boards = boardService.getBoardList(boardKind);
 				
 		return boards;
 	}

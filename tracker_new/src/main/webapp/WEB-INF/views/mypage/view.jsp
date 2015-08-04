@@ -232,7 +232,7 @@
 			<div id="join_message"></div>
 			
 			<input type="submit" value="수정" /><br />
-			<input type="submit" value="탈퇴" />
+			<input type="submit" value="취소" />
 		</form>
 	</div>
     

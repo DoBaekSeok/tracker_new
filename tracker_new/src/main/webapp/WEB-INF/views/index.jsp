@@ -105,8 +105,13 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li><a href="#">회원관리</a></li>
-								<li><a href="#">장비관리</a></li>
+								<li>
+									<c:url value="/member/list.action" var="viewUrl">
+        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
+        							</c:url>
+									<a href="${ viewUrl }">회원관리</a>
+								</li>
+								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
@@ -121,7 +126,6 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
-								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 							</ul>
 		            	</c:otherwise>
 		            </c:choose>
