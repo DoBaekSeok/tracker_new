@@ -18,7 +18,7 @@ public class EquipmentService {
 	public List<Equipment> processShowEquipments(){
 
 		// 장비 리스트 조회
-		List<Equipment> equipments = equipmentRepository.getShowEquipmentList();
+		List<Equipment> equipments = equipmentRepository.getEquipment();
 		
 		return equipments;
 

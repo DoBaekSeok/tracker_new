@@ -140,9 +140,6 @@
 </head>
 <body>	
 
-	<!-- header -->
-	<c:import url="/WEB-INF/views/include/header.jsp" />
-	
 	<div id="feature">
 		<div class="container">
 			<div class="row">

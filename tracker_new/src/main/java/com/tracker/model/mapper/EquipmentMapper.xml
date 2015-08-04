@@ -6,17 +6,61 @@
   
 <!-- namespace : 패키지명.클래스이름 을 논리적으로 선언 -->
 <mapper namespace="com.tracker.model.mapper.EquipmentMapper">
+	
+	<resultMap type="Equipment" id="equipmentResult">
+		<id column="equipno" property="equipNo" />
+		<result column="equipname" property="equipName" />
+		<result column="modelname" property="modelName" />
+		<result column="equipprice" property="equipPrice" />
+		<result column="equipcontent" property="equipContent" />
+		<association property="equipPhoto" column="equipno" select="getEquipPhoto" />
+	</resultMap>
+	
+	
+	<resultMap type="EquipPhoto" id="equipPhotoResult">
+		<id column="equipphotono" property="EquipPhotoNo"/>
+		<result column="savedfilename" property="SavedFileName" />
+		<result column="equipno" property="equipNo" />
+	</resultMap>
+	<select id="getEquipment" resultMap="equipmentResult">
+	  select equipno, equipname, modelname, equipprice, equipcontent
+	  from Equipment
+	</select>
+	<select id='getEquipPhoto' resultMap="equipPhotoResult" parameterType="int">
+		select equipphotono, savedfilename, equipno
+		from EquipPhoto
+		where equipno = #{ equipNo }
+	</select>
+	
 
-	<select id="getShowEquipmentList" resultType="Equipment">
+<!-- 기존 SQL -->
+<!-- 	<select id="getShowEquipmentList" resultType="Equipment">
 		SELECT
 			equipno, equipname, modelname, equipprice, equipcontent, equipdeleted
 		FROM
 			equipment
 		ORDER BY equipNo DESC	
-	</select>
+	</select> -->
 	
 	
-	<insert id="insertEquipment"  parameterType="Equipment">
+ 	<insert id="insertEquipment" parameterType="Equipment" >
+	  <selectKey keyProperty="equipNo" order="AFTER" resultType="int" >
+	  	select EQUIPMENT_SEQ.currval from dual
+	  </selectKey>
+		INSERT INTO Equipment(equipNo, equipName, modelName, equipPrice, equipContent)  
+		       VALUES(EQUIPMENT_SEQ.nextVal, #{equipName}, 
+		       		  #{modelName},#{equipPrice},
+		       		  #{equipContent}
+		       		  )
+	</insert> 
+	
+	<insert id="insertEquipmentPhoto" parameterType="EquipPhoto">
+		INSERT INTO EquipPhoto(EquipPhotoNo, SavedFileName, equipNo)
+			VALUES(EQUIPPHOTO_SEQ.nextVal, #{ SavedFileName }, #{ equipNo })
+	</insert>  
+	
+<!-- 기존 SQL문 -->
+<!-- 	<insert id="insertEquipment"  parameterType="Equipment">
 		INSERT INTO
 		Equipment
 		(
@@ -34,9 +78,12 @@
 			#{ equipPrice },
 			#{ equipContent }
 		)
-	</insert>
+	</insert> -->
 	
-	<delete id="deleteEquipment" parameterType="int">
+
+	
+
+<!-- 	<delete id="deleteEquipment" parameterType="int">
 		UPDATE
 			Equipment
 		SET
@@ -56,6 +103,106 @@
 		equipContent=#{equipContent}
 		WHERE
 		equipNo=#{equipNo}
+	</update> -->
+	
+	<!-- 
+	
+	
+
+
+
+
+
+
+	
+	
+  	<insert id="insertAuction" parameterType="Auction" >
+	  <selectKey keyProperty="aucNo" order="AFTER" resultType="int" >
+	  	select SEQUENCEAUCTIONNO.currval from dual
+	  </selectKey>
+		INSERT INTO auction(aucno, auctitle, aucstartdate, aucenddate,  aucitemname,
+			auccategory, aucadtext, aucdetail, aucstartprice, aucwriter )  
+		       VALUES(SEQUENCEAUCTIONNO.nextVal, #{aucTitle}, 
+		       		  #{aucStartDate},#{aucEndDate},
+		       		  #{aucItemName}, #{aucCategory},#{aucAdText},#{aucDetail},
+		     		  #{aucStartPrice},#{aucWriter})
+	</insert> 
+	
+	<insert id="insertAuctionPhotoImage" parameterType="auctionImage">
+		INSERT INTO AUCTIONIMAGE(aucimgno, aucimgname, aucno)
+			VALUES(SEQUENCEAUCTIONIMAGENO.nextVal, #{ aucImgName }, #{ aucNo })
+	</insert> 
+	
+	
+	
+	<select id="getAuctionImageByAuctionNo" resultMap="auctionImageResult" parameterType="int">
+		select aucimgno, aucimgname, aucno
+		from AUCTIONIMAGE
+		where aucno = #{ aucNo }
+	</select>
+	
+	
+	
+	
+	<select id="getAuctionList" resultMap="auctionResult" parameterType="int">
+		select  aucno, auctitle, aucstartdate, aucenddate, 
+			 aucitemname, auccategory, aucdetail, aucstartprice, aucstate,auctype, aucwriter, aucadtext
+		from AUCTION
+		order By
+		aucno DESC
+	</select>
+	
+	
+	<select id="getAuctionDetailByAuctioNo" resultMap="auctionResult" parameterType="int">
+		select  aucno, auctitle, aucstartdate, aucenddate, 
+			 aucitemname, auccategory, aucdetail, aucstartprice, aucstate,auctype, aucwriter, aucadtext
+		from AUCTION
+		where aucno = #{ aucNo }
+	</select>
+	
+
+	<update id="updateAuctionReportCount" parameterType="int">
+	     update auction 
+   		set aucreportingcount = (select aucreportingcount from auction where aucno= #{ aucNo }) +1
+   		where aucno =#{ aucNo }
 	</update>
+
+	<select id="getBiddingInfoByAucNo" resultMap="biddingResult" parameterType="int">
+		select bidprice, mbid
+		from bidding
+		where aucno = #{ aucNo } and bidprice = (select max(bidprice) from bidding where aucno= #{aucNo})
+	</select>
+	
+	<select id="getCountBidders" resultType="int" parameterType="int">
+		select count(*) from bidding where aucno= #{aucNo}
+	</select>
+
+ 	<update id="updateReportingCount" parameterType="int">
+		update auction set aucreportingcount= (select aucreportingcount from auction where aucno = #{aucNo}) +1 where aucno= #{aucNo};	
+	</update> 
+ 관리자 auction controller 
+	<select id="getAuctionListByAdmin" resultMap="auctionResult">
+		select  <include refid="auctioncolumns" />
+		from AUCTION
+		where aucblindcheck != 1
+		order By
+		aucno DESC
+	</select>
+	<select id="getAucReportList" resultMap="auctionResult">
+				select  <include refid="auctioncolumns" />
+		from AUCTION
+		where aucreportingcount >= 1
+		order By
+		aucno DESC
+	</select>
+	<update id="setBlindAuction" parameterType="int">
+		update auction 
+		set aucblindcheck = 1 
+		where aucno = #{ aucNo }
+	</update>
+
+</mapper>
+-->
+	
 	
 </mapper>

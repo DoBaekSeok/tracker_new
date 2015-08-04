@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tracker.model.dto.EquipPhoto;
 import com.tracker.model.dto.Equipment;
 import com.tracker.service.EquipmentService;
 
@@ -48,16 +49,19 @@ public class EquipmentController{
 		
 		if(oper.equals("add")){			
 			System.out.println("111111111111111111");
+			
 			Equipment equipment = new Equipment();
 			String equipName = req.getParameter("equipName");
 	        String modelName = req.getParameter("modelName");
 	        int equipPrice = Integer.parseInt(req.getParameter("equipPrice"));
 	        String equipContent = req.getParameter("equipContent");
+
 		
 			equipment.setEquipName(equipName);
 			equipment.setModelName(modelName);
 			equipment.setEquipPrice(equipPrice);
 			equipment.setEquipContent(equipContent);
+
 			
 			equipmentService.AddEquipment(equipment);
 			
