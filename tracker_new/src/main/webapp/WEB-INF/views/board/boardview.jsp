@@ -47,10 +47,12 @@
 	</script>	
 	<script>
 	$(document).ready(function () {
-		$('#grid').jqGrid({
-	        url: 'viewjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+		var pageWidth = $("#gridview").parent().width() - 100;
+		var sendUrl = "viewjason.action?boardno=" + ${ boardno };
+		$('#gridview').jqGrid({
+	        url: sendUrl,			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
-	        colNames: ['NO', '제목', '작성자', '작성일', '내용'],
+	        colNames: ['NO', '제목', '작성자', '내용', '작성일'],
 	        colModel: [
 	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(20/100)), editable: true, edittype: 'text' },
@@ -65,17 +67,14 @@
 </script>
 </head>
 <body>	
-
-	<!-- header -->
-	<c:import url="/WEB-INF/views/include/header.jsp" />
 	
 	<div id="feature">
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
 					<h3>Support</h3>					
-						<div>
-							<table id="grid"></table>
+						<div style="width:100%">
+							<table id="gridview"></table>
 						</div>
 					</div>
 				</div>				
