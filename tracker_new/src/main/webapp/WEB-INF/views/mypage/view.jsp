@@ -84,6 +84,9 @@
 	  transition:background .3s;
 	  -webkit-transition:background .3s;
 	}
+	#edit-form .filed{
+		float: left;
+	}
 	
 	.button:hover{
 	  background:#2288bb;
@@ -113,7 +116,7 @@
 	}
 	
 	input[type="text"],input[type="password"]{
-	  width:92%;
+	  width:98%;
 	  background:#fff;
 	  margin-bottom:4%;
 	  border:1px solid #ccc;
@@ -124,7 +127,7 @@
 	}
 	
 	input[type="submit"]{
-	  width:92%;
+	  width:98%;
 	  background:#3399cc;
 	  border:1 solid;
 	  padding:4%;
@@ -214,12 +217,14 @@
 	<div id="login">
 		<h1>회원정보 수정</h1>
 		<form id="edit-form" method="post" action="/tracker/member/edit.action">
+		<p class="filed">
 			<label class="image-replace cd-username" for="user_id">아이디</label> 
 			<input type="text" id="id" name="id" value="${member.id}" readonly="readonly" placeholder="${member.id}" />		
-			
+		</p>
+		<p class="filed">
 			<label class="image-replace cd-username" for="name">사용자 이름</label>
 			<input type="text" id="name" name="name" value="${member.name}" placeholder="${member.name}" />
-			
+		</p>			
 			<label class="image-replace cd-email" for="email">E-mail</label>
 			<input type="text" id="email" name="email" value="${member.email}" placeholder="${member.email}" />
 			
