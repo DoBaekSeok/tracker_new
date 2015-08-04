@@ -47,10 +47,7 @@
 	</script>	
 	
 	<script>
-	
 
-    
-    
     $(document).ready(function () {
 		var template = "<div><div style='display:none;'> equipNo </div><div style='display:none;'> {equipNo} </div>";
 		template += "<div> 장비명: </div><div>{equipName} </div>";
@@ -97,7 +94,7 @@
                 {
 					label: '내용',
                     name: 'equipContent',
-                    width: 900,
+                    width: 800,
                     editable: true
                 },
                 {               	
