@@ -151,7 +151,7 @@
 				success : function (data, result, status, xhr) {
 					alert(data);
 					if(result == "success"){
-						 location.replace('/tracker/#gpstracker');
+						location.replace('/tracker');
 					}
 				}
 			});

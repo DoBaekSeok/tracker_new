@@ -90,7 +90,7 @@ public class TrackingController {
 	}
 	
 	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
-	public ModelAndView getSerialNumber(HttpSession sesson) {
+	public String getSerialNumber(HttpSession sesson) {
 		
 		Member loginUser = null;
 		if(sesson.getAttribute("loginuser") == null){
@@ -102,10 +102,7 @@ public class TrackingController {
 		
 		sesson.setAttribute("serialnumbers", serialNumbers);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("index");
-		
-		return mav;
+		return "index";
 	}
 
 }
