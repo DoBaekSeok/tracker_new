@@ -47,11 +47,12 @@
 		commentdeleted
 	</sql>
 	
-	<select id="getBoardList" parameterType="Board" resultType="Board">
+	<select id="getBoardList" parameterType="String" resultType="Board">
 		SELECT
 			<include refid="boardcolumn" />
 		FROM
-			board	
+			board
+		WHERE boardkind = #{ boardKind }	
 	</select>
 	
 	<resultMap type="Board" id="boardByBoardNo">
