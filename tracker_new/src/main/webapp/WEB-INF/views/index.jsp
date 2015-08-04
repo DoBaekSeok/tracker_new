@@ -111,7 +111,7 @@
         							</c:url>
 									<a href="${ viewUrl }">회원관리</a>
 								</li>
-								<li><a href="#">장비관리</a></li>
+								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
@@ -126,7 +126,6 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
-								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
 							</ul>
 		            	</c:otherwise>
 		            </c:choose>
