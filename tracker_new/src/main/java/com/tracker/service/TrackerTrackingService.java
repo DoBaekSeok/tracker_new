@@ -39,5 +39,21 @@ public class TrackerTrackingService implements TrackingService{
 		return tracking;
 	}
 
+	public void registEquipment(String memberId, int equipNo, int serialNumber){
+		HashMap<String, Object> params = new HashMap<String, Object>();	
+		params.put("memberId", memberId);
+		params.put("equipNo", equipNo);
+		params.put("serialNumber", serialNumber);
+		trackingRepository.registEquipment(params);
+	}
+	
+	public List<Integer> getEquipSerialByMemberId(String memberId){
+		List<Integer> serialNumber = trackingRepository.getEquipSerialByMemberId(memberId);
+		return serialNumber;
+	}
+	
+	public void deletedOnEquip(int onEquipNo){
+		trackingRepository.deletedOnEquip(onEquipNo);
+	}
 
 }

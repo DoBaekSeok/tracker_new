@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
+import com.tracker.model.dto.Equipment;
 import com.tracker.model.dto.Member;
 import com.tracker.model.dto.Tracking;
 import com.tracker.service.TrackerMemberService;
@@ -75,6 +77,37 @@ public class TrackingController {
 		}
 		
 		return "gpstracker/gpstracker";
+	}
+	
+	@RequestMapping(value="regist.action", method = RequestMethod.POST)
+	public String regist(String memberId, int equipNo, int serialNumber){
+		
+		trackingService.registEquipment(memberId, equipNo, serialNumber);
+		
+		
+		
+		return "gpstracker/gpstracker";
+	}
+	
+	@RequestMapping(value="delete.action", method = RequestMethod.POST)
+	public String delete(int onEquipNo){
+		
+		trackingService.deletedOnEquip(onEquipNo);
+		
+		return "gpstracker/gpstracker";
+	}
+	
+	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
+	public ModelAndView getSerialNumber(String memberId){
+		
+		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("products/showequipmentlist");
+		mav.addObject("serialnumbers", serialNumbers);
+				
+		return mav;
+
 	}
 
 }
