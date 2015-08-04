@@ -100,6 +100,26 @@ jQuery(document).ready(function (){
 		event.preventDefault();
 		
 	});
+	
+	//회원정보 탈퇴
+	$('#deleteUser').on('click', function(){
+		$( "#dialog-confirm" ).dialog({
+			 
+		      resizable: false,
+		      height:150,
+		      modal: true,
+		      buttons: {
+		        "탈퇴": function() {
+		        	 location.replace('/tracker/member/delete.action?id='+ $('#id').val());
+		        },
+		        "취소": function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		event.preventDefault();
+	});
+	
 	function txtFieldCheck() {
 			
 		// form안의 모든 text type 조회
