@@ -32,8 +32,8 @@ public class TrackerMemberService implements MemberService{
 	}
 
 	@Override
-	public void deleteMember(Member member) {
-		memberRepository.deleteMember(member);
+	public void deleteMember(String id) {
+		memberRepository.deleteMember(id);
 	}
 
 	@Override

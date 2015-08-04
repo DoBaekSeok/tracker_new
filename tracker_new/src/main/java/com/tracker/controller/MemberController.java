@@ -3,6 +3,8 @@ package com.tracker.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -74,7 +76,18 @@ public class MemberController {
 		return "redirect:/home.action";
 		
 	}
-
+	
+	@RequestMapping(value = "delete.action", method = RequestMethod.GET)
+	public String delete(@RequestParam("id") String id, HttpSession session){
+		
+		if(id != null){
+			memberService.deleteMember(id);
+			session.removeAttribute("loginuser");
+	
+		}
+		
+		return "redirect:/home.action";
+	}
 }
 
 

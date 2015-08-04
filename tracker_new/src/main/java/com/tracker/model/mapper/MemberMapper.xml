@@ -56,8 +56,8 @@
 			memberAddress = #{address}
 		WHERE memberId = #{id}
 	</update>
-	
-	<update id="deleteMember">
+	 
+	<update id="deleteMember" parameterType="string">
 		UPDATE member
 		SET memberDeleted = '1'
 		WHERE memberId = #{id}
@@ -81,7 +81,7 @@
 			<include refid="memberListColums"/>
 		FROM
 			member
-		WHERE memberId = #{id} AND memberPassword = #{password}
+		WHERE memberId = #{id} AND memberPassword = #{password} AND memberDeleted = '0'
 	</select>
 	
 </mapper>
