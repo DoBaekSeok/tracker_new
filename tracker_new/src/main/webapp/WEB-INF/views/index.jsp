@@ -431,7 +431,7 @@
 									</select>	
 				            	</c:when>
 				            	<c:otherwise>
-								<select id="onEquipNo" width="100px">
+								<select id="serialNumber" width="100px">
 									<option value="0" selected="selected">장비 선택(other)</option>
 								    <option value="1" >1번 장비</option>
 								    <option value="2" >2번 장비</option>
