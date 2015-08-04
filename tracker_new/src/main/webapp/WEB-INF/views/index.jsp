@@ -410,15 +410,17 @@
 						<tr style="width:480px;height:40px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
-							<a href="/tracker/tracking/getserial.action" >장비 조회</a>
+							<a href="javascript:getSerialNumber();" >장비 조회</a>
 							&nbsp;&nbsp;
 							<c:choose>		            	
 				            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
 					            	<select id="onEquipNo" width="100px">
 					            		<option value="0" selected="selected">장비 선택</option>
-					            		<c:forEach var="serialNumber" items="${ serialNumbers }">
-											 <option value="${serialNumber}" >${serialNumber}</option>
-										</c:forEach>
+
+						            		<c:forEach var="serialNumber" items="${ serialnumbers }">
+												 <option value="${serialNumber}" >${serialNumber}</option>
+											</c:forEach>
+
 									</select>	
 				            	</c:when>
 				            	<c:otherwise>

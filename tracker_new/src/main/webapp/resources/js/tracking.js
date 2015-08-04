@@ -143,6 +143,19 @@
 			tracking = false;
 		}
 	
+		function getSerialNumber(){
+			$.ajax ({
+				url : '/tracker/tracking/getserial.action',
+				method : "post",
+				async : false,
+				success : function (data, result, status, xhr) {
+					alert(data);
+					if(result == "success"){
+						 location.replace('/tracker/#gpstracker');
+					}
+				}
+			});
+		}
 	
 		
 		

@@ -89,23 +89,23 @@ public class TrackingController {
 		return "index";
 	}
 	
-	@RequestMapping(value="getserial.action", method = RequestMethod.GET)
-	public ModelAndView getSerialNumber(HttpSession sesson){
+	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
+	public ModelAndView getSerialNumber(HttpSession sesson) {
 		
 		Member loginUser = null;
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("index");
 		if(sesson.getAttribute("loginuser") == null){
-			return mav;
+			return null;
 		}
 		loginUser = (Member) sesson.getAttribute("loginuser");
 		String memberId = loginUser.getId();
 		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
 		
-		mav.addObject("serialNumbers", serialNumbers);
+		sesson.setAttribute("serialnumbers", serialNumbers);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
 		
 		return mav;
-
 	}
 
 }
