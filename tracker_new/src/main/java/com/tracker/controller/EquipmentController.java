@@ -48,7 +48,7 @@ public class EquipmentController{
 		String oper = req.getParameter("oper");
 		
 		if(oper.equals("add")){			
-			System.out.println("111111111111111111");
+
 			
 			Equipment equipment = new Equipment();
 			String equipName = req.getParameter("equipName");
@@ -56,19 +56,17 @@ public class EquipmentController{
 	        int equipPrice = Integer.parseInt(req.getParameter("equipPrice"));
 	        String equipContent = req.getParameter("equipContent");
 
-		
 			equipment.setEquipName(equipName);
 			equipment.setModelName(modelName);
 			equipment.setEquipPrice(equipPrice);
 			equipment.setEquipContent(equipContent);
 
-			
 			equipmentService.AddEquipment(equipment);
 			
 
 		}else if(oper.equals("edit")){
 			
-			System.out.println("222222222222222222222");
+
 			Equipment equipment = new Equipment();
 			int equipNo = Integer.parseInt(req.getParameter("equipNo"));
 			String equipName = req.getParameter("equipName");

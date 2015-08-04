@@ -32,6 +32,19 @@
 		where equipno = #{ equipNo }
 	</select>
 	
+	
+	<update id="updateEquipment" parameterType="Equipment">
+		UPDATE
+			Equipment
+		SET
+		equipName=#{equipName},
+		modelName=#{modelName},
+		equipPrice=#{equipPrice},
+		equipContent=#{equipContent}
+		WHERE
+		equipNo=#{equipNo}
+	</update>
+	
 
 <!-- 기존 SQL -->
 <!-- 	<select id="getShowEquipmentList" resultType="Equipment">
@@ -93,29 +106,10 @@
 	</delete>
 	
 	
-	<update id="updateEquipment" parameterType="Equipment">
-		UPDATE
-			Equipment
-		SET
-		equipName=#{equipName},
-		modelName=#{modelName},
-		equipPrice=#{equipPrice},
-		equipContent=#{equipContent}
-		WHERE
-		equipNo=#{equipNo}
-	</update> -->
+	 -->
 	
 	<!-- 
-	
-	
 
-
-
-
-
-
-	
-	
   	<insert id="insertAuction" parameterType="Auction" >
 	  <selectKey keyProperty="aucNo" order="AFTER" resultType="int" >
 	  	select SEQUENCEAUCTIONNO.currval from dual
