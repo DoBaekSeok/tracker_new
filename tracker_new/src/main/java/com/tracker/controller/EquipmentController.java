@@ -56,13 +56,11 @@ public class EquipmentController{
 	        int equipPrice = Integer.parseInt(req.getParameter("equipPrice"));
 	        String equipContent = req.getParameter("equipContent");
 
-		
 			equipment.setEquipName(equipName);
 			equipment.setModelName(modelName);
 			equipment.setEquipPrice(equipPrice);
 			equipment.setEquipContent(equipContent);
 
-			
 			equipmentService.AddEquipment(equipment);
 			
 
