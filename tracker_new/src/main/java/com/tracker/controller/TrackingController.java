@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.Gson;
+import com.tracker.model.dto.Equipment;
 import com.tracker.model.dto.Member;
 import com.tracker.model.dto.Tracking;
 import com.tracker.service.TrackerMemberService;
@@ -35,13 +38,6 @@ public class TrackingController {
 	@Qualifier("trackingService")
 	public void setTrackingService(TrackerTrackingService trackingService){
 		this.trackingService = trackingService;
-	}
-	
-	
-	@RequestMapping(value="tracking.action", method = RequestMethod.GET)
-	public String tracking(){
-		
-		return "gpstracker/gpstracker";
 	}
 	
 	@RequestMapping(value = "gps.action", method = RequestMethod.GET)
@@ -74,15 +70,45 @@ public class TrackingController {
 					Double.parseDouble(longitude));
 		}
 		
-		return "gpstracker/gpstracker";
+		return "index";
+	}
+	
+	@RequestMapping(value="regist.action", method = RequestMethod.POST)
+	public String regist(String memberId, int equipNo, int serialNumber){
+		
+		trackingService.registEquipment(memberId, equipNo, serialNumber);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="delete.action", method = RequestMethod.POST)
+	public String delete(int onEquipNo){
+		
+		trackingService.deletedOnEquip(onEquipNo);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="getserial.action", method = RequestMethod.GET)
+	public ModelAndView getSerialNumber(HttpSession sesson){
+		
+		Member loginUser = null;
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("index");
+		if(sesson.getAttribute("loginuser") == null){
+			return mav;
+		}
+		loginUser = (Member) sesson.getAttribute("loginuser");
+		String memberId = loginUser.getId();
+		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
+		
+		mav.addObject("serialNumbers", serialNumbers);
+		
+		return mav;
+
 	}
 
 }
-
-
-
-
-
 
 
 

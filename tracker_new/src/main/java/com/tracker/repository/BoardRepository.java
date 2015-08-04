@@ -9,7 +9,7 @@ public interface BoardRepository {
 	
 	void insertBoard(Board board);
 	
-	List<Board> getBoardList();
+	List<Board> getBoardList(String boardKind);
 
 	Board getBoardByBoardNo(int boardNo);
 	
