@@ -62,7 +62,7 @@
 
 
 	<script>
-	wow = new WOW({}).init();
+	wow = new WOW({}).init();s		
 	</script>	
 </head>
 <body>
@@ -335,11 +335,13 @@
 					<c:forEach var="equipment" items="${ equipments }">
 						<figure class="effect-chico">									
 							<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-								<h2>${ equipment.modelName }</h2>						
-								<a href="/tracker/resources/img/work/5.jpg" class="flipLightBox">
-								<img src="/tracker/resources/img/work/5.jpg" class="img-responsive" alt="">
-								</a>
-								<p>${ equipment.equipContent }</p>
+								<h2>${ equipment.modelName }</h2>								
+								<img src="/tracker/resources/img/product/${ equipment.savedFileName }" class="img-responsive" alt="">
+								<p>
+									제품구분 : ${ equipment.equipName }<br />									
+									제품가격 : ￦ ${ equipment.equipPrice }<br />
+									제품설명 : ${ equipment.equipContent }
+								</p>
 							</div>
 						</figure>				
 					</c:forEach>
