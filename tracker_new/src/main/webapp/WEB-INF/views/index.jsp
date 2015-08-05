@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="/tracker/resources/css/animate.min.css" /> 
 	<link rel="stylesheet" href="/tracker/resources/css/style.css" />	
 	<link rel="stylesheet" href="/tracker/resources/css/jquery-ui/jquery-ui.css" />	
+	<link rel="stylesheet" href="/tracker/resources/css/jqgrid/ui.jqgrid.css" />
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -43,6 +44,8 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
+	<script src="/tracker/resources/js/jqgrid/jquery.jqGrid.min.js"></script>
+	<script src="/tracker/resources/js/jqgrid/i18n/grid.locale-en.js"></script>	
 	
 	<!-- websocket js -->
 	<script src="/tracker/resources/js/websocket/sockjs-0.3.4.min.js"></script>
@@ -56,7 +59,8 @@
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
-		
+
+
 	<script>
 	wow = new WOW({}).init();
 	</script>	
@@ -110,7 +114,7 @@
         							</c:url>
 									<a href="${ viewUrl }">회원관리</a>
 								</li>
-								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
+								<li><a href="#equipment">장비관리</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -292,6 +296,33 @@
 		</div>		
 	</div><!--/#dialog-->
 	
+	
+<!-- /#equipment -->
+	<div id="equipment">
+		<div class="container">
+		<c:choose>		            	
+				 <c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
+			<div class="row">
+				<div class="text-center">
+				<br /><br /><br /><br /><br />
+				
+					<h3>장비관리</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+				<div>
+				  <table id="jqGrid"></table>
+   				  <div id="jqGridPager"></div>  
+				</div>
+				
+				</div>				
+			</div>
+				</c:when>
+	 </c:choose>	
+			 
+		</div>
+			<script src="/tracker/resources/js/equipment.js" ></script>
+	</div>
+
+	
 	<div id="products">
 		<div class="container">
 			<div class="text-center">
@@ -322,8 +353,10 @@
 			</div>
 		</div>
 	</div><!--/#products-->
-	
+
 	<div id="gpstracker">
+	
+	
 		<div class="container">
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
