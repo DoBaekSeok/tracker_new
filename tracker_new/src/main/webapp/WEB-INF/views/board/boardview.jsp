@@ -47,23 +47,31 @@
 	</script>	
 	<script>
 	$(document).ready(function () {
-		var pageWidth = $("#gridview").parent().width() - 100;
-		var sendUrl = "viewjason.action?boardno=" + ${ boardno };
-		$('#gridview').jqGrid({
-	        url: sendUrl,			//조회(전체, 검색) 기능을 수행하는 서버 경로
+		var viewUrl = "viewjason.action?boardno=" + ${ boardno };
+		var commentUrl = "commentList.action?boardno" + ${ boardno };
+		$.ajax ({
+	        url:  viewUrl,
+	        type: 'GET',
 	        datatype: 'json',
-	        colNames: ['NO', '제목', '작성자', '내용', '작성일'],
-	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
-	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(20/100)), editable: true, edittype: 'text' },
-	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
-	            { name: 'boardContent', index: 'boardContent', width:(pageWidth*(40/100)), editable: true, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: true, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
-	            
-	        ],
-	        height: '100%',
+	        async: true,
+	        success: function(board) {
+	        	alert(board);
+	        	alert(board.boardNo);
+	        	alert(board.boardContent);
+	        	$("#gridview").append(board);
+	        }
 	    });
+		$.ajax ({
+			url: commentUrl,
+			type: 'GET',
+			async: true,
+			success: function(comments) {
+				$("#viewcomments").append(comments);
+			}
+		})
 	});
+	
+	
 </script>
 </head>
 <body>	
@@ -74,7 +82,38 @@
 				<div class="text-center">
 					<h3>Support</h3>					
 						<div style="width:100%">
-							<table id="gridview"></table>
+							<table id="gridview" style="align:center">
+								<tr>
+									<th>NO</th>
+									<td>${ board.boardNo }</td>
+								</tr>
+								<tr>
+									<th>제목</th>
+									<td>${ board.boardTitle }</td>
+								</tr>
+								<tr>
+									<th>작성자</th>
+									<td>${ board.boardWriter }</td>
+								</tr>
+								<tr>
+									<th>내용</th>
+									<td>${ board.boardContent }</td>
+								</tr>
+								<tr>
+									<th>날짜</th>
+									<td>${ board.boardRegDate }</td>
+								</tr>							
+							</table>
+							<table id="viewcomments" style="align:center">
+								<c:forEach items="${ comments }" var="comments">
+									<tr>
+										<th>작성자</th>
+										<td>${ comments.commentWriter }</td>
+										<th>내용</th>
+										<td>${ comments.commentContent }</td>
+									</tr>
+								</c:forEach>
+							</table>
 						</div>
 					</div>
 				</div>				

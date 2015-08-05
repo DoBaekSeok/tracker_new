@@ -63,7 +63,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "viewjason.action")
 	@ResponseBody
-	public Board getBoardListByBoardNoJason(String boardNo) {
+	public Board getBoardListByBoardNoJason(@RequestParam("boardno") String boardNo) {
 		
 		Board board = boardService.getBoardByBoardNo(Integer.parseInt(boardNo));
 		
