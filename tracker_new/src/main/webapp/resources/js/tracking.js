@@ -150,7 +150,11 @@
 				async : false,
 				success : function (data, result, status, xhr) {
 					if(result == "success"){
-						location.replace('/tracker');
+						$("#serialNumber option").remove();
+						$("#serialNumber").append("<option value='0' selected='selected'>장비 선택</option>");
+						for(var d in data){							
+							$("#serialNumber").append("<option value='" + data[d] + "'>" + data[d] + "</option>");
+						}						
 					}
 				}
 			});

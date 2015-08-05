@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="/tracker/resources/css/animate.min.css" /> 
 	<link rel="stylesheet" href="/tracker/resources/css/style.css" />	
 	<link rel="stylesheet" href="/tracker/resources/css/jquery-ui/jquery-ui.css" />	
+	<link rel="stylesheet" href="/tracker/resources/css/jqgrid/ui.jqgrid.css" />
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -43,6 +44,8 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
+	<script src="/tracker/resources/js/jqgrid/jquery.jqGrid.min.js"></script>
+	<script src="/tracker/resources/js/jqgrid/i18n/grid.locale-en.js"></script>	
 	
 	<!-- websocket js -->
 	<script src="/tracker/resources/js/websocket/sockjs-0.3.4.min.js"></script>
@@ -56,10 +59,8 @@
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
-	
-	<!-- equipment -->
-	<script src="/tracker/resources/js/equipment.js" ></script> 
-		
+
+
 	<script>
 	wow = new WOW({}).init();	
 	</script>	
@@ -89,7 +90,6 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -114,8 +114,7 @@
         							</c:url>
 									<a href="${ viewUrl }">회원관리</a>
 								</li>
-								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
-								<li><a href="#our-team">Company</a></li>
+								<li><a href="#equipment">장비관리</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -125,7 +124,6 @@
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
 			            		<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -243,7 +241,6 @@
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
 	</div> 	<!-- /회원가입 && 로그인 -->
-
 	
 	<div class="slider">		
 		<div id="about-slider">
@@ -296,85 +293,39 @@
 		<input type="text" id="message" />
 		<button type="button" id="sendBtn">전송</button>
 	</div><!--/#dialog-->
-		
-	<div id="our-team">
+	
+	
+<!-- /#equipment -->
+	<div id="equipment">
 		<div class="container">
-			<div class="text-center">
-				<h3>Company</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
-			</div>
+		<c:choose>		            	
+				 <c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
 			<div class="row">
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Founder & CEO</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
+				<div class="text-center">
+				<br /><br /><br /><br /><br />
+				
+					<h3>장비관리</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+				<div>
+				  <table id="jqGrid"></table>
+   				  <div id="jqGridPager"></div>  
 				</div>
-				<div class="col-md-4 wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>	
+				
+				</div>				
 			</div>
+				</c:when>
+	 </c:choose>	
+			 
 		</div>
-		<div class="team">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Founder & CEO</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!--/#our-team-->
+			<script src="/tracker/resources/js/equipment.js" ></script>
+	</div>
+
 	
 	<div id="products">
 		<div class="container">
 			<div class="text-center">
 				<h3>Product</h3>
-				<p>Preview!!!</p>
+				<p>제품소개</p>
 			</div>
 			<div class="row">    
 			<c:choose>
@@ -400,7 +351,7 @@
 			</div>
 		</div>
 	</div><!--/#products-->
-	
+
 	<div id="gpstracker">
 	
 	

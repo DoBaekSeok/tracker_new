@@ -18,7 +18,7 @@ import com.tracker.model.dto.Equipment;
 import com.tracker.service.EquipmentService;
 
 @Controller
-@RequestMapping(value = "manageequipment")
+@RequestMapping(value = "equipment")
 public class EquipmentController{	
 	
 	@Autowired

@@ -12,9 +12,9 @@
 		
 		
         $("#jqGrid").jqGrid({
-            url: 'equipmentlistajax.action',
+            url: '/tracker/equipment/equipmentlistajax.action',
 			// we set the changes to be made at client side using predefined word clientArray
-            editurl: 'equipmenteditajax.action',
+            editurl: '/tracker/equipment/equipmenteditajax.action',
             datatype: "json",
             colModel: [
                 {
