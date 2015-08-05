@@ -29,24 +29,32 @@
 					label: '장비이름',
                     name: 'equipName',
                     width: 100,
+                    edittype: 'text',
+                    align: 'center',
                     editable: true // must set editable to true if you want to make the field editable
                 },
                 {
 					label : '모델이름',
                     name: 'modelName',
                     width: 100,
+                    edittype: 'text',
+                    align: 'center',
                     editable: true
                 },
                 {
 					label: '가격',
                     name: 'equipPrice',
                     width: 100,
+                    edittype: 'text',
+                    align: 'center',
                     editable: true
                 },
                 {
 					label: '내용',
                     name: 'equipContent',
                     width: 800,
+                    edittype: 'text',
+                    align: 'center',
                     editable: true
                 },
                 {               	

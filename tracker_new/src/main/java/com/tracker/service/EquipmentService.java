@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tracker.model.dto.EquipPhoto;
 import com.tracker.model.dto.Equipment;
 import com.tracker.repository.EquipmentRepository;
 
@@ -29,6 +30,13 @@ public class EquipmentService {
 		equipmentRepository.insertEquipment(equipment);
 		
 	}
+	
+	public void AddEquipmentPhoto(EquipPhoto equipphoto){
+		
+		equipmentRepository.insertEquipmentPhoto(equipphoto);
+		
+	}
+	
 	
 	public void EditEquipment(Equipment equipment){
 		
