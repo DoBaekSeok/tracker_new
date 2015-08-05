@@ -30,17 +30,17 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
-	@RequestMapping(value = "list.action", method = RequestMethod.GET)
+	/*@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public ModelAndView memberList() {
 		
 		List<Member> members = memberService.getMemberList();
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("member/list");
+		mav.setViewName("index");
 		mav.addObject("members", members);
 		
 		return mav;
-	}
+	}*/
 	
 	@RequestMapping(value="register.action", method = RequestMethod.POST)
 	public String register(@ModelAttribute Member member){

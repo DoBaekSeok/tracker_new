@@ -212,9 +212,12 @@
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
-								<li><c:url value="/member/view.action" var="viewUrl">
+								<li>
+									<c:url value="/member/view.action" var="viewUrl">
 										<c:param name="id" value="${ sessionScope.loginuser.id }" />
-									</c:url> <a href="${ viewUrl }">My Page</a></li>
+									</c:url> 
+									<a href="${ viewUrl }">My Page</a>
+								</li>
 							</ul>
 						</c:when>
 						<c:when
