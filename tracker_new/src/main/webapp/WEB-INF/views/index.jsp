@@ -399,6 +399,8 @@
 	</div><!--/#products-->
 	
 	<div id="gpstracker">
+	
+	
 		<div class="container">
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
