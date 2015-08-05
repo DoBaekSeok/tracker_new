@@ -86,7 +86,6 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -112,7 +111,6 @@
 									<a href="${ viewUrl }">회원관리</a>
 								</li>
 								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -122,7 +120,6 @@
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
 			            		<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -240,7 +237,6 @@
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
 	</div> 	<!-- /회원가입 && 로그인 -->
-
 	
 	<div class="slider">		
 		<div id="about-slider">
@@ -298,7 +294,7 @@
 		<div class="container">
 			<div class="text-center">
 				<h3>Product</h3>
-				<p>Preview!!!</p>
+				<p>제품소개</p>
 			</div>
 			<div class="row">    
 			<c:choose>
