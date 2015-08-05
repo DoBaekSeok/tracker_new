@@ -56,6 +56,9 @@
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
+	
+	<!-- equipment -->
+	<script src="/tracker/resources/js/equipment.js" ></script> 
 		
 	<script>
 	wow = new WOW({}).init();	
