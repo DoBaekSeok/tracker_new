@@ -58,7 +58,7 @@
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
 		
 	<script>
-	wow = new WOW({}).init();	
+	wow = new WOW({}).init();
 	</script>	
 </head>
 <body>
@@ -286,8 +286,10 @@
 		
 	<div id="dialog" title="1:1 상담">
 		<div id="data"></div>
-		<input type="text" id="message" />
-		<button type="button" id="sendBtn">전송</button>
+		<div id="content">
+			<input type="text" id="message" />
+			<img id="sendBtn" src="/tracker/resources/img/button/submit.png" />
+		</div>		
 	</div><!--/#dialog-->
 	
 	<div id="products">
