@@ -9,6 +9,7 @@
 	var mapOptions;	
 	var myIcon = new google.maps.MarkerImage("/tracker/resources/img/marker/iconImg.png", null, null, null, new google.maps.Size(50,50));
 	var timer;
+	var statusTimer;
 	
     initialize();
     
@@ -135,14 +136,31 @@
 				return;
 			}
 			timer = setInterval( function () { request(); }, 3000);
+			statusTimer = setInterval( function () { trackingStatus(); }, 1000);
 			tracking = true;
+			
 		}
 	
 		function trackingStop(){
 			clearInterval(timer);
+			clearInterval(statusTimer);
+			setTimeout("trackingTimeStop()", 1000);
 			tracking = false;
 		}
 	
+		function trackingStatus(){
+			$("#trackingStatus h4").replaceWith("<h4>추적중......</h4>");
+			setTimeout("trackingTimeOut()", 500);
+		}
+		
+		function trackingTimeOut(){
+			$("#trackingStatus h4").replaceWith("<h4></h4>");
+		}
+		
+		function trackingTimeStop(){
+			$("#trackingStatus h4").replaceWith("<h4>추적 대기중</h4>");
+		}
+		
 		function getSerialNumber(){
 			$.ajax ({
 				url : '/tracker/tracking/getserial.action',
@@ -170,7 +188,11 @@
 				},
 				success : function (data, result, status, xhr) {
 					if(result == "success"){
-						location.replace('/tracker');
+						$("#serialNumber option").remove();
+						$("#serialNumber").append("<option value='0' selected='selected'>장비 선택</option>");
+						for(var d in data){							
+							$("#serialNumber").append("<option value='" + data[d] + "'>" + data[d] + "</option>");
+						}						
 					}
 				}
 			});

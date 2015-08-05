@@ -407,28 +407,34 @@
 								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
 						</tr>
-						<tr style="width:480px;height:80px">
+						<tr style="width:480px;height:40px">
+							<td style="width:80px;text-align:center">상태</td> 
+							<td id="trackingStatus">
+								<h4>추적 대기중</h4>
+							</td>
+						</tr>
+						<tr style="width:480px;height:70px">
 							<td style="width:80px;text-align:center">위도</td> 
 							<td>
-								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:70px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:80px">
+						<tr style="width:480px;height:70px">
 							<td style="width:80px;text-align:center">경도</td> 
 							<td>
-								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:70px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:90px">
 							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
 							<td>
-								<textarea id="address1" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address1" style="padding-top:20px;width:400px;height:90px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:90px">
 							<td>
-								<textarea id="address2" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address2" style="padding-top:20px;width:400px;height:90px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>
