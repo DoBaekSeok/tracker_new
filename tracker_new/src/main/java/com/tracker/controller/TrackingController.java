@@ -100,23 +100,23 @@ public class TrackingController {
 		trackingService.deletedOnEquip(serialNumber);
 		
 		return "index";
-	}
+	}	
 	
-	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
-	public String getSerialNumber(HttpSession sesson) {
+	@RequestMapping("getserial.action")
+	@ResponseBody
+	public List<Integer> getEquipmentListAjax(HttpSession session) {
 		
 		Member loginUser = null;
-		if(sesson.getAttribute("loginuser") == null){
+		if(session.getAttribute("loginuser") == null){
 			return null;
 		}
 		
-		loginUser = (Member) sesson.getAttribute("loginuser");
+		loginUser = (Member) session.getAttribute("loginuser");
 		String memberId = loginUser.getId();
 		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
+						
+		return serialNumbers;
 		
-		sesson.setAttribute("serialNumbers", serialNumbers);
-		
-		return "index";
 	}
 
 }
