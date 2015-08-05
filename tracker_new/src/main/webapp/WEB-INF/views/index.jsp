@@ -23,6 +23,7 @@
 	<link rel="stylesheet" href="/tracker/resources/css/animate.min.css" /> 
 	<link rel="stylesheet" href="/tracker/resources/css/style.css" />	
 	<link rel="stylesheet" href="/tracker/resources/css/jquery-ui/jquery-ui.css" />	
+	<link rel="stylesheet" href="/tracker/resources/css/jqgrid/ui.jqgrid.css" />
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -43,6 +44,8 @@
 	<script src="/tracker/resources/js/fliplightbox.min.js"></script>
 	<script src="/tracker/resources/js/functions.js"></script>
 	<script src="/tracker/resources/js/jquery-ui/jquery-ui.js"></script>
+	<script src="/tracker/resources/js/jqgrid/jquery.jqGrid.min.js"></script>
+	<script src="/tracker/resources/js/jqgrid/i18n/grid.locale-en.js"></script>	
 	
 	<!-- websocket js -->
 	<script src="/tracker/resources/js/websocket/sockjs-0.3.4.min.js"></script>
@@ -56,9 +59,10 @@
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
-		
+
+
 	<script>
-	wow = new WOW({}).init();	
+	wow = new WOW({}).init();s		
 	</script>	
 </head>
 <body>
@@ -86,7 +90,6 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -111,8 +114,7 @@
         							</c:url>
 									<a href="${ viewUrl }">회원관리</a>
 								</li>
-								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
-								<li><a href="#our-team">Company</a></li>
+								<li><a href="#equipment">장비관리</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -122,7 +124,6 @@
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
 			            		<li><a href="#header">Intro</a></li>
-								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -240,7 +241,6 @@
 			<a href="#0" class="cd-close-form">Close</a>
 		</div> <!-- cd-user-modal-container -->
 	</div> 	<!-- /회원가입 && 로그인 -->
-
 	
 	<div class="slider">		
 		<div id="about-slider">
@@ -290,88 +290,44 @@
 		
 	<div id="dialog" title="1:1 상담">
 		<div id="data"></div>
-		<input type="text" id="message" />
-		<button type="button" id="sendBtn">전송</button>
+		<div id="content">
+			<input type="text" id="message" />
+			<img id="sendBtn" src="/tracker/resources/img/button/submit.png" />
+		</div>		
 	</div><!--/#dialog-->
-		
-	<div id="our-team">
+	
+	
+<!-- /#equipment -->
+	<div id="equipment">
 		<div class="container">
-			<div class="text-center">
-				<h3>Company</h3>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
-			</div>
+		<c:choose>		            	
+				 <c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
 			<div class="row">
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Founder & CEO</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
+				<div class="text-center">
+				<br /><br /><br /><br /><br />
+				
+					<h3>장비관리</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Lorem ipsum dolor sit<br>amet consectetur adipisicing elit</p>
+				<div>
+				  <table id="jqGrid"></table>
+   				  <div id="jqGridPager"></div>  
 				</div>
-				<div class="col-md-4 wow bounceInDown" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>
-				<div class="col-md-4 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-					<div class="text-center">
-						<img src="/tracker/resources/img/team/2.png" alt="">
-						<h2>신건식</h2>
-						<h4>Creative Director</h4>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-					</div>
-				</div>	
+				
+				</div>				
 			</div>
+				</c:when>
+	 </c:choose>	
+			 
 		</div>
-		<div class="team">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Founder & CEO</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-					<div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
-						<div class="text-center">
-							<img src="/tracker/resources/img/team/2.png" class="img-responsive" alt="">
-							<h2>신건식</h2>
-							<h4>Creative Director</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit Fusce fermen tum neque a rutrum varius</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div><!--/#our-team-->
+			<script src="/tracker/resources/js/equipment.js" ></script>
+	</div>
+
 	
 	<div id="products">
 		<div class="container">
 			<div class="text-center">
 				<h3>Product</h3>
-				<p>Preview!!!</p>
+				<p>제품소개</p>
 			</div>
 			<div class="row">    
 			<c:choose>
@@ -379,11 +335,13 @@
 					<c:forEach var="equipment" items="${ equipments }">
 						<figure class="effect-chico">									
 							<div class="col-md-3 col-xs-6 wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
-								<h2>${ equipment.modelName }</h2>						
-								<a href="/tracker/resources/img/work/5.jpg" class="flipLightBox">
-								<img src="/tracker/resources/img/work/5.jpg" class="img-responsive" alt="">
-								</a>
-								<p>${ equipment.equipContent }</p>
+								<h2>${ equipment.modelName }</h2>								
+								<img src="/tracker/resources/img/product/${ equipment.savedFileName }" class="img-responsive" alt="">
+								<p>
+									제품구분 : ${ equipment.equipName }<br />									
+									제품가격 : ￦ ${ equipment.equipPrice }<br />
+									제품설명 : ${ equipment.equipContent }
+								</p>
 							</div>
 						</figure>				
 					</c:forEach>
@@ -397,8 +355,10 @@
 			</div>
 		</div>
 	</div><!--/#products-->
-	
+
 	<div id="gpstracker">
+	
+	
 		<div class="container">
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
@@ -447,28 +407,34 @@
 								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
 						</tr>
-						<tr style="width:480px;height:80px">
+						<tr style="width:480px;height:40px">
+							<td style="width:80px;text-align:center">상태</td> 
+							<td id="trackingStatus">
+								<h4>추적 대기중</h4>
+							</td>
+						</tr>
+						<tr style="width:480px;height:70px">
 							<td style="width:80px;text-align:center">위도</td> 
 							<td>
-								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:70px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:80px">
+						<tr style="width:480px;height:70px">
 							<td style="width:80px;text-align:center">경도</td> 
 							<td>
-								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:70px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:90px">
 							<td rowspan="2" style="width:80px;text-align:center">주소</td> 
 							<td>
-								<textarea id="address1" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address1" style="padding-top:20px;width:400px;height:90px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:90px">
 							<td>
-								<textarea id="address2" style="padding-top:20px;width:400px;height:100px;font-size:15pt;text-align:center" readonly="readonly">
+								<textarea id="address2" style="padding-top:20px;width:400px;height:90px;font-size:15pt;text-align:center" readonly="readonly">
 								</textarea>
 							</td>
 						</tr>

@@ -77,9 +77,14 @@ public class TrackingController {
 	@RequestMapping(value="regist.action", method = RequestMethod.GET)
 	public ModelAndView registform(HttpSession session){
 		
+		ModelAndView mov = new ModelAndView();
+		
+		if(session.getAttribute("loginuser") == null){
+			return null;
+		}
 		Member loginUser = (Member)session.getAttribute("loginuser");
 		String memberId = loginUser.getId();
-		ModelAndView mov = new ModelAndView();
+		
 		mov.setViewName("gpstracker/regist");
 		mov.addObject("id", memberId);
 		
@@ -95,28 +100,38 @@ public class TrackingController {
 	}
 	
 	@RequestMapping(value="delete.action", method = RequestMethod.POST)
-	public String delete(int serialNumber){
+	@ResponseBody
+	public List<Integer> delete(int serialNumber, HttpSession session){
 		
 		trackingService.deletedOnEquip(serialNumber);
 		
-		return "index";
-	}
-	
-	@RequestMapping(value="getserial.action", method = RequestMethod.POST)
-	public String getSerialNumber(HttpSession sesson) {
-		
 		Member loginUser = null;
-		if(sesson.getAttribute("loginuser") == null){
+		if(session.getAttribute("loginuser") == null){
 			return null;
 		}
 		
-		loginUser = (Member) sesson.getAttribute("loginuser");
+		loginUser = (Member) session.getAttribute("loginuser");
 		String memberId = loginUser.getId();
 		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
+			
+		return serialNumbers;
+	}	
+	
+	@RequestMapping("getserial.action")
+	@ResponseBody
+	public List<Integer> getEquipmentListAjax(HttpSession session) {
 		
-		sesson.setAttribute("serialNumbers", serialNumbers);
+		Member loginUser = null;
+		if(session.getAttribute("loginuser") == null){
+			return null;
+		}
 		
-		return "index";
+		loginUser = (Member) session.getAttribute("loginuser");
+		String memberId = loginUser.getId();
+		List<Integer> serialNumbers = trackingService.getEquipSerialByMemberId(memberId);
+						
+		return serialNumbers;
+		
 	}
 
 }

@@ -22,10 +22,13 @@
 		<result column="savedfilename" property="SavedFileName" />
 		<result column="equipno" property="equipNo" />
 	</resultMap>
+	
 	<select id="getEquipment" resultMap="equipmentResult">
-	  select equipno, equipname, modelname, equipprice, equipcontent
-	  from Equipment
+	  select e.equipno, e.equipname, e.modelname, e.equipprice, e.equipcontent, p.savedfilename
+	  from equipment e, equipphoto p
+	  where e.equipno = p.equipno
 	</select>
+	
 	<select id='getEquipPhoto' resultMap="equipPhotoResult" parameterType="int">
 		select equipphotono, savedfilename, equipno
 		from EquipPhoto

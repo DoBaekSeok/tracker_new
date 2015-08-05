@@ -54,21 +54,18 @@
 	        type: 'GET',
 	        datatype: 'json',
 	        async: true,
-	        success: function(board) {
-	        	alert(board);
-	        	alert(board.boardNo);
-	        	alert(board.boardContent);
-	        	$("#gridview").append(board);
+	        success: function(html) {
+	        	$("#gridview").append(html);
 	        }
 	    });
-		$.ajax ({
+		<%--$.ajax ({
 			url: commentUrl,
 			type: 'GET',
 			async: true,
 			success: function(comments) {
 				$("#viewcomments").append(comments);
 			}
-		})
+		})--%>
 	});
 	
 	
@@ -85,42 +82,40 @@
 							<table id="gridview" style="align:center">
 								<tr>
 									<th>NO</th>
-									<td>${ board.boardNo }</td>
+									<td>1</td>
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td>${ board.boardTitle }</td>
+									<td>1</td>
 								</tr>
 								<tr>
 									<th>작성자</th>
-									<td>${ board.boardWriter }</td>
+									<td>1</td>
 								</tr>
 								<tr>
 									<th>내용</th>
-									<td>${ board.boardContent }</td>
+									<td>1</td>
 								</tr>
 								<tr>
 									<th>날짜</th>
-									<td>${ board.boardRegDate }</td>
+									<td>1</td>
 								</tr>							
 							</table>
-							<table id="viewcomments" style="align:center">
-								<c:forEach items="${ comments }" var="comments">
+							<table id="" style="align:center">
+							<%--<c:forEach items="" var="">
 									<tr>
 										<th>작성자</th>
-										<td>${ comments.commentWriter }</td>
+										<td></td>
 										<th>내용</th>
-										<td>${ comments.commentContent }</td>
+										<td></td>
 									</tr>
-								</c:forEach>
+								</c:forEach> --%>
 							</table>
 						</div>
 					</div>
 				</div>				
 			</div>			
 		</div>
-	</div>
-
 		
 	<footer>	
 		<div class="text-center">
