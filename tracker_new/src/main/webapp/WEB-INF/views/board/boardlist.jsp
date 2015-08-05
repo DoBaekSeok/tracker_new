@@ -60,15 +60,14 @@
 	$(document).ready(function () {
 		var pageWidth = $("#grid1").parent().width() - 100;
 		$('#grid1').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=notice',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
-	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
+	        colNames: ['NO', '제목', '작성자', '작성일'],
 	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)),key: true },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
 	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
-	            { name: 'boardNo', width:(pageWidth*(10/100)), editable: false, formatter: viewcontent}
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
 	        ],
 	        height: '100%',
 	        rowNum: 5,									//한 페이지에 표시될 행 갯수
@@ -76,18 +75,18 @@
 	        pager: '#pager1',
 	        sortname: 'boardNo',
 	        viewrecords: true,
-	        sortorder: "desc"
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }
+	        
 	    });
 		$('#grid1').jqGrid('navGrid', '#pager1', { add:true,edit:false,del:false,search:true });
-		function viewcontent(cellValue, options, rowdata) {
-           var view = "<a href='/tracker/board/view.action?boardno='"+ cellValue + ">내용보기</a>";
-           return view;
-        } 
 	});
 	$(document).ready(function () {
 		var pageWidth = $("#bgrid2").parent().width() - 100;
 		$('#bgrid2').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=qna',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
@@ -113,14 +112,14 @@
 	$(document).ready(function () {
 		var pageWidth = $("#cgrid3").parent().width() - 100;
 		$('#cgrid3').jqGrid({
-	        url: 'listjason.action',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        url: 'listjason.action?boardkind=community',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
 	        colModel: [
 	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
 	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: date},
 	            { name: 'view', index: 'view', width:(pageWidth*(10/100)), editable: false, formatter: viewcontent}
 	        ],
 	        height: '100%',
@@ -134,15 +133,12 @@
 		$('#cgrid3').jqGrid('navGrid', '#cpager3', { add:true,edit:false,del:false,search:true });
 		function viewcontent(cellValue, options, rowdata) {
             return "<a href='http://www.google.com' >내용보기</a>";
-        } 
+        }
 	});
 </script>
 </head>
 <body>	
 
-	<!-- header -->
-	<c:import url="/WEB-INF/views/include/header.jsp" />
-	
 	<div id="feature">
 		<div class="container">
 			<div class="row">
@@ -154,7 +150,7 @@
 						    <li><a href="#tabs-2">Q & A</a></li>
 						    <li><a href="#tabs-3">자유 게시판</a></li>
 					  	</ul>
-						<div id="tabs-1" align="center">
+						<div id="tabs-1" align="center" style="width:100%">
 							<table id="grid1"></table>
 							<div id="pager1"></div>
 						</div>

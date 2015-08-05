@@ -19,12 +19,12 @@
 			type : 'GET',
 			async : false,
 			data : {
-				onEquipNo : $("#onEquipNo").val()
+				serialNumber : $("#serialNumber").val()
 			},
 			datatype : 'json',
 			success : function (data) {
-				if(onEquipNo != document.getElementById("onEquipNo").value){
-					onEquipNo = document.getElementById("onEquipNo").value;
+				if(onEquipNo != document.getElementById("serialNumber").value){
+					onEquipNo = document.getElementById("serialNumber").value;
 					initialize();	
 					map.panTo(new google.maps.LatLng(data.results[0].latitude, data.results[0].longitude));
 					for(var i=0;i<latlngList.length;i++){
@@ -143,7 +143,36 @@
 			tracking = false;
 		}
 	
-	
+		function getSerialNumber(){
+			$.ajax ({
+				url : '/tracker/tracking/getserial.action',
+				method : "post",
+				async : false,
+				success : function (data, result, status, xhr) {
+					if(result == "success"){
+						location.replace('/tracker');
+					}
+				}
+			});
+		}
+		
+		function deletedOnEquip(){
+			$.ajax ({
+				url : '/tracker/tracking/delete.action',
+				method : "post",
+				async : false,
+				data : {
+					serialNumber : $("#serialNumber").val()
+				},
+				success : function (data, result, status, xhr) {
+					if(result == "success"){
+						location.replace('/tracker');
+					}
+				}
+			});
+			
+		}
+
 		
 		
 		

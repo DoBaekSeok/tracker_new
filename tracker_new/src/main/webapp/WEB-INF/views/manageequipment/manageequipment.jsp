@@ -47,17 +47,14 @@
 	</script>	
 	
 	<script>
-	
 
-    
-    
     $(document).ready(function () {
 		var template = "<div><div style='display:none;'> equipNo </div><div style='display:none;'> {equipNo} </div>";
 		template += "<div> 장비명: </div><div>{equipName} </div>";
 		template += "<div> 모델명: </div><div>{modelName} </div>";
 		template += "<div> 가격: </div><div>{equipPrice} </div>";
 		template += "<div> 내용:</div><div> {equipContent} </div>";
-		template += "<div> 사진:</div><div> {FileName} </div>";
+		template += "<div> 사진:</div><div> {equipPhoto} </div>";
 		template += "<hr style='width:100%;'/>";
 		template += "<div> {sData} {cData}  </div></div>";
 		
@@ -97,33 +94,30 @@
                 {
 					label: '내용',
                     name: 'equipContent',
-                    width: 900,
+                    width: 800,
                     editable: true
                 },
                 {               	
-					label: '사진명',
-                    name: 'FileName',
+					label: '사진',
+                    name: 'equipPhoto',
+                    jsonmap: 'equipPhoto.savedFileName',
                     width: 150,
 					key: true,
+					enctype: "multipart/form-data",
                     editable: true,
                     edittype: 'file',
+                    align: 'center',
+					formatter : formatImage  
+
                 },  
-                {
-                	label: '사진',
-                    name: 'Photo',
-                    width: 150,
-					align: 'center',
-                    formatter: formatImage
-                }
+  
             ],
-			sortname: 'equipNo',
-			sortorder : 'desc',
 			loadonce: true,
 			viewrecords: true,
             width: '1200',
             height: 'auto',
             rowNum: 10,
-            pager: "#jqGridPager"                                    
+            pager: "#jqGridPager"
         });
 			
         $('#jqGrid').navGrid('#jqGridPager',
@@ -160,7 +154,7 @@
     
    
     function formatImage(cellValue, options, rowObject) {
-        var imageHtml = "<img src='img/" + cellValue + "' originalValue='" + cellValue + "' />";
+        var imageHtml = "<img width='150' height='100' src='/tracker/resources/img/product/" + cellValue + "'/>";
         return imageHtml;
     }
 
@@ -182,9 +176,6 @@
 </head>
 <body>	
 
-	<!-- header -->
-	<c:import url="/WEB-INF/views/include/header.jsp" />
-	
 	<div id="feature">
 		<div class="container">
 			<div class="row">

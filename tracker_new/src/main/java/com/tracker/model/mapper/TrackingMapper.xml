@@ -6,8 +6,7 @@
   
 <mapper namespace="com.tracker.model.mapper.TrackingMapper">
 
-	<insert id="insertTracking" parameterType="HashMap" >
-		
+	<insert id="insertTracking" parameterType="HashMap" >	
 		INSERT INTO tracking 
 		(
 			trackingNo, 
@@ -19,12 +18,11 @@
 		VALUES 
 		(
 			tracking_seq.nextval, 
-			#{onEquipNo}, 
+			(select onequipno from onequip where SERIALNUMBER = #{serialNumber}), 
 			#{latitude}, 
 			#{longitude}, 
 			sysdate
-		)
-		
+		)	
 	</insert>
 	
 	<select id="getTracking" parameterType="int" resultType="Tracking">
@@ -38,8 +36,47 @@
 		FROM 
 			tracking 
 		WHERE 
-			onEquipNo = #{onEquipNo}
+			onEquipNo = (select onequipno from onequip where SERIALNUMBER = #{serialNumber})
 	</select>
+	
+	<insert id="registEquipment" parameterType="HashMap" >
+		insert into onEquip
+		(
+			onEquipNo, 
+			memberId, 
+			onEquipRegDate, 
+			onEquipDeleted, 
+			equipNo, 
+			serialNumber
+		)
+		values 
+		(
+			onequip_seq.nextval, 
+			#{memberId}, 
+			sysdate, 
+			0, 
+			#{equipNo}, 
+			#{serialNumber}
+		)
+	</insert>
+	
+	<select id="getEquipSerialByMemberId" parameterType="String" resultType="int">
+		select 
+			serialNumber
+		from 
+			onEquip 
+		where 
+			MEMBERID = #{memberId} AND onEquipDeleted = 0
+	</select>
+	
+	<update id="deletedOnEquip" parameterType="int">
+		update 
+			onEquip
+    	set 
+    		onEquipDeleted = 1
+    	where 
+    		serialNumber = #{serialNumber}
+	</update>
 	
 </mapper>
 

@@ -30,8 +30,22 @@ public class OracleTrackingRepository implements TrackingRepository {
 	}
 
 	@Override
-	public List<Tracking> getTracking(int onEquipNo) {
-		List<Tracking> tracking = trackingMapper.getTracking(onEquipNo);
+	public List<Tracking> getTracking(int serialNumber) {
+		List<Tracking> tracking = trackingMapper.getTracking(serialNumber);
 		return tracking;
 	}
+	
+	public void registEquipment(HashMap<String, Object> params){
+		trackingMapper.registEquipment(params);
+	}
+	
+	public List<Integer> getEquipSerialByMemberId(String memberId){
+		List<Integer> serialNumber = trackingMapper.getEquipSerialByMemberId(memberId);
+		return serialNumber;
+	}
+	
+	public void deletedOnEquip(int serialNumber){
+		trackingMapper.deletedOnEquip(serialNumber);
+	}
+	
 }

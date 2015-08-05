@@ -10,7 +10,7 @@ public interface MemberRepository {
 	
 	void updateMember(Member member);
 	
-	void deleteMember(Member member);
+	void deleteMember(String id);
 	
 	List<Member> getMemberList();
 	

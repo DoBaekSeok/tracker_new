@@ -214,34 +214,28 @@
 	<!--/header-->
 
 	<div id="login">
-		<h1>회원정보 수정</h1>
-		<form id="edit-form" method="post" action="/tracker/member/edit.action">
+		<h1>장비 등록</h1>
+		<form id="edit-form" method="post" action="/tracker/tracking/regist.action">
 			<label class="image-replace cd-username" for="user_id">아이디</label> 
-			<input type="text" id="id" name="id" value="${member.id}" readonly="readonly" placeholder="${member.id}" />		
+			<input type="text" id="memberId" name="memberId" value="${id}" readonly="readonly" />		
 			
-			<label class="image-replace cd-username" for="name">사용자 이름</label>
-			<input type="text" id="name" name="name" value="${member.name}" placeholder="${member.name}" />
+			<label class="image-replace cd-username" for="name">장비번호</label>
+			<input type="text" id="equipNo" name="equipNo" value="" />
 			
-			<label class="image-replace cd-email" for="email">E-mail</label>
-			<input type="text" id="email" name="email" value="${member.email}" placeholder="${member.email}" />
-			
-			<label class="image-replace cd-password" for="user_password">비밀번호</label>
-			<input type="text" id="password" name="password" value="${member.password}" placeholder="${member.password}" />
-			
-			<label class="image-replace cd-username" for="address">사용자 주소</label>
-			<input type="text" id="address" name="address" value="${member.address}" placeholder="${member.address}" />
-			
+			<label class="image-replace cd-email" for="email">Serial Number</label>
+			<input type="text" id="serialNumber" name="serialNumber" value=""  />
+					
 			<div id="join_message"></div>
 			
-			<input type="submit" value="수정" /><br />
-			<input id="deleteUser" type="button" value="탈퇴" />
+			<input type="submit" value="등록" /><br />
+			
+			<input id="deleteUser" type="button" value="취소" onClick="location.href='/tracker';"/>
 		</form>
 	</div>
 	
-	<div id="dialog-confirm" title="탈퇴하시겠습니까?">
-  	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-  		아이디는 즉시 탈퇴됩니다.</p>
-	</div>
+
+    
+
     
 </body>
 </html>

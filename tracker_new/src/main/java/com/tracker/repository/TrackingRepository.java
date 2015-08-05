@@ -10,6 +10,12 @@ public interface TrackingRepository {
 
 	void insertTracking(HashMap<String, Object> params);
 	
-	List<Tracking> getTracking(int onEquipNo);
+	List<Tracking> getTracking(int serialNumber);
+	
+	void registEquipment(HashMap<String, Object> params);
+	
+	List<Integer> getEquipSerialByMemberId(String memberId);
 
+	void deletedOnEquip(int serialNumber);
+	
 }

@@ -36,9 +36,9 @@ public class BoardController {
 	
 	@RequestMapping(value = "listjason.action")
 	@ResponseBody
-	public  List<Board> getBoardListJson() {
+	public  List<Board> getBoardListJson(@RequestParam("boardkind") String boardKind) {
 		
-		List<Board> boards = boardService.getBoardList();
+		List<Board> boards = boardService.getBoardList(boardKind);
 				
 		return boards;
 	}
@@ -55,16 +55,17 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "view.action", method = RequestMethod.GET)
-	public String view(@RequestParam("boardno") int boardNo) {
+	public String view(@RequestParam("boardno") int boardNo, Model model) {
 		
-		return "/board/view?boardno=" + boardNo;
+		model.addAttribute("boardno", boardNo);
+		return "/board/boardview";
 	}
 	
 	@RequestMapping(value = "viewjason.action")
 	@ResponseBody
-	public Board getBoardListByBoardNoJason(int boardNo) {
+	public Board getBoardListByBoardNoJason(String boardNo) {
 		
-		Board board = boardService.getBoardByBoardNo(boardNo);
+		Board board = boardService.getBoardByBoardNo(Integer.parseInt(boardNo));
 		
 		return board;
 	}

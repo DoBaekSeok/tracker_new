@@ -3,6 +3,8 @@ package com.tracker.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -65,7 +67,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "edit.action", method = RequestMethod.POST)
 	public String edit(@ModelAttribute Member member){
-		System.out.println("***************수정에서 보내는 아이디 " + member.getId());
 		
 		if(member.getId() != null){
 			memberService.updateMember(member);
@@ -75,7 +76,18 @@ public class MemberController {
 		return "redirect:/home.action";
 		
 	}
-
+	
+	@RequestMapping(value = "delete.action", method = RequestMethod.GET)
+	public String delete(@RequestParam("id") String id, HttpSession session){
+		
+		if(id != null){
+			memberService.deleteMember(id);
+			session.removeAttribute("loginuser");
+	
+		}
+		
+		return "redirect:/home.action";
+	}
 }
 
 

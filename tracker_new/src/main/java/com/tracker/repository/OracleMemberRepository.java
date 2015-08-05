@@ -34,8 +34,8 @@ public class OracleMemberRepository implements MemberRepository {
 	}
 
 	@Override
-	public void deleteMember(Member member) {
-		memberMapper.deleteMember(member);
+	public void deleteMember(String id) {
+		memberMapper.deleteMember(id);
 	}
 
 	@Override

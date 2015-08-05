@@ -52,7 +52,7 @@
 		
 	<!-- modal jQuery-->
 	<script src="/tracker/resources/js/modernizr.js" ></script> 
-	<script src="/tracker/resources/js/main.js" ></script> 
+	<script src="/tracker/resources/js/member.js" ></script> 
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
@@ -85,7 +85,8 @@
 		            			<li>${ loginuser.name }님 환영합니다.
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
-								<li><a href="#header">Intro</a></li>								
+								<li><a href="#header">Intro</a></li>
+								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -104,8 +105,14 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li><a href="#">회원관리</a></li>
-								<li><a href="#">장비관리</a></li>								
+								<li>
+									<c:url value="/member/list.action" var="viewUrl">
+        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
+        							</c:url>
+									<a href="${ viewUrl }">회원관리</a>
+								</li>
+								<li><a href="/tracker/manageequipment/equipmentlist.action">장비관리</a></li>
+								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -114,7 +121,8 @@
 		            	<c:otherwise>
 		            		<ul class="nav navbar-nav">        	
 			            		<li class="dialogForm"><a class="cd-signin" href="#Login">Login/Join</a></li>
-			            		<li><a href="#header">Intro</a></li>								
+			            		<li><a href="#header">Intro</a></li>
+								<li><a href="#our-team">Company</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
 								<li><a href="/tracker/board/list.action">Support</a></li>
@@ -324,32 +332,58 @@
 				<h3>Gps Tracker</h3>
 				<div id="map_view" class="container" style="width:600px;height:480px;float:left" >			
 				</div>
-				<div style="width:480px;height:440px;float:left">
+				<div style="width:480px;height:480px;float:left">
 					<table border="5" style="width:480px;height:480px;font-size:13pt;">
-						<tr style="width:480px;height:60px">
+						<tr style="width:480px;height:40px">
+							<td>
+							</td>
+							<td>
+								<a href="/tracker/tracking/regist.action" >장비 등록</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="javascript:deletedOnEquip();" >장비 삭제</a>
+							</td>
+						</tr>
+						<tr style="width:480px;height:40px">
 							<td style="width:80px;text-align:center">번호</td> 
 							<td style="padding-left:10px">
-								<select id="onEquipNo" width="100px">
-								    <option value="1" selected="selected">1번 장비</option>
+							<c:choose>		            	
+				            	<c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'user'}">
+									<a href="javascript:getSerialNumber();" >조회</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					            	<select id="serialNumber" width="100px">
+					            		<option value="0" selected="selected">장비 선택</option>
+						            		<c:forEach var="serialNumber" items="${ serialNumbers }">
+												 <option value="${serialNumber}" >${serialNumber}</option>
+											</c:forEach>
+									</select>	
+				            	</c:when>
+				            	<c:otherwise>
+								<select id="serialNumber" width="100px">
+									<option value="0" selected="selected">장비 선택(other)</option>
+								    <option value="1" >1번 장비</option>
 								    <option value="2" >2번 장비</option>
 								    <option value="3" >3번 장비</option>
 								</select>	
+				            	</c:otherwise>
+				            </c:choose>
+							
 								&nbsp;&nbsp;&nbsp;&nbsp;
 								<img src="/tracker/resources/img/button/startButton.png" onclick="javascript:trackingStart();" width="40px" height="40px">
+
 								&nbsp;&nbsp;
 								<img src="/tracker/resources/img/button/stopButton.png" onclick="javascript:trackingStop();" width="48px" height="48px">	
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:80px">
 							<td style="width:80px;text-align:center">위도</td> 
 							<td>
-								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="latitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
-						<tr style="width:480px;height:100px">
+						<tr style="width:480px;height:80px">
 							<td style="width:80px;text-align:center">경도</td> 
 							<td>
-								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:100px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
+								<input type="text" id="longitude" style="padding-left:10px;width:400px;height:80px; font-size:28pt; font-weight:bold;" readonly="readonly" value="0.0"/>
 							</td>
 						</tr>
 						<tr style="width:480px;height:100px">
@@ -365,13 +399,14 @@
 								</textarea>
 							</td>
 						</tr>
-
 					</table>
-
 				</div>
 			</div>
 		</div>
 		<script src="/tracker/resources/js/tracking.js"></script>
+		<div>
+			
+		</div>
 	</div><!--/#gpstracker-->
 	<br /><br />
 	
