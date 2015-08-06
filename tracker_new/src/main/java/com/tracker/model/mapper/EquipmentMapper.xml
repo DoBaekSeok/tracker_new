@@ -20,7 +20,7 @@
 	<resultMap type="EquipPhoto" id="equipPhotoResult">
 		<id column="equipphotono" property="EquipPhotoNo"/>
 		<result column="savedfilename" property="SavedFileName" />
-		<result column="equipno" property="equipNo" />
+		<result column="equipno" property="EquipNo" />
 	</resultMap>
 	
 	<select id="getEquipment" resultMap="equipmentResult">
@@ -75,31 +75,11 @@
 			VALUES(EQUIPPHOTO_SEQ.nextVal, #{ SavedFileName }, #{ equipNo })
 	</insert>  
 	
-<!-- 기존 SQL문 -->
-<!-- 	<insert id="insertEquipment"  parameterType="Equipment">
-		INSERT INTO
-		Equipment
-		(
-			equipNo,
-			equipName,
-			modelName,
-			equipPrice,
-			equipContent
-		)
-		VALUES
-		(
-			equipment_seq.nextval,
-			#{ equipName },
-			#{ modelName },
-			#{ equipPrice },
-			#{ equipContent }
-		)
-	</insert> -->
-	
+
 
 	
 
-<!-- 	<delete id="deleteEquipment" parameterType="int">
+ 	<delete id="deleteEquipment" parameterType="int">
 		UPDATE
 			Equipment
 		SET
@@ -109,7 +89,7 @@
 	</delete>
 	
 	
-	 -->
+
 	
 	<!-- 
 

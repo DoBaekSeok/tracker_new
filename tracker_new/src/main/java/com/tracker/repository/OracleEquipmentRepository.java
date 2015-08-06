@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.tracker.model.dto.EquipPhoto;
 import com.tracker.model.dto.Equipment;
 import com.tracker.model.mapper.EquipmentMapper;
 
@@ -50,6 +51,12 @@ public class OracleEquipmentRepository implements EquipmentRepository {
 	@Override
 	public void updateEquipment(Equipment equipment) {
 		equipmentMapper.updateEquipment(equipment);
+		
+	}
+
+	@Override
+	public void insertEquipmentPhoto(EquipPhoto equipphoto) {
+		equipmentMapper.insertEquipmentPhoto(equipphoto);
 		
 	}
 }
