@@ -42,6 +42,7 @@ public class BoardController {
 				
 		return boards;
 	}
+	
 	@RequestMapping(value = "write.action", method = RequestMethod.GET)
 	public String writeForm() {
 		

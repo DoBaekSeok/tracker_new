@@ -315,12 +315,21 @@ hr {
 
 
 /*************************
-*******feature******
+*******managemember******
 **************************/
 #managemember {
 	padding-top:50px;
 	background:#fff;
 	padding-bottom:50px;
+}
+
+/*************************
+*******support******
+**************************/
+#support {	
+	padding-top : 50px;
+	background : #fff;
+	padding-bottom : 50px;
 }
 
 

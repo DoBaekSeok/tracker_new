@@ -59,7 +59,9 @@
 	
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
-
+	
+	<!-- board -->
+	<script src="/tracker/resources/js/board.js" ></script>
 
 	<script>
 	wow = new WOW({}).init();
@@ -92,7 +94,7 @@
 								<li><a href="#header">Intro</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
-								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="#support">Support</a></li>
 								<li>
 									<c:url value="/member/view.action" var="viewUrl">
         								<c:param name="id" value="${ sessionScope.loginuser.id }" />
@@ -112,7 +114,7 @@
 								<li><a href="#equipment">장비관리</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
-								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="#support">Support</a></li>
 							</ul>
 		            	</c:when>
 		            	<c:otherwise>
@@ -121,7 +123,7 @@
 			            		<li><a href="#header">Intro</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
-								<li><a href="/tracker/board/list.action">Support</a></li>
+								<li><a href="#support">Support</a></li>
 							</ul>
 		            	</c:otherwise>
 		            </c:choose>
@@ -282,7 +284,7 @@
 			</div> <!--/#carousel-slider-->
 		</div><!--/#about-slider-->
 	</div><!--/#slider-->
-		
+	
 	<div id="dialog" title="1:1 상담">
 		<div id="data"></div>
 		<div id="content">
@@ -481,7 +483,35 @@
 			
 		</div>
 	</div><!--/#gpstracker-->
-	<br /><br />
+	
+	<div id="support">
+		<div class="container">
+			<div class="row">
+				<div class="text-center">
+					<h3>Support</h3>
+					<div id="tabs">
+						<ul>
+						    <li><a href="#tabs-1">공지사항</a></li>
+						    <li><a href="#tabs-2">Q & A</a></li>
+						    <li><a href="#tabs-3">자유 게시판</a></li>
+					  	</ul>
+						<div id="tabs-1" align="center" style="width:100%">
+							<table id="grid1"></table>
+							<div id="pager1"></div>
+						</div>
+						<div id="tabs-2" align="center" style="width:100%">
+							<table id="bgrid2"></table>
+							<div id="bpager2"></div>
+						</div>
+						<div id="tabs-3" align="center" style="width:100%">
+							<table id="cgrid3"></table>
+							<div id="cpager3"></div>
+						</div>
+					</div>
+				</div>				
+			</div>			
+		</div>
+	</div><!--/#support-->
 	
 	<!-- footer -->
 	<footer>	
