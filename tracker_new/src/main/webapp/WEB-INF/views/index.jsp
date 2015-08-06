@@ -62,7 +62,7 @@
 
 
 	<script>
-	wow = new WOW({}).init();s		
+	wow = new WOW({}).init();
 	</script>	
 </head>
 <body>
@@ -97,7 +97,7 @@
 									<c:url value="/member/view.action" var="viewUrl">
         								<c:param name="id" value="${ sessionScope.loginuser.id }" />
         							</c:url>
-        							<a href="${ viewUrl }">My Page</a>
+        							<a href="${ viewUrl }">My Page</a>  							
 								</li>
 							</ul>
 		            	</c:when>
@@ -108,12 +108,7 @@
 			            		<a href="/tracker/account/logout.action">로그아웃</a></li>
 			            		<li><a id="button_open_dialog">1:1 상담</a></li>
 								<li><a href="#header">Intro</a></li>
-								<li>
-									<c:url value="/member/list.action" var="viewUrl">
-        								<c:param name="id" value="${ sessionScope.loginuser.id }" />
-        							</c:url>
-									<a href="${ viewUrl }">회원관리</a>
-								</li>
+								<li><a href="#managemember">회원관리</a></li>
 								<li><a href="#equipment">장비관리</a></li>
 								<li><a href="#products">Products</a></li>
 								<li><a href="#gpstracker">GPS Tracker</a></li>
@@ -157,7 +152,7 @@
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="password">비밀번호</label>
-						<input class="full-width has-padding has-border" id="password" type="text"  placeholder="패스워드">
+						<input class="full-width has-padding has-border" id="password" type="password"  placeholder="패스워드">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
@@ -197,7 +192,7 @@
 
 					<p class="fieldset">
 						<label class="image-replace cd-password" for="user_password">비밀번호</label>
-						<input class="full-width has-padding has-border" id="password" name="password" type="text"  placeholder="비밀번호">
+						<input class="full-width has-padding has-border" id="password" name="password" type="password"  placeholder="비밀번호">
 						<a href="#0" class="hide-password">Hide</a>
 						<span class="cd-error-message">Error message here!</span>
 					</p>
@@ -265,7 +260,7 @@
 				    </div>
 			
 				    <div class="item">
-						<img src="/tracker/resources/img/intro/intro_3.jpg" class="img-responsive" alt=""> 
+						<img src="/tracker/resources/img/intro/intro_2.jpg" class="img-responsive" alt=""> 
 						<div class="carousel-caption">
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">								
 								<h2>반려견을 위한 최선의 선택</h2>
@@ -295,9 +290,50 @@
 			<img id="sendBtn" src="/tracker/resources/img/button/submit.png" />
 		</div>		
 	</div><!--/#dialog-->
+		
+	<c:choose>		            	
+        <c:when test="${ sessionScope.loginuser ne null && sessionScope.loginuser.active eq 'admin'}">
+        	<div id="managemember">
+				<div class="container">
+					<div class="text-center">
+						<h3>회원관리</h3>	
+						<br /><br />
+						<div class="CSSTableGenerator">
+							<table>
+								<tr>
+									<td>아이디</td>
+									<td>사용자 이름</td>
+									<td>비밀번호</td>
+									<td>사용자 구분</td>
+									<td>가입 일자</td>
+									<td>탈퇴 여부</td>
+								</tr>
+								<c:forEach var="member" items="${ members }">
+									<tr>
+										<td>${ member.id }</td>
+										<td>${ member.name }</td>
+										<td>${ member.password }</td>
+										<td>${ member.active }</td>
+										<td>${ member.regDate }</td>
+										<c:choose>
+											<c:when test="${ member.deleted  eq 1 }">
+												<td>탈퇴</td>
+											</c:when>
+											<c:otherwise>
+												<td style="color : red">사용중</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+							</table>
+						</div>	   					
+					</div>		
+				</div>							
+			</div>     		
+		</c:when>
+	</c:choose><!-- /회원관리 -->
 	
-	
-<!-- /#equipment -->
+	<!-- /#equipment -->
 	<div id="equipment">
 		<div class="container">
 		<c:choose>		            	
@@ -357,8 +393,6 @@
 	</div><!--/#products-->
 
 	<div id="gpstracker">
-	
-	
 		<div class="container">
 			<div class="text-center">
 				<br /><br /><br /><br /><br />
