@@ -323,6 +323,10 @@ hr {
 	padding-bottom:50px;
 }
 
+.cd-switcher li{
+	list-style : none;
+}
+
 /*************************
 *******support******
 **************************/
