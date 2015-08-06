@@ -1,17 +1,21 @@
 package com.tracker.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.tracker.model.dto.Board;
 import com.tracker.model.dto.BoardComment;
@@ -20,7 +24,13 @@ import com.tracker.service.OracleBoardService;
 @Controller
 @RequestMapping(value="board")
 public class BoardController {
-	
+	@InitBinder
+	 public void initBinder(WebDataBinder binder) {
+
+	 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	 dateFormat.setLenient(false);
+	 binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+	 }
 	private OracleBoardService boardService;
 	@Autowired
 	@Qualifier("boardService")
@@ -64,7 +74,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "viewjason.action")
 	@ResponseBody
-	public Board getBoardListByBoardNoJason(String boardNo) {
+	public Board getBoardListByBoardNoJason(@RequestParam("boardno") String boardNo) {
 		
 		Board board = boardService.getBoardByBoardNo(Integer.parseInt(boardNo));
 		

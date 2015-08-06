@@ -2,11 +2,14 @@ package com.tracker.model.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BoardComment {
 	private int commentNo;
 	private String commentWriter;
 	private int boardNo;
 	private String commentContent;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm a z")
 	private Date commentRegDate;
 	private boolean commentDeleted;
 	

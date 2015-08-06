@@ -64,7 +64,7 @@
 	        datatype: 'json',
 	        colNames: ['NO', '제목', '작성자', '작성일'],
 	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)),key: true },
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
 	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
 	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
@@ -78,8 +78,7 @@
 	        sortorder: "desc",
 	        onSelectRow: function(rowId) {
 	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
-	        }
-	        
+	        }	        
 	    });
 		$('#grid1').jqGrid('navGrid', '#pager1', { add:true,edit:false,del:false,search:true });
 	});
@@ -88,13 +87,12 @@
 		$('#bgrid2').jqGrid({
 	        url: 'listjason.action?boardkind=qna',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
-	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
+	        colNames: ['NO', '제목', '작성자', '작성일'],
 	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
 	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}},
-	            { name: 'view', index: 'view', width:(pageWidth*(10/100)), editable: false, formatter: viewcontent}
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
 	        ],
 	        height: '100%',
 	        rowNum: 5,									//한 페이지에 표시될 행 갯수
@@ -102,25 +100,24 @@
 	        pager: '#bpager2',
 	        sortname: 'boardNo',
 	        viewrecords: true,
-	        sortorder: "desc"
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }	
 	    });
 		$('#bgrid2').jqGrid('navGrid', '#bpager2', { add:true,edit:false,del:false,search:true });
-		function viewcontent(cellValue, options, rowdata) {
-            return "<a href='http://www.google.com' >내용보기</a>";
-        } 
 	});
 	$(document).ready(function () {
 		var pageWidth = $("#cgrid3").parent().width() - 100;
 		$('#cgrid3').jqGrid({
 	        url: 'listjason.action?boardkind=community',			//조회(전체, 검색) 기능을 수행하는 서버 경로
 	        datatype: 'json',
-	        colNames: ['NO', '제목', '작성자', '작성일', '내용보기'],
+	        colNames: ['NO', '제목', '작성자', '작성일'],
 	        colModel: [
-	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)) },
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
 	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
 	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
-	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: date},
-	            { name: 'view', index: 'view', width:(pageWidth*(10/100)), editable: false, formatter: viewcontent}
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
 	        ],
 	        height: '100%',
 	        rowNum: 5,									//한 페이지에 표시될 행 갯수
@@ -128,12 +125,12 @@
 	        pager: '#cpager3',
 	        sortname: 'boardNo',
 	        viewrecords: true,
-	        sortorder: "desc"
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }	        
 	    });
 		$('#cgrid3').jqGrid('navGrid', '#cpager3', { add:true,edit:false,del:false,search:true });
-		function viewcontent(cellValue, options, rowdata) {
-            return "<a href='http://www.google.com' >내용보기</a>";
-        }
 	});
 </script>
 </head>
