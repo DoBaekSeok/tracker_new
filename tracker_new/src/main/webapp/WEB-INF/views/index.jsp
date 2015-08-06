@@ -60,11 +60,91 @@
 	<!-- chat -->
 	<script src="/tracker/resources/js/websocket/chat.js" ></script>
 	
-	<!-- board -->
-	<script src="/tracker/resources/js/board.js" ></script>
-
 	<script>
 	wow = new WOW({}).init();
+	
+	$(document).ready(function () {
+        $( "#tabs" ).tabs({
+		    beforeLoad: function( event, ui ) {
+		        ui.jqXHR.fail(function() {
+		            ui.panel.html(
+		                "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+		                "If this wouldn't be a demo." );
+		        });
+		    }
+		});
+    
+		var pageWidth = $("#grid1").parent().width() + 130;
+		
+		$('#grid1').jqGrid({
+	        url: '/tracker/board/listjason.action?boardkind=notice',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        datatype: 'json',
+	        colNames: ['NO', '제목', '작성자', '작성일'],
+	        colModel: [
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
+	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
+	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
+	        ],
+	        height: '100%',
+	        rowNum: 5,									//한 페이지에 표시될 행 갯수
+	        rowList: [5, 10, 15],						//rowNum에 대한 선택 옵션
+	        pager: '#pager1',
+	        sortname: 'boardNo',
+	        viewrecords: true,
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }	        
+	    });
+		$('#grid1').jqGrid('navGrid', '#pager1', { add:true,edit:false,del:false,search:true });
+	
+		$('#bgrid2').jqGrid({
+	        url: '/tracker/board/listjason.action?boardkind=qna',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        datatype: 'json',
+	        colNames: ['NO', '제목', '작성자', '작성일'],
+	        colModel: [
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
+	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
+	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
+	        ],
+	        height: '100%',
+	        rowNum: 5,									//한 페이지에 표시될 행 갯수
+	        rowList: [5, 10, 15],						//rowNum에 대한 선택 옵션
+	        pager: '#bpager2',
+	        sortname: 'boardNo',
+	        viewrecords: true,
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }	
+	    });
+		$('#bgrid2').jqGrid('navGrid', '#bpager2', { add:true,edit:false,del:false,search:true });
+	
+		$('#cgrid3').jqGrid({
+	        url: '/tracker/board/listjason.action?boardkind=community',			//조회(전체, 검색) 기능을 수행하는 서버 경로
+	        datatype: 'json',
+	        colNames: ['NO', '제목', '작성자', '작성일'],
+	        colModel: [
+	            { name: 'boardNo', index: 'boardNo', width:(pageWidth*(10/100)), key: true },
+	            { name: 'boardTitle', index: 'boardTitle', width:(pageWidth*(50/100)), editable: false, edittype: 'text' },
+	            { name: 'boardWriter', index: 'boardWriter', width:(pageWidth*(10/100)), editable: false, edittype: 'text' },
+	            { name: 'boardRegDate', index: 'boardRegDate', width:(pageWidth*(20/100)), editable: false, formatter: 'date', formatoptions: { newformat: 'Y-m-d H:i:s'}}
+	        ],
+	        height: '100%',
+	        rowNum: 5,									//한 페이지에 표시될 행 갯수
+	        rowList: [5, 10, 15],						//rowNum에 대한 선택 옵션
+	        pager: '#cpager3',
+	        sortname: 'boardNo',
+	        viewrecords: true,
+	        sortorder: "desc",
+	        onSelectRow: function(rowId) {
+	        	return location.href='/tracker/board/view.action?boardno=' + rowId;
+	        }	        
+	    });
+		$('#cgrid3').jqGrid('navGrid', '#cpager3', { add:true,edit:false,del:false,search:true });
+	});	
 	</script>	
 </head>
 <body>
@@ -483,13 +563,13 @@
 			
 		</div>
 	</div><!--/#gpstracker-->
-	
+		
 	<div id="support">
 		<div class="container">
 			<div class="row">
 				<div class="text-center">
 					<h3>Support</h3>
-					<div id="tabs">
+					<div id="tabs" style="width:100%">
 						<ul>
 						    <li><a href="#tabs-1">공지사항</a></li>
 						    <li><a href="#tabs-2">Q & A</a></li>
@@ -511,7 +591,7 @@
 				</div>				
 			</div>			
 		</div>
-	</div><!--/#support-->
+	</div><!-- /#support -->	
 	
 	<!-- footer -->
 	<footer>	
