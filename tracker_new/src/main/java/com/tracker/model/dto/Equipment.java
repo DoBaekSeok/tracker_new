@@ -10,6 +10,7 @@ public class Equipment implements Serializable{
 	private int equipPrice; 
 	private String equipContent; 
 	private String equipDeleted;
+	private String savedFileName;
 	private EquipPhoto equipPhoto;
 	
 	public Equipment(){}
@@ -64,6 +65,14 @@ public class Equipment implements Serializable{
 
 	public EquipPhoto getEquipPhoto() {
 		return equipPhoto;
+	}
+
+	public String getSavedFileName() {
+		return savedFileName;
+	}
+
+	public void setSavedFileName(String savedFileName) {
+		this.savedFileName = savedFileName;
 	}
 
 

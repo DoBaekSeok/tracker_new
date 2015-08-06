@@ -22,10 +22,13 @@
 		<result column="savedfilename" property="SavedFileName" />
 		<result column="equipno" property="EquipNo" />
 	</resultMap>
+	
 	<select id="getEquipment" resultMap="equipmentResult">
-	  select equipno, equipname, modelname, equipprice, equipcontent
-	  from Equipment
+	  select e.equipno, e.equipname, e.modelname, e.equipprice, e.equipcontent, p.savedfilename
+	  from equipment e, equipphoto p
+	  where e.equipno = p.equipno
 	</select>
+	
 	<select id='getEquipPhoto' resultMap="equipPhotoResult" parameterType="int">
 		select equipphotono, savedfilename, equipno
 		from EquipPhoto
@@ -76,7 +79,7 @@
 
 	
 
-<!-- 	<delete id="deleteEquipment" parameterType="int">
+ 	<delete id="deleteEquipment" parameterType="int">
 		UPDATE
 			Equipment
 		SET
@@ -86,7 +89,7 @@
 	</delete>
 	
 	
-	 -->
+
 	
 	<!-- 
 

@@ -4,7 +4,6 @@ package com.tracker.controller;
 import java.util.List;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -63,7 +62,7 @@ public class EquipmentController{
 	        int equipPrice = Integer.parseInt(req.getParameter("equipPrice"));
 	        String equipContent = req.getParameter("equipContent");  
 	       // String savedFileName = req.getParameter("equipPhoto");
-	        //System.out.println(savedFileName);
+	       //System.out.println(savedFileName);
 
 			equipment.setEquipName(equipName);
 			equipment.setModelName(modelName);
@@ -74,7 +73,6 @@ public class EquipmentController{
 			equipmentService.AddEquipment(equipment);
 
 			///////////////////////////////////////////////////////////////// add insertEquipment
-
 
 		}else if(oper.equals("edit")){
 			
